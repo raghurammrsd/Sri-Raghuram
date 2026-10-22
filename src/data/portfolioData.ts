@@ -2,6 +2,7 @@ export interface ProjectCaseStudy {
   id: string;
   number: string;
   title: string;
+  repoName: string;
   category: string;
   tagline: string;
   summary: string;
@@ -10,11 +11,11 @@ export interface ProjectCaseStudy {
   architectureHighlights: string[];
   techStack: string[];
   links: {
-    github?: string;
+    github: string;
     pypi?: string;
     live?: string;
   };
-  metrics?: { label: string; value: string }[];
+  metrics: { label: string; value: string }[];
   terminalSimulation?: {
     command: string;
     outputLines: string[];
@@ -44,7 +45,7 @@ export const PERSONAL_INFO = {
   title: "I build intelligence into software.",
   supportingText: "AI engineering, intelligent developer tools, and products built to solve real problems.",
   location: "India",
-  status: "AVAILABLE FOR WORK · BASED IN INDIA",
+  status: "AVAILABLE FOR MISSIONS · BASED IN INDIA",
   email: "msriraghuram@gmail.com",
   phone: "+91 9392380182",
   github: "https://github.com/raghurammrsd",
@@ -56,57 +57,56 @@ export const PERSONAL_INFO = {
 
 export const STORY_SECTION = {
   headline: "NOT JUST MODELS. SYSTEMS THAT WORK.",
-  subhead: "The gap between an AI demo and a production system is vast. I engineer the architecture that bridges it.",
-  narrative: [
-    "Most AI projects fail when prototypes meet reality: context windows get overwhelmed, agents hallucinate non-existent imports, and brittle pipelines crash on unexpected edge cases.",
-    "My focus is practical AI engineering: building deterministic tools, local-first codebase intelligence, and high-concurrency data systems that provide verifiable ground truth rather than guesswork.",
-    "From AST static analysis that maps entire repositories in milliseconds, to asynchronous data pipelines that ingest and normalize hundreds of technical sources, I build software that executes reliably in the real world."
-  ],
+  subhead: "The gap between an AI Twitter demo and a production system is vast. I engineer the deterministic architecture that bridges it.",
+  narrativeText:
+    "Most AI projects fail when prototypes meet reality. Context windows get overwhelmed with thousands of lines of noisy file grepping, agents hallucinate non-existent imports, and brittle pipelines crash the second an unhandled edge case hits production. My focus is practical AI engineering: building deterministic tools, local-first repository intelligence, and high-concurrency data systems that provide verifiable ground truth rather than generative guesswork.",
   pillars: [
     {
       number: "01",
       title: "Deterministic Ground Truth",
-      description: "Language models are probabilistic. Software requires exactness. I anchor AI systems to compiler ASTs, strict schemas, and verifiable call graphs."
+      description: "Language models are probabilistic. Software requires exactness. I anchor AI systems to compiler ASTs, strict Pydantic contracts, and verifiable call graphs."
     },
     {
       number: "02",
       title: "Local-First Performance",
-      description: "Sub-second queries, zero cloud latency dependencies for local tools, and incremental caching designed for developer velocity."
+      description: "Sub-second queries, zero cloud latency dependencies for local tooling, and incremental SQLite caching designed for extreme developer velocity."
     },
     {
       number: "03",
       title: "Production Resilience",
-      description: "AsyncIO concurrency, Pydantic validation across system boundaries, and battle-tested error handling that prevents runtime failures."
+      description: "AsyncIO concurrency, schema validation across system boundaries, and battle-tested error handling that prevents runtime failures under high loads."
     }
   ]
 };
 
+// ONLY THE EXACT VERIFIED PROJECTS FROM MOHAN SRI RAGHURAM'S RESUME
 export const PROJECTS: ProjectCaseStudy[] = [
   {
     id: "codegraph-mcp",
     number: "01",
     title: "CodeGraph MCP",
-    category: "INTELLIGENT DEVELOPER TOOLS",
-    tagline: "Local-first MCP server that gives AI agents structured, deterministic, evidence-backed access to codebases.",
+    repoName: "CODE_GRAPH_MCP",
+    category: "REPOSITORY INTELLIGENCE ENGINE",
+    tagline: "Local-first MCP server that gives AI coding agents structured, deterministic, evidence-backed access to codebases.",
     summary:
-      "Autonomous coding agents fail when they blindly grep and ingest thousands of file lines. CodeGraph MCP turns codebases into queryable intelligence graphs: resolving symbols, imports, callers, callees, API routes, database models, and runtime traces with exact file:line evidence.",
+      "Autonomous coding agents fail when they repeatedly grep and read entire files. CodeGraph MCP turns codebases into deterministic intelligence graphs: resolving symbols, imports, callers, callees, API routes, database models, and runtime behavior with exact file:line evidence.",
     challenge:
-      "LLM-based coding tools frequently hallucinate imports and call chains because raw vector embeddings lack structural syntax awareness. Grepping raw files exhausts token windows and wastes user compute.",
+      "AI agents repeatedly grep and ingest entire repositories, blowing through context limits and hallucinating non-existent functions or imports because raw text lacks AST syntax awareness.",
     solution:
-      "Engineered an MCP server based on Python AST static analysis paired with an incremental SQLite index. Resolves symbols, dependencies, and call trees in single-digit milliseconds, providing line-level verified evidence directly to agents.",
+      "Engineered a local-first MCP server utilizing Python AST static analysis and an incremental SQLite index. Resolves symbols, imports, callers, API routes, and cross-file references with line-level evidence in under 4ms.",
     architectureHighlights: [
-      "Deterministic symbol resolution and call-graph traversal with precise file:line citations",
+      "Deterministic code-intelligence pipeline on Python AST with incremental SQLite index",
+      "Evidence-backed retrieval separating verified structural relationships from inferred assumptions",
       "Routes & services linked directly to ORM models, SQL queries, and database tables",
-      "Local-first SQLite incremental cache eliminating redundant parsing passes",
-      "Published on PyPI; seamlessly compatible with Claude Desktop, Cursor, and any MCP client"
+      "Published on PyPI; native compatibility with Claude Desktop, Cursor, and any MCP client"
     ],
-    techStack: ["Python", "MCP Protocol", "AST Analysis", "SQLite", "Static Analysis", "PyPI"],
+    techStack: ["Python", "MCP Protocol", "AST Static Analysis", "SQLite", "Git Analysis", "PyPI"],
     links: {
-      github: "https://github.com/raghurammrsd",
+      github: "https://github.com/raghurammrsd/CODE_GRAPH_MCP",
       pypi: "https://pypi.org/project/codegraph-mcp/"
     },
     metrics: [
-      { label: "QUERY LATENCY", value: "< 5ms" },
+      { label: "QUERY LATENCY", value: "< 4.2ms" },
       { label: "EVIDENCE TYPE", value: "AST VERIFIED" },
       { label: "DISTRIBUTION", value: "PYPI PACKAGE" }
     ],
@@ -122,87 +122,99 @@ export const PROJECTS: ProjectCaseStudy[] = [
     }
   },
   {
-    id: "dundoo",
+    id: "ai-app-compiler",
     number: "02",
-    title: "DUNDOO",
-    category: "HYPERLOCAL COMMERCE PLATFORM",
-    tagline: "Hyperlocal commerce platform connecting customers with nearby merchants and automated inventory management.",
+    title: "AI App Compiler Platform",
+    repoName: "AI_APP_Buildiing_platform",
+    category: "DETERMINISTIC ARCHITECTURE PLATFORM",
+    tagline: "Transforms natural language requirements into production-ready software architectures using a deterministic multi-stage pipeline.",
     summary:
-      "A complete full-stack platform enabling local discovery and commerce with map-based navigation, multilingual voice search, and real-time inventory management.",
+      "An automated engineering compiler that converts high-level natural language specifications into validated software blueprints with automated consistency checks across APIs, databases, RBAC, and workflows.",
     challenge:
-      "Local merchants often struggle with complex software interfaces, while consumers need instant geospatial discovery and localized voice-assisted ordering across dynamic catalog inventories.",
+      "Naive generative prompts create structural discrepancies between frontend contracts, REST endpoints, database schemas, and permission models.",
     solution:
-      "Architected a scalable Flask and PostgreSQL backend supporting spatial geo-queries, dynamic inventory synchronization, and intuitive RESTful workflows with voice-enabled query parsing.",
+      "Implemented a multi-stage deterministic pipeline featuring Pydantic-based cross-layer validation. Built a FastAPI workbench with runtime simulation, CRUD validation, auth testing, and architecture visualization.",
     architectureHighlights: [
-      "Geospatial catalog querying and distance calculation for merchant radius matching",
-      "Multilingual voice query parsing tailored for regional merchants and customers",
-      "Transactional order workflows with real-time stock allocation checks",
-      "Clean RESTful services designed for mobile and web client consumption"
+      "Deterministic multi-stage pipeline converting prompt specs into verified architectures",
+      "Pydantic-based cross-layer consistency validation across APIs, databases, and RBAC",
+      "FastAPI workbench with runtime simulation, CRUD validation, and architecture graph visualization",
+      "Pre-empts integration errors early before any code generation begins"
     ],
-    techStack: ["Flask", "PostgreSQL", "REST APIs", "Python", "Geospatial Search", "Voice AI"],
+    techStack: ["Python", "FastAPI", "Pydantic v2", "State Machines", "AsyncIO", "Docker"],
+    links: {
+      github: "https://github.com/raghurammrsd/AI_APP_Buildiing_platform"
+    },
+    metrics: [
+      { label: "VALIDATION", value: "PYDANTIC CROSS-LAYER" },
+      { label: "WORKBENCH", value: "FASTAPI WORKBENCH" },
+      { label: "PIPELINE", value: "MULTI-STAGE DETERMINISTIC" }
+    ],
+    terminalSimulation: {
+      command: "compiler-run --spec './spec/ecommerce_tier.yaml' --validate --strict",
+      outputLines: [
+        "✓ Multi-tier schema compiled successfully (8 modules)",
+        "✓ Cross-layer validation: RBAC policies ↔ REST endpoints ↔ DB tables verified",
+        "✓ 0 cyclic dependencies detected across entity relation graph",
+        "✓ Generated typed FastAPI router & Alembic migrations ready for deployment"
+      ]
+    }
+  },
+  {
+    id: "dundoo",
+    number: "03",
+    title: "DUNDOO",
+    repoName: "DUNDOO",
+    category: "AI HYPERLOCAL COMMERCE PLATFORM",
+    tagline: "Hyperlocal commerce platform connecting customers with nearby shops via map-based navigation and multilingual voice search.",
+    summary:
+      "A hyperlocal commerce platform featuring geospatial merchant discovery, multilingual voice search, payment integration, and real-time inventory management.",
+    challenge:
+      "Local shopkeepers lack digital visibility and conventional e-commerce platforms favor large sellers without localized geospatial and voice intelligence.",
+    solution:
+      "Architected a scalable Flask and PostgreSQL backend supporting spatial map navigation, multilingual voice search parsing, and transactional inventory management.",
+    architectureHighlights: [
+      "Flask & PostgreSQL backend with map-based navigation and payment integration",
+      "RESTful services for product search, inventory management, and payment workflows",
+      "Multilingual voice query parsing for regional accessibility",
+      "Low-latency geospatial catalog search for nearby merchant matching"
+    ],
+    techStack: ["Flask", "PostgreSQL", "REST APIs", "Python", "Geospatial Navigation", "Voice AI"],
     links: {
       github: "https://github.com/raghurammrsd/DUNDOO"
     },
     metrics: [
       { label: "BACKEND", value: "FLASK + POSTGRESQL" },
-      { label: "SEARCH", value: "GEOSPATIAL + VOICE" },
-      { label: "ARCHITECTURE", value: "RESTFUL SERVICES" }
-    ]
-  },
-  {
-    id: "ai-app-compiler",
-    number: "03",
-    title: "AI App Compiler Platform",
-    category: "SOFTWARE ARCHITECTURE SYNTHESIS",
-    tagline: "Transforms natural language requirements into production-ready software architectures using deterministic multi-stage pipelines.",
-    summary:
-      "An automated engineering system that converts high-level natural language specifications into validated multi-tier software blueprints with strict cross-layer verification.",
-    challenge:
-      "Naive LLM generation of full applications fails because individual layers (schemas, APIs, auth, RBAC) become inconsistent and conflict with one another.",
-    solution:
-      "Created a multi-stage deterministic pipeline leveraging Pydantic cross-layer validation across APIs, databases, authentication, and state workflows before generating executable code.",
-    architectureHighlights: [
-      "Multi-stage specification compiler validating schema integrity across system tiers",
-      "Pydantic-based cross-layer validation catching integration bugs prior to code generation",
-      "FastAPI workbench with live runtime simulation and CRUD architecture visualization",
-      "Eliminates 90%+ of common structural integration errors in generative workflows"
-    ],
-    techStack: ["Python", "FastAPI", "Pydantic v2", "State Machines", "AsyncIO", "Docker"],
-    links: {
-      github: "https://github.com/raghurammrsd"
-    },
-    metrics: [
-      { label: "VALIDATION", value: "PYDANTIC CROSS-LAYER" },
-      { label: "WORKBENCH", value: "FASTAPI WORKBENCH" },
-      { label: "EXECUTION", value: "MULTI-STAGE PIPELINE" }
+      { label: "SEARCH", value: "MAP NAVIGATION + VOICE" },
+      { label: "INTEGRATION", value: "PAYMENTS & INVENTORY" }
     ]
   },
   {
     id: "realmock-ai",
     number: "04",
     title: "RealMockAI",
+    repoName: "realmockai",
     category: "AI INTERVIEW PREPARATION SYSTEM",
-    tagline: "Real-time AI-powered technical interview simulation with adaptive questioning and LLM-based evaluation.",
+    tagline: "AI-powered mock interview system with real-time simulation, adaptive questioning, and LLM-based response evaluation.",
     summary:
-      "An interactive platform providing realistic simulated technical interviews with dynamic follow-up questioning and structured multi-criteria performance feedback.",
+      "An interactive platform providing simulated technical interviews with real-time dynamic questioning and automated LLM-based candidate response evaluation.",
     challenge:
-      "Static interview prep fails to simulate real-time conversational pressure or provide objective, actionable rubric feedback on answers.",
+      "Static interview prep lacks real-time dialog adaptivity and objective evaluation against technical competency rubrics.",
     solution:
-      "Developed modular FastAPI backend services integrating LLM APIs for dynamic adaptive question generation and real-time response evaluation against technical rubrics.",
+      "Developed modular FastAPI backend services integrating LLM APIs for adaptive questioning and real-time candidate response evaluation.",
     architectureHighlights: [
-      "Modular FastAPI services integrating LLM endpoints for contextual dialog",
-      "Adaptive questioning engine adjusting difficulty based on candidate response depth",
-      "Multi-dimensional rubric scoring across technical accuracy, communication, and edge cases",
-      "Real-time evaluation response generation with streaming updates"
+      "Modular FastAPI services integrating LLM APIs for adaptive technical questioning",
+      "Real-time interview simulation engine reacting to candidate answers",
+      "LLM-based multi-criteria response evaluation against structured rubrics",
+      "Clean RESTful API architecture ready for real-time frontend integration"
     ],
-    techStack: ["FastAPI", "Python", "LLM APIs", "REST APIs", "Prompt Engineering"],
+    techStack: ["FastAPI", "Python", "LLM APIs", "REST APIs", "Adaptive Questioning"],
     links: {
-      github: "https://github.com/raghurammrsd"
+      github: "https://github.com/raghurammrsd/realmockai"
     },
     metrics: [
-      { label: "BACKEND", value: "FASTAPI MICROSERVICES" },
-      { label: "EVALUATION", value: "RUBRIC-DRIVEN" },
-      { label: "MODE", value: "ADAPTIVE SIMULATION" }
+      { label: "BACKEND", value: "FASTAPI MODULAR" },
+      { label: "EVALUATION", value: "LLM RUBRIC-BASED" },
+      { label: "QUESTIONING", value: "REAL-TIME ADAPTIVE" }
     ]
   }
 ];
@@ -215,7 +227,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     location: "Remote",
     type: "Internship",
     bullets: [
-      "Developed backend data services for Graph-One, building scalable Python pipelines to ingest, validate, and structure technical data from 600+ sources using AsyncIO, Crawl4AI, and PostgreSQL.",
+      "Developed backend services for Graph-One, building scalable Python pipelines to ingest, validate, and structure technical data from 600+ sources using AsyncIO, Crawl4AI, and PostgreSQL.",
       "Designed LLM-assisted information extraction workflows integrating Gemini and Groq models to automate entity extraction, knowledge generation, and structured data enrichment.",
       "Contributed to Frontier Atlas by developing evaluation and data quality pipelines for AI datasets, implementing schema validation and automated quality assessment workflows.",
       "Designed reusable Python modules and backend components supporting scalable AI workflows, developer productivity, and maintainable software architecture."
@@ -229,9 +241,9 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     location: "Remote",
     type: "Core Contributor",
     bullets: [
-      "Contribute to AI product development for Frontier Atlas and AIOrbit.club across backend systems and data pipelines using Python and PostgreSQL.",
+      "Contribute to AI product development for Frontier Atlas (frontieratlas.co) and AIOrbit.club across backend systems and AI data pipelines using Python and PostgreSQL.",
       "Build LLM applications using RAG and NLP, structuring and connecting data with knowledge graphs.",
-      "Develop web data extraction and data quality workflows that support AI-driven products."
+      "Develop web data extraction and data quality workflows supporting AI-driven products."
     ],
     technologies: ["Python", "PostgreSQL", "Knowledge Graphs", "RAG", "NLP", "Data Extraction"]
   }
@@ -249,7 +261,7 @@ export const EDUCATION_DATA = {
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     title: "AI & Intelligent Systems",
-    description: "Architectures that connect language models to structured reality.",
+    description: "Architectures connecting language models to structured code and verifiable reality.",
     skills: [
       { name: "Model Context Protocol (MCP)", highlight: true },
       { name: "Deterministic AST Analysis", highlight: true },
@@ -258,7 +270,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       { name: "LLM Applications & Prompt Engineering" },
       { name: "Entity Resolution" },
       { name: "PyTorch & Computer Vision" },
-      { name: "Data Extraction (Crawl4AI)" }
+      { name: "Data Extraction (Crawl4AI)", highlight: true }
     ]
   },
   {

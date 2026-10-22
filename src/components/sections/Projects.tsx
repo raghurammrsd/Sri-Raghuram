@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PROJECTS } from '../../data/portfolioData';
-import { ExternalLink, Terminal, Copy, Check, ArrowUpRight, Code2 } from 'lucide-react';
+import { ExternalLink, Terminal, Copy, Check, ArrowUpRight, Code2, GitFork } from 'lucide-react';
 import { GithubIcon } from '../Icons';
 import { Magnetic } from '../Magnetic';
 import { sound } from '../../utils/sound';
@@ -9,6 +9,7 @@ import { sound } from '../../utils/sound';
 export const Projects: React.FC = () => {
   const [activeProjectId, setActiveProjectId] = useState(PROJECTS[0].id);
   const [copiedCmd, setCopiedCmd] = useState(false);
+  const [copiedClone, setCopiedClone] = useState(false);
 
   const activeProject = PROJECTS.find((p) => p.id === activeProjectId) || PROJECTS[0];
 
@@ -19,8 +20,15 @@ export const Projects: React.FC = () => {
     setTimeout(() => setCopiedCmd(false), 2000);
   };
 
+  const handleCopyClone = (repoUrl: string) => {
+    sound.click();
+    navigator.clipboard.writeText(`git clone ${repoUrl}.git`);
+    setCopiedClone(true);
+    setTimeout(() => setCopiedClone(false), 2000);
+  };
+
   return (
-    <section id="projects" className="py-24 sm:py-32 border-b border-white/[0.06] relative">
+    <section id="projects" className="py-24 sm:py-32 border-b border-white/[0.06] relative bg-charcoal-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Marker */}
         <div className="flex items-center gap-3 mb-10">
@@ -28,7 +36,7 @@ export const Projects: React.FC = () => {
             [ 02 / 05 ]
           </span>
           <span className="font-mono text-xs sm:text-sm tracking-wider text-warm-muted uppercase">
-            // FEATURED ARSENAL & SYSTEMS
+            // RESUME VERIFIED ARSENAL
           </span>
         </div>
 
@@ -39,6 +47,9 @@ export const Projects: React.FC = () => {
             <br />
             <span className="text-electric-orange">real bottlenecks.</span>
           </h2>
+          <p className="font-mono text-warm-muted text-xs sm:text-sm mt-3">
+            Direct repositories, evidence-backed architectures, and production-tested systems from my resume.
+          </p>
         </div>
 
         {/* Project Selector Pills */}
@@ -53,7 +64,7 @@ export const Projects: React.FC = () => {
               className={`px-5 py-3 rounded-full font-mono text-xs sm:text-sm tracking-wider transition-all flex items-center gap-2.5 ${
                 activeProjectId === proj.id
                   ? 'bg-warm-white text-charcoal-950 font-bold shadow-lg'
-                  : 'bg-white/[0.03] text-warm-muted hover:text-warm-white hover:bg-white/[0.06] border border-white/5'
+                  : 'bg-charcoal-850/80 text-warm-muted hover:text-warm-white hover:bg-white/[0.08] border border-white/5'
               }`}
             >
               <span>[{proj.number}]</span>
@@ -75,9 +86,12 @@ export const Projects: React.FC = () => {
             {/* Left Column: Case Study Narrative */}
             <div className="lg:col-span-7 flex flex-col justify-between">
               <div>
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex flex-wrap items-center gap-3 mb-4">
                   <span className="font-mono text-xs tracking-widest text-electric-orange font-bold uppercase">
                     // {activeProject.category}
+                  </span>
+                  <span className="font-mono text-[11px] px-2 py-0.5 rounded bg-white/[0.04] text-warm-muted border border-white/10">
+                    repo: {activeProject.repoName}
                   </span>
                 </div>
 
@@ -90,30 +104,30 @@ export const Projects: React.FC = () => {
                 </p>
 
                 {/* Challenge & Solution Grid */}
-                <div className="space-y-6 mb-8 text-sm sm:text-base leading-relaxed">
-                  <div className="p-4 rounded-xl bg-charcoal-950/60 border border-white/[0.05]">
+                <div className="space-y-4 mb-8 text-sm sm:text-base leading-relaxed">
+                  <div className="p-4 rounded-xl bg-charcoal-950/70 border border-white/[0.05]">
                     <span className="font-mono text-xs text-electric-orange uppercase tracking-wider block mb-1 font-bold">
-                      THE BOTTLENECK:
+                      THE ARCHITECTURAL BOTTLENECK:
                     </span>
-                    <p className="text-warm-muted">{activeProject.challenge}</p>
+                    <p className="text-warm-muted text-sm">{activeProject.challenge}</p>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-charcoal-950/60 border border-white/[0.05]">
+                  <div className="p-4 rounded-xl bg-charcoal-950/70 border border-white/[0.05]">
                     <span className="font-mono text-xs text-emerald-400 uppercase tracking-wider block mb-1 font-bold">
-                      THE ARCHITECTURE:
+                      THE VERIFIED SOLUTION:
                     </span>
-                    <p className="text-warm-cream">{activeProject.solution}</p>
+                    <p className="text-warm-cream text-sm">{activeProject.solution}</p>
                   </div>
                 </div>
 
                 {/* Architecture Highlights */}
-                <div className="space-y-2.5 mb-8">
+                <div className="space-y-2 mb-8">
                   <span className="font-mono text-xs text-warm-muted uppercase tracking-wider block">
                     KEY VERIFIED CAPABILITIES:
                   </span>
                   {activeProject.architectureHighlights.map((hl, i) => (
-                    <div key={i} className="flex items-start gap-3 text-sm text-warm-white/90">
-                      <span className="text-electric-orange mt-1">✦</span>
+                    <div key={i} className="flex items-start gap-3 text-xs sm:text-sm text-warm-white/90">
+                      <span className="text-electric-orange mt-0.5">✦</span>
                       <span>{hl}</span>
                     </div>
                   ))}
@@ -134,22 +148,22 @@ export const Projects: React.FC = () => {
                 </div>
 
                 <div className="flex flex-wrap items-center gap-4">
-                  {activeProject.links.github && (
-                    <Magnetic strength={0.25}>
-                      <a
-                        href={activeProject.links.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => sound.click()}
-                        className="px-5 py-2.5 rounded-full bg-warm-white text-charcoal-950 font-mono text-xs font-bold tracking-wider hover:bg-electric-orange hover:text-white transition-all flex items-center gap-2 shadow-md"
-                        data-cursor-text="CODE"
-                      >
-                        <GithubIcon className="w-3.5 h-3.5" />
-                        <span>VIEW ON GITHUB</span>
-                      </a>
-                    </Magnetic>
-                  )}
+                  {/* Direct GitHub Link */}
+                  <Magnetic strength={0.25}>
+                    <a
+                      href={activeProject.links.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => sound.click()}
+                      className="px-6 py-3 rounded-full bg-warm-white text-charcoal-950 font-mono text-xs font-bold tracking-wider hover:bg-electric-orange hover:text-white transition-all flex items-center gap-2 shadow-lg"
+                      data-cursor-text="REPO"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5" />
+                      <span>GITHUB REPO →</span>
+                    </a>
+                  </Magnetic>
 
+                  {/* PyPI Link if available */}
                   {activeProject.links.pypi && (
                     <Magnetic strength={0.25}>
                       <a
@@ -157,7 +171,7 @@ export const Projects: React.FC = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => sound.click()}
-                        className="px-5 py-2.5 rounded-full border border-white/15 bg-white/[0.03] hover:bg-white/[0.08] text-warm-white font-mono text-xs tracking-wider transition-all flex items-center gap-1.5"
+                        className="px-5 py-3 rounded-full border border-white/15 bg-white/[0.03] hover:bg-white/[0.08] text-warm-white font-mono text-xs tracking-wider transition-all flex items-center gap-1.5"
                         data-cursor-text="PYPI"
                       >
                         <span>PYPI PACKAGE</span>
@@ -165,11 +179,21 @@ export const Projects: React.FC = () => {
                       </a>
                     </Magnetic>
                   )}
+
+                  {/* Copy Clone Command */}
+                  <button
+                    onClick={() => handleCopyClone(activeProject.links.github)}
+                    className="px-4 py-3 rounded-full border border-white/10 hover:border-white/25 text-warm-muted hover:text-warm-white font-mono text-xs tracking-wider transition-all flex items-center gap-1.5"
+                    title="Copy git clone command"
+                  >
+                    {copiedClone ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <GitFork className="w-3.5 h-3.5" />}
+                    <span>{copiedClone ? 'CLONE COMMAND COPIED' : 'COPY GIT CLONE'}</span>
+                  </button>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Terminal Simulation or Metrics */}
+            {/* Right Column: Terminal Simulation & Metrics */}
             <div className="lg:col-span-5 flex flex-col justify-center">
               {activeProject.terminalSimulation ? (
                 <div className="rounded-2xl bg-charcoal-950 border border-white/[0.1] overflow-hidden shadow-2xl">
@@ -180,7 +204,7 @@ export const Projects: React.FC = () => {
                       <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
                       <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
                       <span className="font-mono text-[11px] text-warm-muted ml-2">
-                        mcp://codegraph
+                        terminal://{activeProject.repoName.toLowerCase()}
                       </span>
                     </div>
                     <button
@@ -219,22 +243,17 @@ export const Projects: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              ) : (
-                <div className="p-8 rounded-2xl bg-charcoal-950 border border-white/[0.08] flex flex-col justify-center items-center text-center space-y-4">
-                  <Code2 className="w-12 h-12 text-electric-orange opacity-80" />
-                  <h4 className="font-mono text-sm text-warm-white font-bold uppercase tracking-wider">
-                    SYSTEM METRICS & SPEC
-                  </h4>
-                  <div className="grid grid-cols-1 gap-3 w-full text-left">
-                    {activeProject.metrics?.map((m, i) => (
-                      <div key={i} className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.05]">
-                        <span className="font-mono text-[10px] text-warm-muted uppercase block">{m.label}</span>
-                        <span className="font-mono text-xs text-warm-white font-semibold">{m.value}</span>
-                      </div>
-                    ))}
+              ) : null}
+
+              {/* Verified Metrics Grid */}
+              <div className="grid grid-cols-1 gap-2.5 mt-4">
+                {activeProject.metrics.map((m, i) => (
+                  <div key={i} className="p-3.5 rounded-xl bg-charcoal-950/80 border border-white/[0.06] flex items-center justify-between font-mono">
+                    <span className="text-[11px] text-warm-muted uppercase">{m.label}</span>
+                    <span className="text-xs text-warm-white font-bold">{m.value}</span>
                   </div>
-                </div>
-              )}
+                ))}
+              </div>
             </div>
           </motion.div>
         </AnimatePresence>

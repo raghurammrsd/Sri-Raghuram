@@ -1,14 +1,14 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { STORY_SECTION } from '../../data/portfolioData';
-import { ShieldCheck, Zap, GitBranch, Terminal } from 'lucide-react';
+import { WordScrubReveal } from '../ui/WordScrubReveal';
+import { ShieldCheck, Zap, GitBranch } from 'lucide-react';
 
 export const Story: React.FC = () => {
   const pillarIcons = [ShieldCheck, Zap, GitBranch];
 
   const ticker = [
     "DETERMINISTIC CODE INTELLIGENCE",
-    "MODEL CONTEXT PROTOCOL",
+    "MODEL CONTEXT PROTOCOL (MCP)",
     "ZERO HALLUCINATIONS",
     "LOCAL-FIRST RUNTIMES",
     "ASYNCIO PIPELINES",
@@ -17,7 +17,7 @@ export const Story: React.FC = () => {
   ];
 
   return (
-    <section id="story" className="py-24 sm:py-32 border-b border-white/[0.06] relative">
+    <section id="story" className="py-24 sm:py-32 border-b border-white/[0.06] relative bg-charcoal-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Marker */}
         <div className="flex items-center gap-3 mb-10">
@@ -30,7 +30,7 @@ export const Story: React.FC = () => {
         </div>
 
         {/* Oversized Agency Headline */}
-        <div className="max-w-5xl mb-12">
+        <div className="max-w-5xl mb-14">
           <h2 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-[-0.04em] text-warm-white leading-[0.96] uppercase">
             Not just models.
             <br />
@@ -38,24 +38,15 @@ export const Story: React.FC = () => {
           </h2>
         </div>
 
-        {/* Narrative Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20 text-warm-muted text-base sm:text-xl font-normal leading-relaxed">
-          <div className="lg:col-span-6 space-y-6">
-            <p>
-              The AI ecosystem is flooded with fragile prototypes: agents that endlessly loop through files, exhaust token limits, and hallucinate non-existent imports.
-            </p>
-            <p>
-              My thesis is simple: <strong className="text-warm-white font-semibold">AI is only as reliable as its ground truth</strong>.
-            </p>
-          </div>
-          <div className="lg:col-span-6 space-y-6">
-            <p>
-              Instead of relying on probabilistic guessing for critical tasks, I build deterministic systems—leveraging compiler Abstract Syntax Trees, incremental SQLite indexing, and strict schema validation.
-            </p>
-            <p className="text-warm-white font-medium">
-              The result: intelligent developer tools and backend applications that execute with surgical precision.
-            </p>
-          </div>
+        {/* Honey Signature Scroll-Driven Text Scrub Reveal */}
+        <div className="max-w-4xl mb-20">
+          <span className="font-mono text-xs text-warm-muted uppercase tracking-widest block mb-4">
+            [ SCROLL DOWN TO ILLUMINATE THESIS ]
+          </span>
+          <WordScrubReveal
+            text={STORY_SECTION.narrativeText}
+            className="text-2xl sm:text-3xl md:text-4xl font-sans tracking-tight"
+          />
         </div>
 
         {/* Animated Marquee */}
@@ -79,7 +70,7 @@ export const Story: React.FC = () => {
             return (
               <div
                 key={pillar.number}
-                className="group p-8 sm:p-10 rounded-2xl bg-charcoal-850/70 border border-white/[0.08] hover:border-electric-orange/40 transition-all duration-300 flex flex-col justify-between"
+                className="group p-8 sm:p-10 rounded-3xl bg-charcoal-850/80 border border-white/[0.08] hover:border-electric-orange/40 transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-8">
@@ -97,8 +88,8 @@ export const Story: React.FC = () => {
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-white/[0.06] font-mono text-xs text-warm-dark flex items-center justify-between">
-                  <span>SYSTEM METRIC</span>
-                  <span className="text-electric-orange">VERIFIED</span>
+                  <span>GROUND TRUTH</span>
+                  <span className="text-electric-orange">100% PROVEN</span>
                 </div>
               </div>
             );
