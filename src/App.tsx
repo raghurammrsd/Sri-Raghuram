@@ -1,40 +1,37 @@
 import React, { useState } from 'react';
 import { PERSONAL_INFO } from './data/portfolioData';
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { Capabilities } from './components/Capabilities';
-import { HowIWork } from './components/HowIWork';
-import { Arsenal } from './components/Arsenal';
-import { BeforeAfter } from './components/BeforeAfter';
-import { SprintEngine } from './components/SprintEngine';
-import { PoolRules } from './components/PoolRules';
-import { SecretWeapon } from './components/SecretWeapon';
-import { FAQ } from './components/FAQ';
-import { HireCTA } from './components/HireCTA';
-import { Footer } from './components/Footer';
-import { ScrollProgress } from './components/ScrollProgress';
+import { useSmoothScroll } from './hooks/useSmoothScroll';
+import { CustomCursor } from './components/CustomCursor';
+import { Navbar } from './components/ui/Navbar';
+import { Hero } from './components/sections/Hero';
+import { Story } from './components/sections/Story';
+import { Projects } from './components/sections/Projects';
+import { Skills } from './components/sections/Skills';
+import { Experience } from './components/sections/Experience';
+import { Contact } from './components/sections/Contact';
+import { Footer } from './components/ui/Footer';
 import { Toast } from './components/Toast';
 
 export function App() {
-  const [toastMessage, setToastMessage] = useState<string>('');
-  const [toastSub, setToastSub] = useState<string>('');
+  useSmoothScroll();
+
+  const [toastMessage, setToastMessage] = useState('');
+  const [toastSub, setToastSub] = useState('');
   const [toastVisible, setToastVisible] = useState(false);
   const [emailCopied, setEmailCopied] = useState(false);
   const [pipCopied, setPipCopied] = useState(false);
 
-  const triggerToast = (msg: string, sub?: string) => {
+  const showToast = (msg: string, sub?: string) => {
     setToastMessage(msg);
     setToastSub(sub || '');
     setToastVisible(true);
-    setTimeout(() => {
-      setToastVisible(false);
-    }, 3200);
+    setTimeout(() => setToastVisible(false), 3200);
   };
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(PERSONAL_INFO.email);
     setEmailCopied(true);
-    triggerToast(
+    showToast(
       "COPIED TO CLIPBOARD",
       `${PERSONAL_INFO.email} is ready to paste into your mail app.`
     );
@@ -44,7 +41,7 @@ export function App() {
   const handleCopyPip = () => {
     navigator.clipboard.writeText("pip install codegraph-mcp");
     setPipCopied(true);
-    triggerToast(
+    showToast(
       "TERMINAL COMMAND COPIED",
       "Run 'pip install codegraph-mcp' in your environment."
     );
@@ -52,36 +49,30 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-honey-bg text-honey-bone font-sans selection:bg-honey-accent selection:text-honey-bg relative">
-      {/* Sticky Navigation */}
-      <Navbar onCopyEmail={handleCopyEmail} copied={emailCopied} />
+    <div className="min-h-screen bg-charcoal-950 text-warm-white font-sans selection:bg-electric-orange selection:text-charcoal-950 relative">
+      {/* Subtle Film Grain Overlay */}
+      <div className="film-grain" />
 
-      {/* Main Content Sections (01 to 10) */}
+      {/* Fluid Custom Cursor for Desktop */}
+      <CustomCursor />
+
+      {/* Minimalist Top Navigation */}
+      <Navbar />
+
+      {/* Main Experience */}
       <main>
-        <div id="hero">
-          <Hero onCopyPip={handleCopyPip} pipCopied={pipCopied} />
-        </div>
-
-        <Capabilities />
-        <HowIWork />
-        <Arsenal />
-        <BeforeAfter />
-        <SprintEngine />
-        <PoolRules />
-        <div id="secret">
-          <SecretWeapon />
-        </div>
-        <FAQ />
-        <HireCTA onCopyEmail={handleCopyEmail} copied={emailCopied} />
+        <Hero onCopyPip={handleCopyPip} pipCopied={pipCopied} />
+        <Story />
+        <Projects />
+        <Skills />
+        <Experience />
+        <Contact onCopyEmail={handleCopyEmail} copied={emailCopied} />
       </main>
 
       {/* Footer */}
       <Footer />
 
-      {/* Floating Section Index Indicator [ 01 / 09 ] */}
-      <ScrollProgress />
-
-      {/* Feedback Toast */}
+      {/* Action Toast */}
       <Toast message={toastMessage} submessage={toastSub} visible={toastVisible} />
     </div>
   );
