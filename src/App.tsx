@@ -5,6 +5,7 @@ import { CustomCursor } from './components/CustomCursor';
 import { Navbar } from './components/ui/Navbar';
 import { Hero } from './components/sections/Hero';
 import { Story } from './components/sections/Story';
+import { InternshipHighlights } from './components/sections/InternshipHighlights';
 import { Projects } from './components/sections/Projects';
 import { Skills } from './components/sections/Skills';
 import { Experience } from './components/sections/Experience';
@@ -50,19 +51,17 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-charcoal-950 text-warm-white font-sans selection:bg-electric-orange selection:text-charcoal-950 relative">
-      {/* Subtle Film Grain Overlay */}
-      <div className="film-grain" />
-
       {/* Fluid Custom Cursor for Desktop */}
       <CustomCursor />
 
-      {/* Minimalist Top Navigation */}
+      {/* Luxury Minimalist Header */}
       <Navbar />
 
-      {/* Main Experience */}
+      {/* Main Experience Flow */}
       <main>
         <Hero onCopyPip={handleCopyPip} pipCopied={pipCopied} />
         <Story />
+        <InternshipHighlights />
         <Projects />
         <Skills />
         <Experience />
@@ -72,7 +71,7 @@ export function App() {
       {/* Footer */}
       <Footer />
 
-      {/* Action Toast */}
+      {/* Action Toast Feedback */}
       <Toast message={toastMessage} submessage={toastSub} visible={toastVisible} />
     </div>
   );

@@ -51,7 +51,7 @@ export const Contact: React.FC<ContactProps> = ({ onCopyEmail, copied }) => {
         </div>
 
         {/* Memorable Headline */}
-        <h2 className="text-4xl sm:text-7xl lg:text-8xl font-black tracking-[-0.045em] text-warm-white uppercase leading-[0.94] mb-8">
+        <h2 className="font-syne text-4xl sm:text-7xl lg:text-8xl font-black tracking-tight text-warm-white uppercase leading-[0.93] mb-8">
           BUILD SOMETHING
           <br />
           <span className="text-electric-orange">INTELLIGENT.</span>

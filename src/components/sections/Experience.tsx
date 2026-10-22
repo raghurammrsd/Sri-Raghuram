@@ -11,17 +11,17 @@ export const Experience: React.FC = () => {
         {/* Section Marker */}
         <div className="flex items-center gap-3 mb-10">
           <span className="font-mono text-xs sm:text-sm font-semibold tracking-widest text-electric-orange bg-electric-orange/10 border border-electric-orange/20 px-3 py-1 rounded">
-            [ 04 / 05 ]
+            [ 05 / 05 ]
           </span>
           <span className="font-mono text-xs sm:text-sm tracking-wider text-warm-muted uppercase">
-            // EXPERIENCE & PEDIGREE
+            // PEDIGREE & CREDENTIALS
           </span>
         </div>
 
         {/* Section Headline */}
         <div className="max-w-4xl mb-16">
-          <h2 className="text-4xl sm:text-6xl font-black tracking-[-0.04em] text-warm-white uppercase leading-[0.98]">
-            Practical Track Record.
+          <h2 className="font-syne text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-warm-white uppercase leading-[0.96]">
+            Academic Foundation.
           </h2>
         </div>
 

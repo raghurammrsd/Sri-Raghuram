@@ -10,10 +10,10 @@ export default {
         charcoal: {
           950: '#070709',
           900: '#0a0a0d',
-          850: '#0e0e12',
-          800: '#141419',
-          700: '#1b1b22',
-          600: '#262630',
+          850: '#0e0e13',
+          800: '#14141a',
+          700: '#1c1c24',
+          600: '#282834',
         },
         warm: {
           white: '#f5f2eb',
@@ -29,23 +29,33 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Geist', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-        mono: ['"Geist Mono"', '"JetBrains Mono"', 'ui-monospace', 'monospace'],
-        display: ['Geist', 'Inter', 'sans-serif'],
+        syne: ['Syne', 'sans-serif'],
+        display: ['Syne', 'sans-serif'],
+        sans: ['"Space Grotesk"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       letterSpacing: {
-        tighter: '-0.05em',
-        tightest: '-0.07em',
+        tightest: '-0.06em',
+        tighter: '-0.04em',
+        widest: '0.15em',
       },
       animation: {
-        'marquee': 'marquee 30s linear infinite',
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'spin-slow': 'spin 20s linear infinite',
+        'marquee': 'marquee 25s linear infinite',
+        'marquee-reverse': 'marquee-reverse 25s linear infinite',
+        'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
       },
       keyframes: {
         marquee: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' },
+        },
+        'marquee-reverse': {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+        pulseGlow: {
+          '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+          '50%': { opacity: '0.6', transform: 'scale(1.05)' },
         }
       }
     },

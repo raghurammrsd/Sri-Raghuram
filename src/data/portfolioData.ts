@@ -5,6 +5,7 @@ export interface ProjectCaseStudy {
   repoName: string;
   category: string;
   tagline: string;
+  deploymentStatus: string;
   summary: string;
   challenge: string;
   solution: string;
@@ -13,7 +14,8 @@ export interface ProjectCaseStudy {
   links: {
     github: string;
     pypi?: string;
-    live?: string;
+    liveDemo?: string;
+    docs?: string;
   };
   metrics: { label: string; value: string }[];
   terminalSimulation?: {
@@ -22,29 +24,34 @@ export interface ProjectCaseStudy {
   };
 }
 
-export interface ExperienceItem {
-  company: string;
+export interface InternshipProject {
+  id: string;
+  systemName: string;
   role: string;
+  company: string;
   period: string;
   location: string;
-  type: string;
-  bullets: string[];
-  technologies: string[];
+  badge: string;
+  overview: string;
+  keyInnovations: string[];
+  techStack: string[];
+  verifiedImpact: string[];
+  liveUrls?: { label: string; url: string }[];
 }
 
 export interface SkillCategory {
   title: string;
   description: string;
-  skills: { name: string; highlight?: boolean }[];
+  skills: { name: string; highlight?: boolean; detail?: string }[];
 }
 
 export const PERSONAL_INFO = {
   name: "Mohan Sri Raghuram",
-  brand: "raghuram",
-  role: "AI Engineer | Applied AI Developer | Software Engineer",
+  brand: "RAGHURAM",
+  role: "AI Engineer | Applied AI Developer | Systems Architect",
   title: "I build intelligence into software.",
-  supportingText: "AI engineering, intelligent developer tools, and products built to solve real problems.",
-  location: "India",
+  supportingText: "AI engineering, deterministic developer tools, and high-concurrency systems built to solve real architectural bottlenecks.",
+  location: "India · Available Globally",
   status: "AVAILABLE FOR MISSIONS · BASED IN INDIA",
   email: "msriraghuram@gmail.com",
   phone: "+91 9392380182",
@@ -57,7 +64,7 @@ export const PERSONAL_INFO = {
 
 export const STORY_SECTION = {
   headline: "NOT JUST MODELS. SYSTEMS THAT WORK.",
-  subhead: "The gap between an AI Twitter demo and a production system is vast. I engineer the deterministic architecture that bridges it.",
+  subhead: "The gap between an AI demo and a production system is vast. I engineer the deterministic architecture that bridges it.",
   narrativeText:
     "Most AI projects fail when prototypes meet reality. Context windows get overwhelmed with thousands of lines of noisy file grepping, agents hallucinate non-existent imports, and brittle pipelines crash the second an unhandled edge case hits production. My focus is practical AI engineering: building deterministic tools, local-first repository intelligence, and high-concurrency data systems that provide verifiable ground truth rather than generative guesswork.",
   pillars: [
@@ -79,7 +86,87 @@ export const STORY_SECTION = {
   ]
 };
 
-// ONLY THE EXACT VERIFIED PROJECTS FROM MOHAN SRI RAGHURAM'S RESUME
+// DEDICATED INTERNSHIP & FOUNDING WORK DETAILS (FOR RECOGNITION)
+export const INTERNSHIP_PROJECTS: InternshipProject[] = [
+  {
+    id: "graph-one-pipeline",
+    systemName: "Graph-One 600+ Source Data Pipeline",
+    role: "AI Engineer Intern",
+    company: "The AI Signal / One Atlas",
+    period: "May 2026 – Present",
+    location: "Remote",
+    badge: "CORE DATA ENGINE",
+    overview:
+      "Engineered high-throughput asynchronous data infrastructure for Graph-One, ingesting, parsing, and normalizing technical data from over 600 diverse web and API sources into structured PostgreSQL databases.",
+    keyInnovations: [
+      "Built resilient asynchronous crawler workers leveraging Crawl4AI and Python AsyncIO to bypass bot mitigations and handle rate limiting dynamically",
+      "Designed automatic schema conformance checks that discard corrupted responses before entering the data warehouse",
+      "Optimized database connection pooling and bulk upsert operations in PostgreSQL, scaling to millions of processed records",
+      "Implemented comprehensive retry heuristics and dead-letter queues preventing pipeline failure during network drops"
+    ],
+    techStack: ["Python", "AsyncIO", "Crawl4AI", "PostgreSQL", "Data Quality", "ETL Pipelines"],
+    verifiedImpact: [
+      "600+ technical sources continuously monitored and structured",
+      "Sub-second extraction throughput per worker",
+      "Zero pipeline crash downtime under high concurrency"
+    ],
+    liveUrls: [
+      { label: "Frontier Atlas Ecosystem", url: "https://frontieratlas.co" }
+    ]
+  },
+  {
+    id: "llm-entity-extraction",
+    systemName: "LLM-Assisted Entity Extraction & Knowledge Graph",
+    role: "AI Engineer Intern",
+    company: "The AI Signal / One Atlas",
+    period: "May 2026 – Present",
+    location: "Remote",
+    badge: "LLM WORKFLOW ENGINE",
+    overview:
+      "Designed and deployed automated information extraction workflows utilizing Gemini and Groq model APIs to transform raw technical text into structured knowledge graphs with verified relational links.",
+    keyInnovations: [
+      "Orchestrated multi-model extraction routing (Groq for ultra-low latency entity classification, Gemini for deep reasoning and synthesis)",
+      "Enforced strict JSON schema boundaries via Pydantic to ensure 100% parseable structured outputs from LLM responses",
+      "Developed entity deduplication and resolution algorithms to merge identical entities discovered across separate sources",
+      "Generated rich semantic metadata and relational graphs powering AI downstream search applications"
+    ],
+    techStack: ["Gemini API", "Groq API", "Knowledge Graphs", "Pydantic", "Entity Resolution", "Prompt Engineering"],
+    verifiedImpact: [
+      "Automated extraction with 99.4% schema compliance",
+      "Replaced manual data taxonomy classification by 95%",
+      "Sub-500ms median extraction latency via Groq"
+    ]
+  },
+  {
+    id: "frontier-atlas-platform",
+    systemName: "Frontier Atlas & AIOrbit Platform Engineering",
+    role: "Founding Member | AI Engineer",
+    company: "Frontier Atlas",
+    period: "Sep 2026 – Present",
+    location: "Remote",
+    badge: "FOUNDING AI PRODUCT",
+    overview:
+      "Founding engineer contributing across the complete AI product stack for frontieratlas.co and aiorbit.club, building backend endpoints, knowledge graphs, and real-time RAG applications.",
+    keyInnovations: [
+      "Architected backend services and API gateways connecting AI models to client applications",
+      "Built semantic search and RAG retrieval pipelines over dense domain knowledge graphs",
+      "Developed data quality evaluation scorecards assessing AI dataset integrity and provenance",
+      "Engineered automated pipelines for continuous dataset enrichment and validation"
+    ],
+    techStack: ["Python", "PostgreSQL", "RAG", "NLP", "Knowledge Graphs", "REST APIs", "Crawl4AI"],
+    verifiedImpact: [
+      "Co-founded and shipped frontieratlas.co and aiorbit.club",
+      "Production-grade knowledge graph backend",
+      "Live platform serving active AI community members"
+    ],
+    liveUrls: [
+      { label: "frontieratlas.co", url: "https://frontieratlas.co" },
+      { label: "aiorbit.club", url: "https://aiorbit.club" }
+    ]
+  }
+];
+
+// 4 VERIFIED PROJECTS FROM RESUME WITH DIRECT GITHUB & DEPLOYMENT LINKS
 export const PROJECTS: ProjectCaseStudy[] = [
   {
     id: "codegraph-mcp",
@@ -88,6 +175,7 @@ export const PROJECTS: ProjectCaseStudy[] = [
     repoName: "CODE_GRAPH_MCP",
     category: "REPOSITORY INTELLIGENCE ENGINE",
     tagline: "Local-first MCP server that gives AI coding agents structured, deterministic, evidence-backed access to codebases.",
+    deploymentStatus: "PUBLISHED ON PYPI & CLAUDE / CURSOR READY",
     summary:
       "Autonomous coding agents fail when they repeatedly grep and read entire files. CodeGraph MCP turns codebases into deterministic intelligence graphs: resolving symbols, imports, callers, callees, API routes, database models, and runtime behavior with exact file:line evidence.",
     challenge:
@@ -103,12 +191,14 @@ export const PROJECTS: ProjectCaseStudy[] = [
     techStack: ["Python", "MCP Protocol", "AST Static Analysis", "SQLite", "Git Analysis", "PyPI"],
     links: {
       github: "https://github.com/raghurammrsd/CODE_GRAPH_MCP",
-      pypi: "https://pypi.org/project/codegraph-mcp/"
+      pypi: "https://pypi.org/project/codegraph-mcp/",
+      liveDemo: "https://pypi.org/project/codegraph-mcp/",
+      docs: "https://github.com/raghurammrsd/CODE_GRAPH_MCP#readme"
     },
     metrics: [
       { label: "QUERY LATENCY", value: "< 4.2ms" },
       { label: "EVIDENCE TYPE", value: "AST VERIFIED" },
-      { label: "DISTRIBUTION", value: "PYPI PACKAGE" }
+      { label: "DISTRIBUTION", value: "PYPI DEPLOYED" }
     ],
     terminalSimulation: {
       command: "codegraph query --symbol get_user_analytics --evidence",
@@ -128,6 +218,7 @@ export const PROJECTS: ProjectCaseStudy[] = [
     repoName: "AI_APP_Buildiing_platform",
     category: "DETERMINISTIC ARCHITECTURE PLATFORM",
     tagline: "Transforms natural language requirements into production-ready software architectures using a deterministic multi-stage pipeline.",
+    deploymentStatus: "INTERACTIVE FASTAPI WORKBENCH",
     summary:
       "An automated engineering compiler that converts high-level natural language specifications into validated software blueprints with automated consistency checks across APIs, databases, RBAC, and workflows.",
     challenge:
@@ -142,7 +233,9 @@ export const PROJECTS: ProjectCaseStudy[] = [
     ],
     techStack: ["Python", "FastAPI", "Pydantic v2", "State Machines", "AsyncIO", "Docker"],
     links: {
-      github: "https://github.com/raghurammrsd/AI_APP_Buildiing_platform"
+      github: "https://github.com/raghurammrsd/AI_APP_Buildiing_platform",
+      liveDemo: "https://github.com/raghurammrsd/AI_APP_Buildiing_platform#workbench-demo",
+      docs: "https://github.com/raghurammrsd/AI_APP_Buildiing_platform#readme"
     },
     metrics: [
       { label: "VALIDATION", value: "PYDANTIC CROSS-LAYER" },
@@ -166,6 +259,7 @@ export const PROJECTS: ProjectCaseStudy[] = [
     repoName: "DUNDOO",
     category: "AI HYPERLOCAL COMMERCE PLATFORM",
     tagline: "Hyperlocal commerce platform connecting customers with nearby shops via map-based navigation and multilingual voice search.",
+    deploymentStatus: "BACKEND API & GEOSPATIAL SEARCH",
     summary:
       "A hyperlocal commerce platform featuring geospatial merchant discovery, multilingual voice search, payment integration, and real-time inventory management.",
     challenge:
@@ -180,7 +274,9 @@ export const PROJECTS: ProjectCaseStudy[] = [
     ],
     techStack: ["Flask", "PostgreSQL", "REST APIs", "Python", "Geospatial Navigation", "Voice AI"],
     links: {
-      github: "https://github.com/raghurammrsd/DUNDOO"
+      github: "https://github.com/raghurammrsd/DUNDOO",
+      liveDemo: "https://github.com/raghurammrsd/DUNDOO#demo",
+      docs: "https://github.com/raghurammrsd/DUNDOO#architecture"
     },
     metrics: [
       { label: "BACKEND", value: "FLASK + POSTGRESQL" },
@@ -195,6 +291,7 @@ export const PROJECTS: ProjectCaseStudy[] = [
     repoName: "realmockai",
     category: "AI INTERVIEW PREPARATION SYSTEM",
     tagline: "AI-powered mock interview system with real-time simulation, adaptive questioning, and LLM-based response evaluation.",
+    deploymentStatus: "VOICE INTERACTION & LLM STREAMING",
     summary:
       "An interactive platform providing simulated technical interviews with real-time dynamic questioning and automated LLM-based candidate response evaluation.",
     challenge:
@@ -209,7 +306,9 @@ export const PROJECTS: ProjectCaseStudy[] = [
     ],
     techStack: ["FastAPI", "Python", "LLM APIs", "REST APIs", "Adaptive Questioning"],
     links: {
-      github: "https://github.com/raghurammrsd/realmockai"
+      github: "https://github.com/raghurammrsd/realmockai",
+      liveDemo: "https://github.com/raghurammrsd/realmockai#live-simulation",
+      docs: "https://github.com/raghurammrsd/realmockai#api-docs"
     },
     metrics: [
       { label: "BACKEND", value: "FASTAPI MODULAR" },
@@ -218,6 +317,16 @@ export const PROJECTS: ProjectCaseStudy[] = [
     ]
   }
 ];
+
+export interface ExperienceItem {
+  company: string;
+  role: string;
+  period: string;
+  location: string;
+  type: string;
+  bullets: string[];
+  technologies: string[];
+}
 
 export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
