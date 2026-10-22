@@ -187,14 +187,16 @@ export const Projects: React.FC = () => {
                   </Magnetic>
 
                   {/* Copy Clone Command */}
-                  <button
-                    onClick={() => handleCopyClone(activeProject.links.github)}
-                    className="px-4 py-3.5 rounded-full border border-white/10 hover:border-white/25 text-warm-muted hover:text-warm-white font-mono text-xs tracking-wider transition-all flex items-center gap-2"
-                    title="Copy git clone command"
-                  >
-                    {copiedClone ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <GitFork className="w-3.5 h-3.5" />}
-                    <span>{copiedClone ? 'COMMAND COPIED' : 'GIT CLONE'}</span>
-                  </button>
+                  {activeProject.links.github && (
+                    <button
+                      onClick={() => handleCopyClone(activeProject.links.github!)}
+                      className="px-4 py-3.5 rounded-full border border-white/10 hover:border-white/25 text-warm-muted hover:text-warm-white font-mono text-xs tracking-wider transition-all flex items-center gap-2"
+                      title="Copy git clone command"
+                    >
+                      {copiedClone ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <GitFork className="w-3.5 h-3.5" />}
+                      <span>{copiedClone ? 'COMMAND COPIED' : 'GIT CLONE'}</span>
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
@@ -210,7 +212,7 @@ export const Projects: React.FC = () => {
                       <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
                       <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
                       <span className="font-mono text-[11px] text-warm-muted ml-2">
-                        terminal://{activeProject.repoName.toLowerCase()}
+                        terminal://{(activeProject.repoName || activeProject.title).toLowerCase()}
                       </span>
                     </div>
                     <button
