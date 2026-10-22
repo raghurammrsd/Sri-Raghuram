@@ -2,48 +2,48 @@ import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-const PlasmaRingVortex: React.FC = () => {
+const FullChromaticRing: React.FC = () => {
   const pointsRef = useRef<THREE.Points>(null);
-  const ringInnerRef = useRef<THREE.Mesh>(null);
-  const ringOuterRef = useRef<THREE.Mesh>(null);
-  const ringHaloRef = useRef<THREE.Mesh>(null);
+  const ringPrimaryRef = useRef<THREE.Mesh>(null);
+  const ringGlowRef = useRef<THREE.Mesh>(null);
   const groupRef = useRef<THREE.Group>(null);
 
-  // Generate 2600 swirling chromatic particles
+  // Radius for a tight, perfectly proportioned full circle that fits the desktop screen
+  const RING_RADIUS = 1.62;
+
+  // Generate 2200 swirling particles tightly bound to a full 360 circle
   const { positions, colors } = useMemo(() => {
-    const count = 2600;
+    const count = 2200;
     const pos = new Float32Array(count * 3);
     const col = new Float32Array(count * 3);
 
-    const cRed = new THREE.Color('#ff1122');
-    const cOrange = new THREE.Color('#ff5500');
-    const cYellow = new THREE.Color('#ffcc00');
+    const cRed = new THREE.Color('#ff1800');
+    const cOrange = new THREE.Color('#ff6600');
+    const cYellow = new THREE.Color('#ffbb00');
     const cCyan = new THREE.Color('#00f0ff');
     const cBlue = new THREE.Color('#0055ff');
 
     for (let i = 0; i < count; i++) {
-      const angle = (i / count) * Math.PI * 2 + (Math.random() - 0.5) * 0.35;
-      const radius = 2.4 + (Math.random() - 0.5) * 0.45;
-      const z = (Math.random() - 0.5) * 0.4;
+      const angle = (i / count) * Math.PI * 2;
+      // Tight radial distribution around the ring radius
+      const r = RING_RADIUS + (Math.random() - 0.5) * 0.22;
+      const z = (Math.random() - 0.5) * 0.18;
 
-      pos[i * 3] = Math.cos(angle) * radius;
-      pos[i * 3 + 1] = Math.sin(angle) * radius;
+      pos[i * 3] = Math.cos(angle) * r;
+      pos[i * 3 + 1] = Math.sin(angle) * r;
       pos[i * 3 + 2] = z;
 
-      // Split dual chromatic color mapping matching the reference image:
-      // Red/Yellow-Orange on top & right, Cyan/Blue on bottom & left
+      // Dual chromatic color gradient (Red/Yellow on top-right, Cyan/Blue on bottom-left)
       const normAngle = (Math.atan2(Math.sin(angle), Math.cos(angle)) + Math.PI) / (Math.PI * 2);
 
       const color = new THREE.Color();
       if (normAngle < 0.5) {
-        // Red to Yellow-Orange plasma
         if (normAngle < 0.25) {
           color.lerpColors(cRed, cOrange, normAngle * 4);
         } else {
           color.lerpColors(cOrange, cYellow, (normAngle - 0.25) * 4);
         }
       } else {
-        // Cyan to Electric Blue plasma
         if (normAngle < 0.75) {
           color.lerpColors(cCyan, cBlue, (normAngle - 0.5) * 4);
         } else {
@@ -63,43 +63,42 @@ const PlasmaRingVortex: React.FC = () => {
     const t = state.clock.getElapsedTime();
     const { x, y } = state.pointer;
 
+    // Subtle, high-end 3D tilt without warping the circle
     if (groupRef.current) {
       groupRef.current.rotation.x = THREE.MathUtils.damp(
         groupRef.current.rotation.x,
-        -y * 0.2,
+        -y * 0.12,
         3.5,
         delta
       );
       groupRef.current.rotation.y = THREE.MathUtils.damp(
         groupRef.current.rotation.y,
-        x * 0.2,
+        x * 0.12,
         3.5,
         delta
       );
     }
 
+    // Smooth continuous particle orbital swirl
     if (pointsRef.current) {
-      pointsRef.current.rotation.z = t * 0.3;
+      pointsRef.current.rotation.z = t * 0.28;
     }
 
-    if (ringInnerRef.current) {
-      ringInnerRef.current.rotation.z = -t * 0.2;
-      const s = 1 + Math.sin(t * 3) * 0.01;
-      ringInnerRef.current.scale.set(s, s, 1);
+    // Subtle breathing pulse on the inner glow ring
+    if (ringGlowRef.current) {
+      ringGlowRef.current.rotation.z = -t * 0.18;
+      const s = 1 + Math.sin(t * 2.5) * 0.008;
+      ringGlowRef.current.scale.set(s, s, 1);
     }
 
-    if (ringOuterRef.current) {
-      ringOuterRef.current.rotation.z = t * 0.15;
-    }
-
-    if (ringHaloRef.current) {
-      ringHaloRef.current.rotation.z = -t * 0.08;
+    if (ringPrimaryRef.current) {
+      ringPrimaryRef.current.rotation.z = t * 0.12;
     }
   });
 
   return (
     <group ref={groupRef}>
-      {/* 3D Swirling Particle Vortex */}
+      {/* 360 Full Circular Orbiting Particle Vortex */}
       <points ref={pointsRef}>
         <bufferGeometry>
           <bufferAttribute
@@ -112,7 +111,7 @@ const PlasmaRingVortex: React.FC = () => {
           />
         </bufferGeometry>
         <pointsMaterial
-          size={0.038}
+          size={0.034}
           vertexColors
           transparent
           opacity={0.88}
@@ -121,27 +120,22 @@ const PlasmaRingVortex: React.FC = () => {
         />
       </points>
 
-      {/* Fiery Hot Glowing Inner Ring */}
-      <mesh ref={ringInnerRef}>
-        <torusGeometry args={[2.35, 0.02, 16, 120]} />
-        <meshBasicMaterial color="#ff3b00" transparent opacity={0.75} />
+      {/* Razor-Sharp Continuous Dual-Tone Torus Ring */}
+      <mesh ref={ringPrimaryRef}>
+        <torusGeometry args={[RING_RADIUS, 0.012, 24, 160]} />
+        <meshBasicMaterial color="#ff3b00" transparent opacity={0.85} />
       </mesh>
 
-      {/* Electric Cyan Accent Ring */}
-      <mesh ref={ringOuterRef}>
-        <torusGeometry args={[2.46, 0.012, 16, 120]} />
-        <meshBasicMaterial color="#00f0ff" transparent opacity={0.85} />
+      {/* Cyan Accent Outer Orbit Ring */}
+      <mesh ref={ringGlowRef}>
+        <torusGeometry args={[RING_RADIUS + 0.04, 0.007, 24, 160]} />
+        <meshBasicMaterial color="#00f0ff" transparent opacity={0.75} />
       </mesh>
 
-      {/* Cybernetic Dark Aperture Halo */}
-      <mesh ref={ringHaloRef}>
-        <torusGeometry args={[2.55, 0.035, 16, 100]} />
-        <meshStandardMaterial
-          color="#16161e"
-          roughness={0.2}
-          metalness={0.9}
-          wireframe={false}
-        />
+      {/* Subtle Mechanical Aperture Halo */}
+      <mesh>
+        <torusGeometry args={[RING_RADIUS + 0.12, 0.02, 16, 120]} />
+        <meshStandardMaterial color="#121218" roughness={0.3} metalness={0.9} />
       </mesh>
     </group>
   );
@@ -151,14 +145,14 @@ export const ChromaticRingScene: React.FC = () => {
   return (
     <div className="absolute inset-0 w-full h-full pointer-events-none flex items-center justify-center">
       <Canvas
-        camera={{ position: [0, 0, 5.6], fov: 46 }}
+        camera={{ position: [0, 0, 4.6], fov: 46 }}
         dpr={[1, 1.8]}
         gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
       >
         <ambientLight intensity={0.7} />
-        <pointLight position={[2, 2, 3]} intensity={2.5} color="#ff4400" />
-        <pointLight position={[-2, -2, 3]} intensity={2.5} color="#00f0ff" />
-        <PlasmaRingVortex />
+        <pointLight position={[2, 2, 2]} intensity={2.5} color="#ff3b00" />
+        <pointLight position={[-2, -2, 2]} intensity={2.5} color="#00f0ff" />
+        <FullChromaticRing />
       </Canvas>
     </div>
   );
