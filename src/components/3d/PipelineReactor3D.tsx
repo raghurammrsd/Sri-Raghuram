@@ -125,7 +125,7 @@ export const PipelineReactor3D: React.FC<PipelineReactorProps> = ({ accentColor 
       >
         <ambientLight intensity={0.6} />
         <pointLight position={[3, 3, 3]} intensity={2.5} color={accentColor} />
-        <pointLight position={[-3, -3, 2]} intensity={1.5} color="#00f0ff" />
+        <pointLight position={[-3, -3, 2]} intensity={1.5} color="#ffffff" />
         <TorusDataStream accentColor={accentColor} />
       </Canvas>
     </div>

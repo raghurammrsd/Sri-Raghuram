@@ -27,7 +27,7 @@ export const InternshipHighlights: React.FC = () => {
         >
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="font-mono text-[11px] font-bold tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/25 px-2.5 py-0.5 rounded">
+              <span className="font-mono text-[11px] font-bold tracking-widest text-electric-orange bg-electric-orange/10 border border-electric-orange/25 px-2.5 py-0.5 rounded">
                 02 · PRODUCTION SYSTEMS
               </span>
               <span className="font-mono text-[11px] tracking-wider text-warm-muted uppercase">
@@ -35,7 +35,7 @@ export const InternshipHighlights: React.FC = () => {
               </span>
             </div>
             <h2 className="font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight text-warm-white leading-tight">
-              Production pipelines. <span className="text-cyan-400">Scaled to 600+ sources.</span>
+              Production pipelines. <span className="text-electric-orange">Scaled to 600+ sources.</span>
             </h2>
           </div>
 
@@ -56,7 +56,7 @@ export const InternshipHighlights: React.FC = () => {
                       : 'bg-charcoal-900/80 text-warm-muted hover:text-warm-white hover:bg-white/[0.06] border-white/[0.08]'
                   }`}
                 >
-                  <span className={isSelected ? 'text-charcoal-950 font-black' : 'text-cyan-400'}>
+                  <span className={isSelected ? 'text-charcoal-950 font-black' : 'text-electric-orange'}>
                     {system.number}
                   </span>
                   <span>{system.title}</span>
@@ -80,10 +80,10 @@ export const InternshipHighlights: React.FC = () => {
             >
               <div>
                 <div className="flex items-center gap-2.5 mb-2.5">
-                  <span className="font-mono text-xs font-bold uppercase tracking-wider text-cyan-400">
+                  <span className="font-mono text-xs font-bold uppercase tracking-wider text-electric-orange">
                     {activeSystem.category}
                   </span>
-                  <span className="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/25 text-cyan-300 font-bold">
+                  <span className="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-electric-orange/10 border border-electric-orange/25 text-electric-orange font-bold">
                     {activeSystem.deploymentStatus}
                   </span>
                 </div>
@@ -108,7 +108,7 @@ export const InternshipHighlights: React.FC = () => {
                   </div>
 
                   <div className="p-5 rounded-2xl bg-charcoal-900/80 border border-white/[0.08] backdrop-blur-xl">
-                    <span className="font-mono text-[10px] text-cyan-400 uppercase tracking-widest block mb-1.5 font-bold">
+                    <span className="font-mono text-[10px] text-electric-orange uppercase tracking-widest block mb-1.5 font-bold">
                       THE ENGINEERED SOLUTION:
                     </span>
                     <p className="font-sans text-xs text-warm-cream leading-relaxed">
@@ -139,7 +139,7 @@ export const InternshipHighlights: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => sound.click()}
-                      className="px-6 py-3 rounded-full font-mono text-xs font-black tracking-wider transition-all flex items-center gap-2 bg-cyan-400 text-charcoal-950 hover:bg-cyan-300 shadow-xl shadow-cyan-400/20"
+                      className="px-6 py-3 rounded-full font-mono text-xs font-black tracking-wider transition-all flex items-center gap-2 bg-electric-orange text-white hover:bg-electric-light shadow-xl shadow-electric-orange/20"
                     >
                       <Globe className="w-4 h-4" />
                       <span>LAUNCH PLATFORM</span>
@@ -176,7 +176,7 @@ export const InternshipHighlights: React.FC = () => {
                 {/* Pipeline Step 1 */}
                 <div className="p-3.5 rounded-xl bg-charcoal-950/80 border border-white/[0.06] flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
-                    <span className="w-2 h-2 rounded-full bg-cyan-400" />
+                    <span className="w-2 h-2 rounded-full bg-electric-orange" />
                     <span className="text-warm-white font-bold">01 · High-Concurrency Crawlers</span>
                   </div>
                   <span className="text-[10px] text-warm-muted">AsyncIO / Crawl4AI</span>
@@ -185,7 +185,7 @@ export const InternshipHighlights: React.FC = () => {
                 {/* Pipeline Step 2 */}
                 <div className="p-3.5 rounded-xl bg-charcoal-950/80 border border-white/[0.06] flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
-                    <span className="w-2 h-2 rounded-full bg-amber-400" />
+                    <span className="w-2 h-2 rounded-full bg-warm-white" />
                     <span className="text-warm-white font-bold">02 · Multi-Model Extraction</span>
                   </div>
                   <span className="text-[10px] text-warm-muted">Groq & Gemini JSON</span>
@@ -194,7 +194,7 @@ export const InternshipHighlights: React.FC = () => {
                 {/* Pipeline Step 3 */}
                 <div className="p-3.5 rounded-xl bg-charcoal-950/80 border border-white/[0.06] flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                    <span className="w-2 h-2 rounded-full bg-electric-orange" />
                     <span className="text-warm-white font-bold">03 · Persistent Storage</span>
                   </div>
                   <span className="text-[10px] text-warm-muted">PostgreSQL ACID</span>
@@ -220,7 +220,7 @@ export const InternshipHighlights: React.FC = () => {
         {/* Bottom Status Ticker */}
         <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between font-mono text-[11px] text-warm-dark">
           <div className="flex items-center gap-2">
-            <span className="text-cyan-400">●</span>
+            <span className="text-electric-orange">●</span>
             <span className="text-warm-muted">DEPLOYED AT THE AI SIGNAL / ONE ATLAS · FRONTIER ATLAS PLATFORM</span>
           </div>
           <span className="hidden sm:inline text-warm-dark">600+ VERIFIED INGESTION SOURCES</span>

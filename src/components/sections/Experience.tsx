@@ -36,7 +36,7 @@ export const Experience: React.FC = () => {
           </div>
 
           <div className="font-mono text-xs text-warm-muted">
-            <span className="text-emerald-400 font-bold">●</span> ACTIVE ENROLLMENT · B.TECH CSE (AI)
+            <span className="text-electric-orange font-bold">●</span> ACTIVE ENROLLMENT · B.TECH CSE (AI)
           </div>
         </motion.div>
 
@@ -78,15 +78,15 @@ export const Experience: React.FC = () => {
                 </p>
               </div>
 
-              {/* CGPA Badge with Glowing Emerald Accent */}
-              <div className="p-4 rounded-xl bg-charcoal-950/80 border border-emerald-500/30 flex items-center justify-between mb-6 shadow-inner">
+              {/* CGPA Badge with Pure Orange and White */}
+              <div className="p-4 rounded-xl bg-charcoal-950/80 border border-electric-orange/30 flex items-center justify-between mb-6 shadow-inner">
                 <div className="flex items-center gap-2">
-                  <Award className="w-4 h-4 text-emerald-400" />
+                  <Award className="w-4 h-4 text-electric-orange" />
                   <span className="font-mono text-xs text-warm-muted uppercase">ACADEMIC STANDING:</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-xs text-emerald-400 font-bold">CUMULATIVE CGPA:</span>
-                  <span className="font-mono text-lg font-black text-emerald-300 bg-emerald-500/15 px-3 py-0.5 rounded-lg border border-emerald-500/30">
+                  <span className="font-mono text-xs text-warm-muted font-bold">CUMULATIVE CGPA:</span>
+                  <span className="font-mono text-lg font-black text-warm-white bg-electric-orange/15 px-3 py-0.5 rounded-lg border border-electric-orange/40 shadow-[0_0_15px_rgba(255,85,0,0.2)]">
                     {EDUCATION_DATA.cgpa} / 10.0
                   </span>
                 </div>
@@ -112,7 +112,7 @@ export const Experience: React.FC = () => {
 
             <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between font-mono text-xs text-warm-dark">
               <span>B.TECH CSE (AI) · 2023–2027</span>
-              <span className="text-emerald-400 font-semibold">HONORS STANDING</span>
+              <span className="text-electric-orange font-bold">HONORS STANDING</span>
             </div>
           </motion.div>
 
@@ -136,7 +136,7 @@ export const Experience: React.FC = () => {
                   <h4 className="font-syne text-xl font-bold text-warm-white">
                     Official Resume
                   </h4>
-                  <span className="font-mono text-[10px] text-emerald-400 font-bold px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
+                  <span className="font-mono text-[10px] text-warm-white font-bold px-2 py-0.5 rounded bg-white/10 border border-white/20">
                     UPDATED OCT 2026
                   </span>
                 </div>

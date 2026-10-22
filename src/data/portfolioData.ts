@@ -366,7 +366,7 @@ export const EDUCATION_DATA = {
   degree: "B.Tech in Computer Science and Engineering (AI)",
   location: "Vadodara, India",
   period: "Jul 2023 – Apr 2027",
-  cgpa: "8.21 / 10",
+  cgpa: "8.21",
   coursework: ["Machine Learning", "Deep Learning", "Data Structures & Algorithms", "Database Management Systems", "Artificial Intelligence"]
 };
 

@@ -13,9 +13,9 @@ export const AreasOfExpertise: React.FC = () => {
       role: 'DETERMINISTIC CODE INTELLIGENCE',
       title: 'Artificial Intelligence',
       icon: Cpu,
-      accentColor: '#00f0ff',
-      accentBorder: 'hover:border-cyan-400/40',
-      tagColor: 'text-cyan-400 bg-cyan-400/10 border-cyan-400/20',
+      accentColor: '#ff5500',
+      accentBorder: 'hover:border-electric-orange/40',
+      tagColor: 'text-electric-orange bg-electric-orange/10 border-electric-orange/20',
       description:
         'Python AST static analysis, Model Context Protocol (MCP) servers, and deterministic call graph extraction. Eliminating token hallucination with ground-truth repository intelligence.',
       highlight: 'AST · Model Context Protocol · Symbol Resolution',
@@ -26,9 +26,9 @@ export const AreasOfExpertise: React.FC = () => {
       role: 'DISTRIBUTED ARCHITECTURES',
       title: 'Systems & Blueprints',
       icon: Layout,
-      accentColor: '#3b82f6',
-      accentBorder: 'hover:border-blue-400/40',
-      tagColor: 'text-blue-400 bg-blue-400/10 border-blue-400/20',
+      accentColor: '#ff7728',
+      accentBorder: 'hover:border-electric-orange/40',
+      tagColor: 'text-warm-white bg-white/10 border-white/20',
       description:
         'High-concurrency AsyncIO backend engines, strict Pydantic v2 schemas across service boundaries, and state-machine driven developer platforms designed for zero drift.',
       highlight: 'FastAPI · Pydantic v2 · Schema Contracts',
@@ -39,9 +39,9 @@ export const AreasOfExpertise: React.FC = () => {
       role: 'HIGH-CONCURRENCY INGESTION',
       title: 'Creative Technology',
       icon: Database,
-      accentColor: '#ff4433',
-      accentBorder: 'hover:border-red-400/40',
-      tagColor: 'text-red-400 bg-red-400/10 border-red-400/20',
+      accentColor: '#ff5500',
+      accentBorder: 'hover:border-electric-orange/40',
+      tagColor: 'text-electric-orange bg-electric-orange/10 border-electric-orange/20',
       description:
         'Asynchronous crawling pipelines ingesting and validating technical data from 600+ sources simultaneously using Crawl4AI, worker pools, and batched PostgreSQL transactions.',
       highlight: 'The AI Signal · AsyncIO · 600+ Feeds',
@@ -52,9 +52,9 @@ export const AreasOfExpertise: React.FC = () => {
       role: 'SPATIAL COMMERCE & VOICE',
       title: 'Product Strategy',
       icon: Network,
-      accentColor: '#ff5500',
+      accentColor: '#ff7728',
       accentBorder: 'hover:border-electric-orange/40',
-      tagColor: 'text-electric-orange bg-electric-orange/10 border-electric-orange/20',
+      tagColor: 'text-warm-white bg-white/10 border-white/20',
       description:
         'Hyperlocal commerce backends, spatial location indexing, real-time inventory synchronization, and multilingual voice parsing engines engineered for low-bandwidth environments.',
       highlight: 'DUNDOO Platform · Flask · Spatial Search',
@@ -70,9 +70,9 @@ export const AreasOfExpertise: React.FC = () => {
       {/* 3D Chromatic Plasma Ring Scene (Center Vortex) */}
       <ChromaticRingScene />
 
-      {/* Atmospheric Ambient Depth */}
-      <div className="absolute top-1/4 left-1/4 w-[450px] h-[450px] bg-cyan-500/[0.05] rounded-full blur-[160px] pointer-events-none" />
-      <div className="absolute top-1/4 right-1/4 w-[450px] h-[450px] bg-red-500/[0.05] rounded-full blur-[160px] pointer-events-none" />
+      {/* Atmospheric Ambient Depth: Pure Orange and White */}
+      <div className="absolute top-1/4 left-1/4 w-[450px] h-[450px] bg-electric-orange/[0.04] rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/4 right-1/4 w-[450px] h-[450px] bg-electric-orange/[0.04] rounded-full blur-[160px] pointer-events-none" />
 
       {/* Main 12-Column Spatial Grid: 4 Editorial Glass Consoles framing the Ring */}
       <div className="max-w-7xl w-full mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center my-auto">

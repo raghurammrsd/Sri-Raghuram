@@ -13,8 +13,8 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onCopyPip, pipCopied }) => {
   return (
     <section className="relative min-h-[calc(100vh-5rem)] lg:h-[calc(100vh-5rem)] lg:max-h-[920px] flex flex-col justify-between py-6 sm:py-8 lg:py-10 border-b border-white/[0.08] overflow-hidden bg-charcoal-950">
-      {/* Dual Chromatic Ambient Lighting: Cyan on left, Electric Orange on right */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[650px] h-[650px] bg-cyan-500/[0.06] rounded-full blur-[180px] pointer-events-none" />
+      {/* Ambient Lighting: Pure Warm White & Electric Orange */}
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[650px] h-[650px] bg-white/[0.03] rounded-full blur-[180px] pointer-events-none" />
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[650px] h-[650px] bg-electric-orange/[0.06] rounded-full blur-[180px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 my-auto text-center">
@@ -99,7 +99,7 @@ export const Hero: React.FC<HeroProps> = ({ onCopyPip, pipCopied }) => {
               className="px-8 py-3.5 rounded-full font-mono text-xs sm:text-sm font-bold tracking-wider gradient-border-chromatic text-warm-white hover:text-white transition-all flex items-center gap-2.5 shadow-2xl hover:scale-105 active:scale-95"
             >
               <span>EXPLORE EXPERTISE</span>
-              <ArrowDown className="w-4 h-4 text-cyan-400" />
+              <ArrowDown className="w-4 h-4 text-electric-orange" />
             </a>
           </Magnetic>
 

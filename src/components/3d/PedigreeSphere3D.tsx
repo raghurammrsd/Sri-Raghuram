@@ -52,31 +52,31 @@ const AcademicGimbal: React.FC = () => {
 
   return (
     <group ref={groupRef}>
-      {/* Outer Amber/Gold Gimbal Ring */}
+      {/* Outer Electric Orange Gimbal Ring */}
       <mesh ref={outerRingRef}>
         <torusGeometry args={[1.45, 0.016, 16, 100]} />
-        <meshBasicMaterial color="#ffaa00" transparent opacity={0.75} />
+        <meshBasicMaterial color="#ff5500" transparent opacity={0.85} />
       </mesh>
 
-      {/* Mid Cyan Gimbal Ring */}
+      {/* Mid Warm White Gimbal Ring */}
       <mesh ref={midRingRef}>
         <torusGeometry args={[1.2, 0.014, 16, 90]} />
-        <meshBasicMaterial color="#00f0ff" transparent opacity={0.8} />
+        <meshBasicMaterial color="#ffffff" transparent opacity={0.6} />
       </mesh>
 
-      {/* Inner Emerald Ring */}
+      {/* Inner Electric Orange Ring */}
       <mesh ref={innerRingRef}>
         <torusGeometry args={[0.95, 0.012, 16, 80]} />
-        <meshBasicMaterial color="#10b981" transparent opacity={0.85} />
+        <meshBasicMaterial color="#ff6611" transparent opacity={0.8} />
       </mesh>
 
-      {/* Central Academic Rigor Octahedron Core */}
+      {/* Central Academic Core */}
       <mesh ref={coreRef}>
         <dodecahedronGeometry args={[0.48, 0]} />
         <meshStandardMaterial
-          color="#ffaa00"
-          emissive="#ff7700"
-          emissiveIntensity={0.65}
+          color="#ff5500"
+          emissive="#ff5500"
+          emissiveIntensity={0.8}
           roughness={0.2}
           metalness={0.9}
         />
@@ -94,8 +94,8 @@ export const PedigreeSphere3D: React.FC = () => {
         gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
       >
         <ambientLight intensity={0.6} />
-        <pointLight position={[3, 3, 3]} intensity={2.5} color="#ffaa00" />
-        <pointLight position={[-3, -3, 2]} intensity={2.0} color="#00f0ff" />
+        <pointLight position={[3, 3, 3]} intensity={2.5} color="#ff5500" />
+        <pointLight position={[-3, -3, 2]} intensity={2.0} color="#ffffff" />
         <AcademicGimbal />
       </Canvas>
     </div>

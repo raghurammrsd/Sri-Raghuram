@@ -13,20 +13,7 @@ export const Projects: React.FC = () => {
 
   const activeProject = PROJECTS.find((p) => p.id === activeProjectId) || PROJECTS[0];
 
-  const getColorHex = (color: string) => {
-    switch (color) {
-      case 'cyan':
-        return '#00f0ff';
-      case 'emerald':
-        return '#10b981';
-      case 'purple':
-        return '#a855f7';
-      default:
-        return '#ff5500';
-    }
-  };
-
-  const activeColorHex = getColorHex(activeProject.accentColor);
+  const activeColorHex = '#ff5500';
 
   const handleCopyClone = (repoUrl: string) => {
     sound.click();
