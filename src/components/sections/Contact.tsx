@@ -37,12 +37,18 @@ export const Contact: React.FC<ContactProps> = ({ onCopyEmail, copied }) => {
         <div className="pt-2">
           <div className="inline-flex items-center gap-2 font-mono text-[11px] font-bold tracking-widest text-electric-orange bg-electric-orange/10 border border-electric-orange/25 px-3 py-1 rounded">
             <span>[ TRANSMISSION ]</span>
-            <span>// LET'S CONNECT</span>
+            <span>LET'S CONNECT</span>
           </div>
         </div>
 
-        {/* Center Headline with Solid Electric Orange Banner */}
-        <div className="my-auto py-4">
+        {/* Center Headline with Kinetic Entrance */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="my-auto py-4"
+        >
           <div className="flex flex-col items-center justify-center gap-2 font-syne text-4xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-[0.92] mb-4">
             <span className="text-warm-white">BUILD SOMETHING</span>
             <span className="bg-electric-orange text-charcoal-950 px-5 sm:px-8 py-1 sm:py-2 rounded-sm inline-block shadow-2xl">
@@ -67,7 +73,7 @@ export const Contact: React.FC<ContactProps> = ({ onCopyEmail, copied }) => {
               </button>
             </Magnetic>
           </div>
-        </div>
+        </motion.div>
 
         {/* Direct Channels 4-Box Grid (Zero bullet points!) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-left max-w-4xl mx-auto w-full mb-4">

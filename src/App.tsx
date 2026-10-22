@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PERSONAL_INFO } from './data/portfolioData';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 import { CustomCursor } from './components/CustomCursor';
+import { LivingAmbientCanvas } from './components/canvas/LivingAmbientCanvas';
 import { Navbar } from './components/ui/Navbar';
 import { Hero } from './components/sections/Hero';
 import { AreasOfExpertise } from './components/sections/AreasOfExpertise';
@@ -54,6 +55,9 @@ export function App() {
     <div className="min-h-screen bg-charcoal-950 text-warm-white font-sans selection:bg-electric-orange selection:text-charcoal-950 relative">
       {/* Zero-Lag Hardware-Accelerated Custom Cursor */}
       <CustomCursor />
+
+      {/* Living Volumetric Ambient Canvas & Particle Depth */}
+      <LivingAmbientCanvas />
 
       {/* Luxury Minimalist Header */}
       <Navbar />
