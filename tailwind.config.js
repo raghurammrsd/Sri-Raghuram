@@ -31,6 +31,7 @@ export default {
       fontFamily: {
         syne: ['Syne', 'sans-serif'],
         display: ['Syne', 'sans-serif'],
+        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
         sans: ['"Space Grotesk"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },

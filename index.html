@@ -4,17 +4,17 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23ff5500'/><text x='50%' y='64%' text-anchor='middle' font-family='monospace' font-weight='900' font-size='56' fill='%23070709'>R</text></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mohan Sri Raghuram | AI Engineer & Systems Architect</title>
+    <title>Mohan Sri Raghuram | AI Systems Engineer</title>
     <meta name="description" content="Mohan Sri Raghuram — AI Engineer specializing in deterministic code intelligence, MCP protocol servers, knowledge graphs, and scalable backend pipelines." />
     
-    <!-- Preconnect & Luxury Editorial Google Fonts: Syne + Space Grotesk + JetBrains Mono -->
+    <!-- Preconnect & Google Fonts: Syne + Cormorant Garamond (for luxury editorial italic) + JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500;1,600;1,700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
     
     <style>
       html, body {
-        background-color: #070709;
+        background-color: #07070a;
         color: #f5f2eb;
         overflow-x: hidden;
       }
@@ -22,9 +22,25 @@
         background: #ff5500;
         color: #070709;
       }
+      /* Custom gradient borders */
+      .gradient-border-chromatic {
+        position: relative;
+        background: #0d0d12;
+        background-clip: padding-box;
+        border: 1px solid transparent;
+      }
+      .gradient-border-chromatic::before {
+        content: '';
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        z-index: -1;
+        margin: -1px;
+        border-radius: inherit;
+        background: linear-gradient(135deg, #00f0ff 0%, #ff5500 100%);
+      }
     </style>
   </head>
-  <body class="bg-[#070709] text-[#f5f2eb] antialiased">
+  <body class="bg-[#07070a] text-[#f5f2eb] antialiased">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

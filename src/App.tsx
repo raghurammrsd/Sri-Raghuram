@@ -4,6 +4,7 @@ import { useSmoothScroll } from './hooks/useSmoothScroll';
 import { CustomCursor } from './components/CustomCursor';
 import { Navbar } from './components/ui/Navbar';
 import { Hero } from './components/sections/Hero';
+import { AreasOfExpertise } from './components/sections/AreasOfExpertise';
 import { Story } from './components/sections/Story';
 import { InternshipHighlights } from './components/sections/InternshipHighlights';
 import { Projects } from './components/sections/Projects';
@@ -51,7 +52,7 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-charcoal-950 text-warm-white font-sans selection:bg-electric-orange selection:text-charcoal-950 relative">
-      {/* Fluid Custom Cursor for Desktop */}
+      {/* Zero-Lag Hardware-Accelerated Custom Cursor */}
       <CustomCursor />
 
       {/* Luxury Minimalist Header */}
@@ -59,12 +60,28 @@ export function App() {
 
       {/* Main Experience Flow */}
       <main>
+        {/* 1. Hero Experience (Image 2 style) */}
         <Hero onCopyPip={handleCopyPip} pipCopied={pipCopied} />
+
+        {/* 2. 3D Chromatic Plasma Ring & Areas of Expertise (Image 1 & Image 3 style) */}
+        <AreasOfExpertise />
+
+        {/* 3. Story & Philosophy Manifesto */}
         <Story />
+
+        {/* 4. Production Internship Systems (Graph-One 600+ sources, LLM extraction) */}
         <InternshipHighlights />
+
+        {/* 5. Flagship Verified Projects (CodeGraph MCP, AI App Compiler, DUNDOO, RealMockAI) */}
         <Projects />
+
+        {/* 6. Technical Skills Matrix */}
         <Skills />
+
+        {/* 7. Academic Pedigree (Parul University CGPA 8.21 & Official Resume Download) */}
         <Experience />
+
+        {/* 8. Contact & Transmission Experience */}
         <Contact onCopyEmail={handleCopyEmail} copied={emailCopied} />
       </main>
 
