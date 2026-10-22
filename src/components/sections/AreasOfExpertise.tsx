@@ -7,7 +7,7 @@ import { sound } from '../../utils/sound';
 
 export const AreasOfExpertise: React.FC = () => {
   return (
-    <section id="expertise" className="scroll-mt-20 min-h-screen flex items-center justify-center relative overflow-hidden py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-charcoal-950 border-b border-white/[0.08]">
+    <section id="expertise" className="scroll-mt-20 min-h-screen lg:h-screen lg:max-h-[920px] flex flex-col justify-between relative overflow-hidden py-6 sm:py-8 lg:py-10 px-4 sm:px-6 lg:px-8 bg-charcoal-950 border-b border-white/[0.08]">
       {/* 3D Chromatic Plasma Ring (Decreased size & 360 Full Circle) */}
       <ChromaticRingScene />
 

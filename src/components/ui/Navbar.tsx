@@ -32,16 +32,17 @@ export const Navbar: React.FC = () => {
   };
 
   const navLinks = [
-    { label: "STORY", href: "#story", index: "01" },
-    { label: "INTERNSHIP", href: "#internship", index: "02" },
+    { label: "EXPERTISE", href: "#expertise", index: "01" },
+    { label: "PRODUCTION", href: "#internship", index: "02" },
     { label: "ARSENAL", href: "#projects", index: "03" },
     { label: "STACK", href: "#skills", index: "04" },
-    { label: "CONTACT", href: "#contact", index: "05" },
+    { label: "PEDIGREE", href: "#experience", index: "05" },
+    { label: "CONTACT", href: "#contact", index: "06" },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full bg-charcoal-950/85 backdrop-blur-2xl border-b border-white/[0.08] transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-24 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
         {/* Brand & Monogram */}
         <div className="flex items-center gap-5">
           <a
