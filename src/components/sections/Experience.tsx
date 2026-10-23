@@ -11,7 +11,7 @@ export const Experience: React.FC = () => {
   return (
     <section
       id="experience"
-      className="scroll-mt-20 min-h-screen flex flex-col justify-between py-12 sm:py-16 border-b border-white/[0.08] relative bg-charcoal-950"
+      className="scroll-mt-20 min-h-screen lg:h-screen lg:max-h-[920px] flex flex-col justify-between py-8 sm:py-12 border-b border-white/[0.08] relative bg-charcoal-950 overflow-hidden"
     >
       {/* Background Ambient Glow */}
       <div className="absolute top-1/2 right-1/4 w-[600px] h-[600px] bg-electric-orange/[0.04] rounded-full blur-[200px] pointer-events-none" />
@@ -70,23 +70,23 @@ export const Experience: React.FC = () => {
                     <GraduationCap className="w-6 h-6 text-electric-orange" />
                   </div>
                   <div>
-                    <h3 className="font-syne text-2xl font-bold text-warm-white leading-tight">
+                    <h3 className="font-syne text-2xl font-black text-electric-orange leading-tight">
                       {EDUCATION_DATA.institution}
                     </h3>
                     <p className="font-mono text-xs text-warm-muted">{EDUCATION_DATA.location}</p>
                   </div>
                 </div>
 
-                <span className="font-mono text-xs text-electric-orange px-3 py-1 rounded-full bg-electric-orange/15 border border-electric-orange/30 font-bold">
+                <span className="font-mono text-xs text-warm-white px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 font-bold">
                   {EDUCATION_DATA.period}
                 </span>
               </div>
 
               <div className="mb-6">
-                <span className="font-mono text-[10px] text-electric-orange uppercase tracking-wider block mb-1 font-bold">
+                <span className="font-mono text-[10px] text-warm-muted uppercase tracking-wider block mb-1 font-bold">
                   DEGREE & CONCENTRATION:
                 </span>
-                <p className="font-syne text-xl font-bold text-warm-white leading-snug">
+                <p className="font-syne text-xl font-bold text-warm-cream leading-snug">
                   {EDUCATION_DATA.degree}
                 </p>
               </div>
@@ -94,15 +94,15 @@ export const Experience: React.FC = () => {
               {/* CGPA Badge with Pure Orange and White */}
               <motion.div
                 whileHover={{ scale: 1.01 }}
-                className="p-4 rounded-xl bg-charcoal-950/80 border border-electric-orange/40 flex items-center justify-between mb-6 shadow-inner"
+                className="p-4 rounded-xl bg-charcoal-950/80 border border-electric-orange/30 flex items-center justify-between mb-6 shadow-inner"
               >
                 <div className="flex items-center gap-2">
                   <Award className="w-4 h-4 text-electric-orange animate-pulse" />
-                  <span className="font-mono text-xs text-electric-orange uppercase font-bold">ACADEMIC STANDING:</span>
+                  <span className="font-mono text-xs text-warm-muted uppercase font-bold">ACADEMIC STANDING:</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="font-mono text-xs text-warm-muted font-bold">CUMULATIVE CGPA:</span>
-                  <span className="font-mono text-lg font-black text-warm-white bg-electric-orange/20 px-3 py-0.5 rounded-lg border border-electric-orange/50 shadow-[0_0_20px_rgba(255,85,0,0.3)]">
+                  <span className="font-mono text-lg font-black text-warm-white bg-electric-orange/15 px-3 py-0.5 rounded-lg border border-electric-orange/40 shadow-[0_0_20px_rgba(255,85,0,0.3)]">
                     {EDUCATION_DATA.cgpa} / 10.0
                   </span>
                 </div>
@@ -110,7 +110,7 @@ export const Experience: React.FC = () => {
 
               {/* Coursework Foundations */}
               <div>
-                <span className="font-mono text-[10px] text-electric-orange uppercase tracking-wider block mb-2 font-bold">
+                <span className="font-mono text-[10px] text-warm-muted uppercase tracking-wider block mb-2 font-bold">
                   RIGOROUS TECHNICAL DISCIPLINES:
                 </span>
                 <div className="flex flex-wrap gap-2">
@@ -118,7 +118,7 @@ export const Experience: React.FC = () => {
                     <motion.span
                       key={course}
                       whileHover={{ y: -2, scale: 1.05 }}
-                      className="font-mono text-xs px-3 py-1.5 rounded-full bg-white/[0.04] border border-electric-orange/30 text-warm-cream hover:border-electric-orange hover:text-white transition-all cursor-default"
+                      className="font-mono text-xs px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-warm-cream hover:border-electric-orange/50 hover:text-white transition-all cursor-default"
                     >
                       {course}
                     </motion.span>
@@ -150,14 +150,14 @@ export const Experience: React.FC = () => {
             <div className="p-6 rounded-2xl bg-charcoal-900/80 border border-white/10 backdrop-blur-2xl flex flex-col justify-between shadow-2xl space-y-4">
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-syne text-xl font-bold text-warm-white">
+                  <h4 className="font-syne text-xl font-black text-electric-orange">
                     Official Resume
                   </h4>
-                  <span className="font-mono text-[10px] text-electric-orange font-bold px-2 py-0.5 rounded bg-electric-orange/15 border border-electric-orange/30">
+                  <span className="font-mono text-[10px] text-warm-white font-bold px-2 py-0.5 rounded bg-white/10 border border-white/20">
                     UPDATED OCT 2026
                   </span>
                 </div>
-                <p className="font-sans text-xs text-warm-cream/90 leading-relaxed font-normal">
+                <p className="font-sans text-xs text-warm-muted leading-relaxed">
                   Comprehensive technical track record, verified internship deliverables, repositories, and academic transcripts.
                 </p>
               </div>
@@ -182,9 +182,9 @@ export const Experience: React.FC = () => {
         <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between font-mono text-[11px] text-warm-dark">
           <div className="flex items-center gap-2">
             <span className="text-electric-orange">●</span>
-            <span className="text-warm-muted">INSTITUTION CODE: <span className="text-warm-white">PU-CSE-AI</span> <span className="text-electric-orange font-bold">·</span> VERIFIED ENROLLMENT</span>
+            <span className="text-warm-muted">INSTITUTION CODE: PU-CSE-AI · VERIFIED ENROLLMENT</span>
           </div>
-          <span className="hidden sm:inline text-electric-orange font-bold font-mono">HASH ID: #MSR-ACAD-2027</span>
+          <span className="hidden sm:inline text-warm-dark">HASH ID: #MSR-ACAD-2027</span>
         </div>
       </div>
     </section>

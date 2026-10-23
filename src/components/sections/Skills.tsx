@@ -13,7 +13,7 @@ export const Skills: React.FC = () => {
   return (
     <section
       id="skills"
-      className="scroll-mt-20 min-h-screen flex flex-col justify-between py-12 sm:py-16 border-b border-white/[0.08] relative bg-charcoal-950"
+      className="scroll-mt-20 min-h-screen lg:h-screen lg:max-h-[920px] flex flex-col justify-between py-8 sm:py-12 border-b border-white/[0.08] relative bg-charcoal-950 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 my-auto flex flex-col justify-between h-full">
         {/* Section Header with Kinetic Typography */}
@@ -79,14 +79,14 @@ export const Skills: React.FC = () => {
                 )}
 
                 <div className="flex items-center justify-between mb-3 relative z-10">
-                  <span className="font-mono text-xs font-bold text-electric-orange">
+                  <span className="font-mono text-xs font-bold text-warm-dark">
                     0{idx + 1}
                   </span>
                   <Icon className={`w-4 h-4 ${isSelected ? 'text-electric-orange' : 'text-warm-muted'}`} />
                 </div>
                 <div className="relative z-10">
                   <h4 className="font-syne font-bold text-base text-warm-white mb-1">{cat.title}</h4>
-                  <p className="font-sans text-xs text-warm-cream/80 line-clamp-2 leading-relaxed font-normal">{cat.description}</p>
+                  <p className="font-sans text-xs text-warm-muted line-clamp-2 leading-relaxed">{cat.description}</p>
                 </div>
               </motion.button>
             );
@@ -100,11 +100,11 @@ export const Skills: React.FC = () => {
               <span className="font-mono text-[10px] text-electric-orange font-bold uppercase tracking-wider block mb-1">
                 ACTIVE DOMAIN
               </span>
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white">
+              <h3 className="font-syne text-xl sm:text-2xl font-black text-electric-orange">
                 {activeCategory.title}
               </h3>
             </div>
-            <p className="font-sans text-xs text-warm-cream/90 max-w-md font-normal">
+            <p className="font-sans text-xs text-warm-muted max-w-md">
               {activeCategory.description}
             </p>
           </div>
@@ -127,15 +127,15 @@ export const Skills: React.FC = () => {
                   whileHover={{ y: -3, scale: 1.02 }}
                   className={`p-3.5 rounded-xl border transition-all flex items-center justify-between ${
                     skill.highlight
-                      ? 'bg-electric-orange/[0.06] border-electric-orange/40 text-warm-white shadow-md'
+                      ? 'bg-white/[0.06] border-electric-orange/40 text-warm-white shadow-md'
                       : 'bg-charcoal-950/70 border-white/[0.06] text-warm-cream hover:border-white/15'
                   }`}
                 >
-                  <span className={`font-mono text-xs font-semibold truncate mr-2 ${skill.highlight ? 'text-warm-white' : 'text-warm-cream'}`}>
+                  <span className="font-mono text-xs font-semibold truncate mr-2">
                     {skill.name}
                   </span>
                   {skill.highlight && (
-                    <span className="font-mono text-[9px] px-2 py-0.5 rounded font-black tracking-wide bg-electric-orange/20 text-electric-orange border border-electric-orange/40 shrink-0">
+                    <span className="font-mono text-[9px] px-2 py-0.5 rounded font-black tracking-wide bg-electric-orange/15 text-electric-orange border border-electric-orange/30 shrink-0">
                       CORE
                     </span>
                   )}
@@ -149,9 +149,9 @@ export const Skills: React.FC = () => {
         <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between font-mono text-[11px] text-warm-dark">
           <div className="flex items-center gap-2">
             <span className="text-electric-orange">●</span>
-            <span className="text-warm-muted">NO HALLUCINATIONS <span className="text-electric-orange font-bold">·</span> STRICT SCHEMA CONTRACTS <span className="text-electric-orange font-bold">·</span> HIGH-THROUGHPUT RUNTIMES</span>
+            <span className="text-warm-muted">NO HALLUCINATIONS · STRICT SCHEMA CONTRACTS · HIGH-THROUGHPUT RUNTIMES</span>
           </div>
-          <span className="hidden sm:inline text-electric-orange font-bold font-mono">STACK MATRIX · VERIFIED 2026</span>
+          <span className="hidden sm:inline text-warm-dark">STACK MATRIX · VERIFIED 2026</span>
         </div>
       </div>
     </section>

@@ -34,7 +34,7 @@ export const Story: React.FC = () => {
   return (
     <section
       id="story"
-      className="scroll-mt-20 min-h-screen flex flex-col justify-between py-12 sm:py-16 border-b border-white/[0.08] relative bg-charcoal-950"
+      className="scroll-mt-20 min-h-screen lg:h-screen lg:max-h-[920px] flex flex-col justify-between py-8 sm:py-12 border-b border-white/[0.08] relative bg-charcoal-950 overflow-hidden"
     >
       {/* Background Volumetric Depth */}
       <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-electric-orange/[0.035] rounded-full blur-[180px] pointer-events-none" />
@@ -67,7 +67,7 @@ export const Story: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-                className="font-syne text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-warm-white leading-tight"
+                className="font-syne text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-warm-white leading-[0.95]"
               >
                 Not just models.
               </motion.h2>
@@ -81,7 +81,7 @@ export const Story: React.FC = () => {
               >
                 <span
                   style={{ backgroundColor: '#ff5500', color: '#000000' }}
-                  className="px-4 sm:px-6 py-1 rounded-sm inline-block font-black shadow-2xl mt-1.5 font-syne text-2xl sm:text-4xl lg:text-5xl tracking-tight uppercase"
+                  className="px-4 sm:px-6 py-1 rounded-sm inline-block font-black shadow-2xl mt-2 font-syne text-3xl sm:text-5xl lg:text-6xl tracking-tight uppercase"
                 >
                   SYSTEMS THAT WORK.
                 </span>
@@ -134,25 +134,25 @@ export const Story: React.FC = () => {
 
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="font-mono text-2xl font-black text-electric-orange">
+                    <span className="font-mono text-2xl font-black text-warm-dark group-hover:text-electric-orange transition-colors">
                       {item.number}
                     </span>
-                    <div className="w-8 h-8 rounded-lg bg-electric-orange/10 border border-electric-orange/30 flex items-center justify-center text-electric-orange transition-all">
+                    <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/10 flex items-center justify-center text-warm-muted group-hover:text-electric-orange group-hover:border-electric-orange/40 transition-all">
                       <Icon className="w-4 h-4" />
                     </div>
                   </div>
 
-                  <h3 className="font-syne text-xl font-bold text-warm-white group-hover:text-electric-orange transition-colors tracking-tight mb-3">
+                  <h3 className="font-syne text-xl font-bold text-electric-orange tracking-tight mb-3">
                     {item.title}
                   </h3>
 
-                  <p className="font-sans text-xs sm:text-sm text-warm-cream/90 leading-relaxed font-normal">
+                  <p className="font-sans text-xs sm:text-sm text-warm-muted leading-relaxed">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="pt-6 border-t border-white/[0.08] mt-6 flex items-center justify-between font-mono text-[11px]">
-                  <span className="tracking-wider text-electric-orange font-bold font-mono">{item.metric}</span>
+                <div className="pt-6 border-t border-white/[0.08] mt-6 flex items-center justify-between font-mono text-[11px] text-warm-cream">
+                  <span className="tracking-wider">{item.metric}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-electric-orange group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </div>
               </motion.div>
@@ -170,9 +170,9 @@ export const Story: React.FC = () => {
         >
           <div className="flex items-center gap-2">
             <span className="text-electric-orange">●</span>
-            <span className="text-warm-muted">SYSTEM ARCHITECTURE PRINCIPLES</span>
+            <span>SYSTEM ARCHITECTURE PRINCIPLES</span>
           </div>
-          <span className="text-electric-orange font-bold font-mono">ZERO GUESSWORK · HIGH PRECISION</span>
+          <span>ZERO GUESSWORK · HIGH PRECISION</span>
         </motion.div>
       </div>
     </section>

@@ -54,7 +54,7 @@ export const AreasOfExpertise: React.FC = () => {
   return (
     <section
       id="expertise"
-      className="scroll-mt-20 min-h-screen flex flex-col justify-between relative py-12 sm:py-16 px-4 sm:px-6 lg:px-8 border-b border-white/[0.08]"
+      className="scroll-mt-20 min-h-screen lg:h-screen lg:max-h-[920px] flex flex-col justify-between relative overflow-hidden py-8 sm:py-10 px-4 sm:px-6 lg:px-8 border-b border-white/[0.08]"
     >
       {/* 3D Chromatic Plasma Ring Scene (Center Vortex) */}
       <ChromaticRingScene />
@@ -99,16 +99,16 @@ export const AreasOfExpertise: React.FC = () => {
                 </span>
               </div>
 
-              {/* Heading in Warm White with Hover Orange */}
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white group-hover:text-electric-orange tracking-tight mb-2.5 transition-colors">
+              {/* Heading in Electric Orange as requested */}
+              <h3 className="font-syne text-xl sm:text-2xl font-black text-electric-orange tracking-tight mb-2.5">
                 {cards[0].title}
               </h3>
 
-              <p className="font-sans text-xs text-warm-cream/90 leading-relaxed mb-4">
+              <p className="font-sans text-xs text-warm-muted leading-relaxed mb-4">
                 {cards[0].description}
               </p>
 
-              <div className="pt-3 border-t border-white/[0.08] font-mono text-[10px] text-electric-orange font-semibold flex items-center justify-between">
+              <div className="pt-3 border-t border-white/[0.08] font-mono text-[10px] text-warm-cream flex items-center justify-between">
                 <span>{cards[0].tag}</span>
                 <Cpu className="w-3.5 h-3.5 text-electric-orange" />
               </div>
@@ -144,16 +144,16 @@ export const AreasOfExpertise: React.FC = () => {
                 </span>
               </div>
 
-              {/* Heading in Warm White with Hover Orange */}
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white group-hover:text-electric-orange tracking-tight mb-2.5 transition-colors">
+              {/* Heading in Electric Orange */}
+              <h3 className="font-syne text-xl sm:text-2xl font-black text-electric-orange tracking-tight mb-2.5">
                 {cards[1].title}
               </h3>
 
-              <p className="font-sans text-xs text-warm-cream/90 leading-relaxed mb-4">
+              <p className="font-sans text-xs text-warm-muted leading-relaxed mb-4">
                 {cards[1].description}
               </p>
 
-              <div className="pt-3 border-t border-white/[0.08] font-mono text-[10px] text-electric-orange font-semibold flex items-center justify-between">
+              <div className="pt-3 border-t border-white/[0.08] font-mono text-[10px] text-warm-cream flex items-center justify-between">
                 <span>{cards[1].tag}</span>
                 <Layout className="w-3.5 h-3.5 text-electric-orange" />
               </div>
@@ -169,15 +169,15 @@ export const AreasOfExpertise: React.FC = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-6 flex flex-col items-center justify-center text-center p-4 order-1 lg:order-2"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-charcoal-900/90 border border-electric-orange/30 mb-4 shadow-xl backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-charcoal-900/90 border border-white/10 mb-4 shadow-xl backdrop-blur-md">
             <span className="w-1.5 h-1.5 rounded-full bg-electric-orange animate-ping" />
-            <span className="font-mono text-[10px] text-electric-orange tracking-widest uppercase font-bold">
+            <span className="font-mono text-[10px] text-warm-white tracking-widest uppercase font-bold">
               CORE CAPABILITIES
             </span>
           </div>
 
-          <h2 className="font-syne text-4xl sm:text-6xl font-black text-warm-white tracking-tight mb-3">
-            Areas of <span className="text-electric-orange">Expertise</span>
+          <h2 className="text-4xl sm:text-6xl font-light text-warm-white tracking-tight mb-3">
+            Areas of <span className="font-serif italic font-normal text-electric-orange">Expertise</span>
           </h2>
 
           <p className="font-sans text-xs sm:text-sm text-warm-cream/90 max-w-sm leading-relaxed mb-6">
@@ -227,16 +227,16 @@ export const AreasOfExpertise: React.FC = () => {
                 </span>
               </div>
 
-              {/* Heading in Warm White with Hover Orange */}
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white group-hover:text-electric-orange tracking-tight mb-2.5 transition-colors">
+              {/* Heading in Electric Orange */}
+              <h3 className="font-syne text-xl sm:text-2xl font-black text-electric-orange tracking-tight mb-2.5">
                 {cards[2].title}
               </h3>
 
-              <p className="font-sans text-xs text-warm-cream/90 leading-relaxed mb-4">
+              <p className="font-sans text-xs text-warm-muted leading-relaxed mb-4">
                 {cards[2].description}
               </p>
 
-              <div className="pt-3 border-t border-white/[0.08] font-mono text-[10px] text-electric-orange font-semibold flex items-center justify-between">
+              <div className="pt-3 border-t border-white/[0.08] font-mono text-[10px] text-warm-cream flex items-center justify-between">
                 <span>{cards[2].tag}</span>
                 <Database className="w-3.5 h-3.5 text-electric-orange" />
               </div>
@@ -272,16 +272,16 @@ export const AreasOfExpertise: React.FC = () => {
                 </span>
               </div>
 
-              {/* Heading in Warm White with Hover Orange */}
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white group-hover:text-electric-orange tracking-tight mb-2.5 transition-colors">
+              {/* Heading in Electric Orange */}
+              <h3 className="font-syne text-xl sm:text-2xl font-black text-electric-orange tracking-tight mb-2.5">
                 {cards[3].title}
               </h3>
 
-              <p className="font-sans text-xs text-warm-cream/90 leading-relaxed mb-4">
+              <p className="font-sans text-xs text-warm-muted leading-relaxed mb-4">
                 {cards[3].description}
               </p>
 
-              <div className="pt-3 border-t border-white/[0.08] font-mono text-[10px] text-electric-orange font-semibold flex items-center justify-between">
+              <div className="pt-3 border-t border-white/[0.08] font-mono text-[10px] text-warm-cream flex items-center justify-between">
                 <span>{cards[3].tag}</span>
                 <Network className="w-3.5 h-3.5 text-electric-orange" />
               </div>
@@ -294,9 +294,9 @@ export const AreasOfExpertise: React.FC = () => {
       <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between font-mono text-[11px] text-warm-dark relative z-10">
         <div className="flex items-center gap-2">
           <span className="text-electric-orange">●</span>
-          <span className="text-warm-muted">DETERMINISTIC AI <span className="text-electric-orange font-bold">·</span> HIGH-CONCURRENCY INGESTION <span className="text-electric-orange font-bold">·</span> VERIFIED CONTRACTS</span>
+          <span className="text-warm-muted">DETERMINISTIC AI · HIGH-CONCURRENCY INGESTION · VERIFIED CONTRACTS</span>
         </div>
-        <span className="hidden sm:inline text-electric-orange font-bold font-mono">INTERACTIVE CORE ARCHITECTURE</span>
+        <span className="hidden sm:inline text-warm-dark">INTERACTIVE CORE ARCHITECTURE</span>
       </div>
     </section>
   );

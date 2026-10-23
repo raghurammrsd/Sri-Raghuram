@@ -32,7 +32,7 @@ export const Projects: React.FC = () => {
   return (
     <section
       id="projects"
-      className="scroll-mt-20 min-h-screen flex flex-col justify-between py-12 sm:py-16 border-b border-white/[0.08] relative bg-charcoal-950"
+      className="scroll-mt-20 min-h-screen lg:h-screen lg:max-h-[960px] flex flex-col justify-between py-8 sm:py-12 border-b border-white/[0.08] relative bg-charcoal-950 overflow-hidden"
     >
       {/* Background Ambient Glow */}
       <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] bg-electric-orange/[0.04] rounded-full blur-[200px] pointer-events-none" />
@@ -123,7 +123,7 @@ export const Projects: React.FC = () => {
                     {proj.title}
                   </h4>
 
-                  <p className="font-mono text-[10px] text-electric-orange font-medium truncate">
+                  <p className="font-mono text-[10px] text-warm-muted truncate">
                     {projectTabMeta[proj.id] || proj.category}
                   </p>
                 </button>
@@ -155,7 +155,7 @@ export const Projects: React.FC = () => {
                   </span>
                 </div>
 
-                <h3 className="font-syne text-3xl sm:text-4xl font-black text-warm-white tracking-tight leading-tight mb-3">
+                <h3 className="font-syne text-3xl sm:text-4xl font-black text-electric-orange tracking-tight leading-tight mb-3">
                   {activeProject.title}
                 </h3>
 
@@ -170,8 +170,8 @@ export const Projects: React.FC = () => {
                     className="p-5 rounded-2xl bg-charcoal-900/80 border border-white/10 hover:border-white/30 backdrop-blur-xl shadow-xl transition-all"
                   >
                     <div className="flex items-center gap-1.5 mb-2">
-                      <AlertCircle className="w-3.5 h-3.5 text-electric-orange" />
-                      <span className="font-mono text-[10px] text-electric-orange uppercase tracking-widest font-bold">
+                      <AlertCircle className="w-3.5 h-3.5 text-warm-muted" />
+                      <span className="font-mono text-[10px] text-warm-muted uppercase tracking-widest font-bold">
                         THE ARCHITECTURAL BOTTLENECK:
                       </span>
                     </div>
@@ -202,7 +202,7 @@ export const Projects: React.FC = () => {
                     <motion.span
                       key={tech}
                       whileHover={{ y: -2, scale: 1.05 }}
-                      className="font-mono text-[11px] px-3 py-1 rounded-full bg-white/[0.04] border border-electric-orange/30 text-warm-cream hover:border-electric-orange hover:text-white transition-all cursor-default"
+                      className="font-mono text-[11px] px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-warm-cream hover:border-electric-orange/50 hover:text-white transition-all cursor-default"
                     >
                       {tech}
                     </motion.span>
@@ -289,7 +289,7 @@ export const Projects: React.FC = () => {
                     <span className="w-1.5 h-1.5 rounded-full bg-electric-orange group-hover:animate-ping" />
                     <span className="text-[11px] text-warm-muted uppercase tracking-wider">{m.label}</span>
                   </div>
-                  <span className="text-xs font-black text-electric-orange">
+                  <span className="text-xs font-black text-warm-white group-hover:text-electric-orange transition-colors">
                     {m.value}
                   </span>
                 </motion.div>
@@ -302,9 +302,9 @@ export const Projects: React.FC = () => {
         <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between font-mono text-[11px] text-warm-dark">
           <div className="flex items-center gap-2">
             <span className="text-electric-orange">●</span>
-            <span className="text-warm-muted">100% REPOSITORY VERIFIED <span className="text-electric-orange font-bold">·</span> RUNS LOCALLY OR IN CONTAINER</span>
+            <span className="text-warm-muted">100% REPOSITORY VERIFIED · RUNS LOCALLY OR IN CONTAINER</span>
           </div>
-          <span className="hidden sm:inline text-electric-orange font-bold font-mono">ARCHITECTURE ID: #RG-2026-CORE</span>
+          <span className="hidden sm:inline text-warm-dark">ARCHITECTURE ID: #RG-2026-CORE</span>
         </div>
       </div>
     </section>
