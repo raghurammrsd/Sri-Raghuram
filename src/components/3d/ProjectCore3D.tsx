@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
@@ -14,8 +14,7 @@ const HolographicCrystal: React.FC<{ colorHex: string }> = ({ colorHex }) => {
   const groupRef = useRef<THREE.Group>(null);
   const particlesRef = useRef<THREE.Points>(null);
 
-  // Generate constellation nodes around core
-  const particlesCount = 280;
+  const particlesCount = 120;
   const positions = React.useMemo(() => {
     const pos = new Float32Array(particlesCount * 3);
     for (let i = 0; i < particlesCount; i++) {
@@ -36,48 +35,48 @@ const HolographicCrystal: React.FC<{ colorHex: string }> = ({ colorHex }) => {
     if (groupRef.current) {
       groupRef.current.rotation.x = THREE.MathUtils.damp(
         groupRef.current.rotation.x,
-        -y * 0.25,
-        3,
+        -y * 0.2,
+        3.0,
         delta
       );
       groupRef.current.rotation.y = THREE.MathUtils.damp(
         groupRef.current.rotation.y,
-        x * 0.25,
-        3,
+        x * 0.2,
+        3.0,
         delta
       );
     }
 
     if (meshRef.current) {
-      meshRef.current.rotation.x = t * 0.35;
-      meshRef.current.rotation.y = t * 0.45;
-      const s = 1 + Math.sin(t * 2) * 0.05;
+      meshRef.current.rotation.x = t * 0.3;
+      meshRef.current.rotation.y = t * 0.4;
+      const s = 1 + Math.sin(t * 2) * 0.04;
       meshRef.current.scale.set(s, s, s);
     }
 
     if (wireRef.current) {
-      wireRef.current.rotation.x = -t * 0.25;
-      wireRef.current.rotation.y = -t * 0.35;
+      wireRef.current.rotation.x = -t * 0.2;
+      wireRef.current.rotation.y = -t * 0.3;
     }
 
     if (ring1Ref.current) {
-      ring1Ref.current.rotation.x = Math.PI / 3 + Math.sin(t * 0.5) * 0.2;
-      ring1Ref.current.rotation.z = t * 0.5;
+      ring1Ref.current.rotation.z = t * 0.35;
+      ring1Ref.current.rotation.x = Math.PI / 3 + Math.sin(t * 0.5) * 0.15;
     }
 
     if (ring2Ref.current) {
-      ring2Ref.current.rotation.y = Math.PI / 4 + Math.cos(t * 0.5) * 0.2;
-      ring2Ref.current.rotation.x = -t * 0.4;
+      ring2Ref.current.rotation.z = -t * 0.25;
+      ring2Ref.current.rotation.y = Math.PI / 4 + Math.cos(t * 0.5) * 0.15;
     }
 
     if (particlesRef.current) {
-      particlesRef.current.rotation.y = t * 0.08;
+      particlesRef.current.rotation.y = t * 0.1;
     }
   });
 
   return (
     <group ref={groupRef}>
-      {/* Outer Floating Starfield Particles */}
+      {/* Outer Floating Particle Constellation */}
       <points ref={particlesRef}>
         <bufferGeometry>
           <bufferAttribute
@@ -89,44 +88,43 @@ const HolographicCrystal: React.FC<{ colorHex: string }> = ({ colorHex }) => {
           size={0.03}
           color={colorHex}
           transparent
-          opacity={0.65}
-          blending={THREE.AdditiveBlending}
+          opacity={0.6}
+          depthWrite={false}
         />
       </points>
 
-      {/* Inner Glowing Crystal Core */}
+      {/* Solid Inner Core */}
       <mesh ref={meshRef}>
-        <octahedronGeometry args={[0.78, 0]} />
+        <octahedronGeometry args={[0.7, 0]} />
         <meshStandardMaterial
           color={colorHex}
-          roughness={0.15}
-          metalness={0.85}
-          wireframe={false}
           emissive={colorHex}
-          emissiveIntensity={0.6}
+          emissiveIntensity={0.65}
+          roughness={0.2}
+          metalness={0.9}
         />
       </mesh>
 
-      {/* Wireframe Facet Cage */}
+      {/* Wireframe Cage */}
       <mesh ref={wireRef}>
-        <icosahedronGeometry args={[1.05, 1]} />
+        <octahedronGeometry args={[1.05, 1]} />
         <meshBasicMaterial
-          color={colorHex}
+          color="#ffffff"
           wireframe
           transparent
-          opacity={0.4}
+          opacity={0.25}
         />
       </mesh>
 
       {/* Orbit Ring 1 */}
       <mesh ref={ring1Ref}>
-        <torusGeometry args={[1.35, 0.012, 16, 100]} />
+        <torusGeometry args={[1.35, 0.012, 12, 64]} />
         <meshBasicMaterial color={colorHex} transparent opacity={0.7} />
       </mesh>
 
       {/* Orbit Ring 2 */}
       <mesh ref={ring2Ref}>
-        <torusGeometry args={[1.52, 0.008, 16, 100]} />
+        <torusGeometry args={[1.52, 0.008, 12, 64]} />
         <meshBasicMaterial color="#ffffff" transparent opacity={0.4} />
       </mesh>
     </group>
@@ -134,18 +132,43 @@ const HolographicCrystal: React.FC<{ colorHex: string }> = ({ colorHex }) => {
 };
 
 export const ProjectCore3D: React.FC<ProjectCoreProps> = ({ colorHex }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { rootMargin: '100px' }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="w-full h-full min-h-[280px] sm:min-h-[340px] relative pointer-events-none flex items-center justify-center">
-      <Canvas
-        camera={{ position: [0, 0, 3.8], fov: 45 }}
-        dpr={[1, 1.75]}
-        gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
-      >
-        <ambientLight intensity={0.6} />
-        <pointLight position={[3, 3, 3]} intensity={3} color={colorHex} />
-        <pointLight position={[-3, -3, 2]} intensity={1.5} color="#ffffff" />
-        <HolographicCrystal colorHex={colorHex} />
-      </Canvas>
+    <div ref={containerRef} className="w-full h-full min-h-[200px] relative pointer-events-none flex items-center justify-center">
+      {isVisible && (
+        <Canvas
+          camera={{ position: [0, 0, 3.8], fov: 45 }}
+          dpr={1}
+          gl={{
+            antialias: false,
+            alpha: true,
+            powerPreference: 'low-power',
+            depth: false,
+            stencil: false,
+          }}
+        >
+          <ambientLight intensity={0.6} />
+          <pointLight position={[3, 3, 3]} intensity={2.5} color={colorHex} />
+          <HolographicCrystal colorHex={colorHex} />
+        </Canvas>
+      )}
     </div>
   );
 };

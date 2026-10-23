@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { PERSONAL_INFO } from '../../data/portfolioData';
 import { HeroBackdrop3D } from '../3d/HeroBackdrop3D';
-import { ArrowDown, ArrowUpRight, Terminal, Copy, Check, Sparkles } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Terminal, Copy, Check, Sparkles, Activity, ShieldCheck, ArrowRight } from 'lucide-react';
 import { Magnetic } from '../Magnetic';
 import { sound } from '../../utils/sound';
 
@@ -13,8 +13,8 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onCopyPip, pipCopied }) => {
   return (
-    <section className="relative min-h-[calc(100vh-5rem)] lg:h-[calc(100vh-5rem)] lg:max-h-[920px] flex flex-col justify-between py-6 sm:py-8 lg:py-10 border-b border-white/[0.08] overflow-hidden bg-charcoal-950">
-      {/* 3D Interactive Holographic Lattice Sculpture */}
+    <section className="relative min-h-screen lg:h-screen lg:max-h-[960px] flex flex-col justify-between pt-24 sm:pt-28 pb-6 sm:pb-8 border-b border-white/[0.08] overflow-hidden bg-charcoal-950">
+      {/* 3D Kinetic Neural Manifold / Topological Tensor Grid */}
       <HeroBackdrop3D />
 
       {/* Atmospheric Ambient Lighting: Warm White & Electric Orange */}
@@ -22,13 +22,15 @@ export const Hero: React.FC<HeroProps> = ({ onCopyPip, pipCopied }) => {
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[650px] h-[650px] bg-electric-orange/[0.06] rounded-full blur-[180px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 my-auto text-center">
-        {/* Availability Tag with Kinetic Scanner Glow */}
+        {/* Availability Tag with Radar Beacon & Kinetic Border */}
         <motion.div
           initial={{ opacity: 0, y: -10, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-charcoal-900/90 border border-white/10 mb-6 shadow-2xl backdrop-blur-md"
+          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-charcoal-900/90 border border-white/10 mb-6 sm:mb-8 shadow-2xl backdrop-blur-md relative overflow-hidden group hover:border-electric-orange/40 transition-colors"
         >
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-electric-orange/[0.08] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-electric-orange opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-electric-orange"></span>
@@ -38,37 +40,90 @@ export const Hero: React.FC<HeroProps> = ({ onCopyPip, pipCopied }) => {
           </span>
         </motion.div>
 
-        {/* Kinetic Headline: FROM IDEA + Solid Filled Orange Block TO IMPACT */}
-        <div className="mb-6 overflow-hidden">
+        {/* Dynamic Asymmetrical Kinetic Headline (Replaces boring straight line!) */}
+        <div className="mb-8 select-none">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 35 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col items-center justify-center"
           >
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 font-syne text-5xl sm:text-7xl md:text-8xl lg:text-[7.2rem] font-black tracking-tight uppercase leading-none">
-              <span className="text-warm-white">
-                FROM IDEA
+            {/* Stepped Tier 1: Left-Biased Upper Heading + Micro Directive Index */}
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 sm:-translate-x-12">
+              <span className="font-mono text-[10px] sm:text-xs font-bold text-electric-orange tracking-widest uppercase bg-electric-orange/10 border border-electric-orange/25 px-2.5 py-1 rounded hidden md:inline-flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-electric-orange" />
+                PHASE 01
               </span>
-              <span
-                style={{ backgroundColor: '#ff5500', color: '#000000' }}
-                className="px-5 sm:px-8 py-1 rounded-sm shadow-[0_0_40px_rgba(255,85,0,0.5)] font-black inline-block"
+
+              <h1 className="font-syne text-5xl sm:text-7xl md:text-8xl lg:text-[7.6rem] font-black tracking-tight uppercase leading-none text-warm-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+                FROM IDEA
+              </h1>
+
+              {/* Kinetic Directional Vector Arrow */}
+              <div className="hidden lg:flex items-center gap-1 text-electric-orange/80 animate-pulse">
+                <div className="w-8 h-[2px] bg-electric-orange" />
+                <ArrowRight className="w-6 h-6 stroke-[3]" />
+              </div>
+            </div>
+
+            {/* Stepped Tier 2: Right-Biased High-Voltage Skewed Power Block */}
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 sm:translate-x-12 -mt-2 sm:-mt-4">
+              <motion.div
+                whileHover={{ scale: 1.03, rotate: 0 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                className="relative group cursor-default transform -skew-x-3 sm:-skew-x-6 sm:-rotate-1"
               >
-                TO IMPACT
+                {/* Neon Drop Glow */}
+                <div className="absolute inset-0 bg-electric-orange blur-2xl opacity-40 group-hover:opacity-60 transition-opacity" />
+
+                {/* Main Angled Power Block */}
+                <div
+                  style={{ backgroundColor: '#ff5500', color: '#000000' }}
+                  className="relative px-6 sm:px-12 py-1.5 sm:py-3 rounded-lg shadow-[0_20px_50px_rgba(255,85,0,0.45)] border-2 border-white/20 overflow-hidden"
+                >
+                  {/* Dynamic Continuous Sheen Sweep */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/35 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000" />
+
+                  <span className="font-syne text-5xl sm:text-7xl md:text-8xl lg:text-[7.4rem] font-black tracking-tight uppercase leading-none inline-block whitespace-nowrap">
+                    TO IMPACT
+                  </span>
+                </div>
+              </motion.div>
+
+              <span className="font-mono text-[10px] sm:text-xs font-bold text-warm-cream tracking-widest uppercase bg-charcoal-900/90 border border-white/10 px-3 py-1 rounded hidden md:inline-flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                PRODUCTION READY
               </span>
             </div>
           </motion.div>
         </div>
 
-        {/* Editorial Subtitle */}
+        {/* Dynamic Stepped Editorial Subtitle */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-3xl mx-auto mb-4"
+          className="max-w-4xl mx-auto mb-6"
         >
-          <h2 className="font-serif italic text-2xl sm:text-4xl text-warm-cream font-normal leading-tight">
-            Building Systems at the Intersection of AI, Determinism & Technology
-          </h2>
+          <div className="flex flex-col items-center justify-center gap-2.5">
+            {/* Stepped Upper Tier */}
+            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5">
+              <span className="font-serif italic text-2xl sm:text-4xl text-warm-cream font-normal">
+                Building Systems
+              </span>
+              <span className="font-mono text-[10px] sm:text-[11px] font-bold tracking-widest text-electric-orange bg-electric-orange/10 border border-electric-orange/30 px-3 py-1 rounded-full uppercase inline-flex items-center gap-1.5 shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-electric-orange animate-ping" />
+                AT THE INTERSECTION OF
+              </span>
+            </div>
+
+            {/* Stepped Lower Tier with Elegant Accent Underline */}
+            <div className="flex items-center justify-center">
+              <span className="font-serif italic text-2xl sm:text-4xl text-warm-white font-normal underline decoration-electric-orange/50 underline-offset-8">
+                AI, Determinism & Technology
+              </span>
+            </div>
+          </div>
         </motion.div>
 
         {/* Supporting Pitch */}
@@ -113,7 +168,7 @@ export const Hero: React.FC<HeroProps> = ({ onCopyPip, pipCopied }) => {
           </Magnetic>
 
           {/* Quick Pip Install Snippet */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-charcoal-900/90 border border-white/[0.08] text-xs font-mono shadow-xl backdrop-blur-md">
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-charcoal-900/90 border border-white/[0.08] text-xs font-mono shadow-xl backdrop-blur-md hover:border-electric-orange/30 transition-colors">
             <Terminal className="w-3.5 h-3.5 text-electric-orange" />
             <code className="text-warm-cream">pip install codegraph-mcp</code>
             <button
@@ -121,7 +176,7 @@ export const Hero: React.FC<HeroProps> = ({ onCopyPip, pipCopied }) => {
                 sound.click();
                 onCopyPip();
               }}
-              className="p-1 rounded hover:bg-white/10 text-warm-muted hover:text-warm-white"
+              className="p-1 rounded hover:bg-white/10 text-warm-muted hover:text-warm-white transition-colors"
               title="Copy pip install command"
             >
               {pipCopied ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}

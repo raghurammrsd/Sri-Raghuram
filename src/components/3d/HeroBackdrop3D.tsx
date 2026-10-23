@@ -1,97 +1,177 @@
-import React, { useRef } from 'react';
+import React, { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-const HolographicLattice: React.FC = () => {
-  const meshRef = useRef<THREE.Mesh>(null);
-  const innerRef = useRef<THREE.Mesh>(null);
-  const ringRef = useRef<THREE.Mesh>(null);
+/**
+ * High-Performance GPU Shader for the Neural Manifold
+ * Runs 100% on GPU - Zero CPU vertex loops, zero memory transfers, zero lag!
+ */
+const vertexShader = `
+  uniform float uTime;
+  uniform vec2 uPointer;
+  varying float vElevation;
+
+  void main() {
+    vec3 pos = position;
+
+    // Multi-harmonic GPU wave calculation
+    float wave1 = sin(pos.x * 0.65 + uTime * 1.1) * cos(pos.y * 0.55 + uTime * 0.8) * 0.7;
+    float wave2 = sin((pos.x + pos.y) * 0.4 - uTime * 0.7) * 0.35;
+    
+    // Smooth pointer disturbance
+    float dist = distance(pos.xy, uPointer * vec2(6.0, 3.5));
+    float ripple = exp(-dist * 0.25) * sin(dist * 2.0 - uTime * 3.0) * 0.4;
+
+    pos.z += wave1 + wave2 + ripple;
+    vElevation = pos.z;
+
+    vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
+    gl_Position = projectionMatrix * mvPosition;
+    gl_PointSize = (3.5 / -mvPosition.z);
+  }
+`;
+
+const fragmentShader = `
+  varying float vElevation;
+
+  void main() {
+    // Dynamic color gradient: Electric Orange at peaks, Warm White at crests
+    vec3 colorOrange = vec3(1.0, 0.333, 0.0); // #ff5500
+    vec3 colorWhite = vec3(0.96, 0.96, 0.97);
+
+    float mixRatio = clamp((vElevation + 0.5) * 0.8, 0.0, 1.0);
+    vec3 finalColor = mix(colorWhite, colorOrange, mixRatio);
+
+    gl_FragColor = vec4(finalColor, 0.55);
+  }
+`;
+
+const fragmentShaderWireframe = `
+  varying float vElevation;
+
+  void main() {
+    vec3 colorOrange = vec3(1.0, 0.333, 0.0);
+    gl_FragColor = vec4(colorOrange, 0.18);
+  }
+`;
+
+const NeuralTensorFieldGPU: React.FC = () => {
   const groupRef = useRef<THREE.Group>(null);
+  const shaderMatRef = useRef<THREE.ShaderMaterial>(null);
+  const wireMatRef = useRef<THREE.ShaderMaterial>(null);
+
+  // Optimized grid dimensions (Lightweight, super smooth on all devices)
+  const geo = useMemo(() => new THREE.PlaneGeometry(15, 9, 36, 24), []);
+
+  const uniforms = useMemo(
+    () => ({
+      uTime: { value: 0 },
+      uPointer: { value: new THREE.Vector2(0, 0) },
+    }),
+    []
+  );
 
   useFrame((state, delta) => {
     const t = state.clock.getElapsedTime();
     const { x, y } = state.pointer;
 
+    // Update uniforms directly to GPU
+    if (shaderMatRef.current) {
+      shaderMatRef.current.uniforms.uTime.value = t;
+      shaderMatRef.current.uniforms.uPointer.value.set(x, y);
+    }
+    if (wireMatRef.current) {
+      wireMatRef.current.uniforms.uTime.value = t;
+      wireMatRef.current.uniforms.uPointer.value.set(x, y);
+    }
+
+    // Smooth group parallax
     if (groupRef.current) {
       groupRef.current.rotation.x = THREE.MathUtils.damp(
         groupRef.current.rotation.x,
-        -y * 0.25,
-        3,
+        -0.55 - y * 0.12,
+        3.0,
         delta
       );
       groupRef.current.rotation.y = THREE.MathUtils.damp(
         groupRef.current.rotation.y,
-        x * 0.25,
-        3,
+        x * 0.15,
+        3.0,
         delta
       );
-    }
-
-    if (meshRef.current) {
-      meshRef.current.rotation.x = t * 0.2;
-      meshRef.current.rotation.y = t * 0.3;
-    }
-
-    if (innerRef.current) {
-      innerRef.current.rotation.x = -t * 0.4;
-      innerRef.current.rotation.y = -t * 0.3;
-      const s = 1 + Math.sin(t * 2) * 0.05;
-      innerRef.current.scale.set(s, s, s);
-    }
-
-    if (ringRef.current) {
-      ringRef.current.rotation.z = t * 0.25;
-      ringRef.current.rotation.x = Math.PI / 4 + Math.sin(t * 0.5) * 0.15;
     }
   });
 
   return (
-    <group ref={groupRef}>
-      {/* Outer Wireframe Icosahedron */}
-      <mesh ref={meshRef}>
-        <icosahedronGeometry args={[1.5, 1]} />
-        <meshBasicMaterial
-          color="#ff5500"
+    <group ref={groupRef} position={[0, -0.2, -1.2]}>
+      {/* 1. GPU Wireframe Mesh */}
+      <mesh geometry={geo}>
+        <shaderMaterial
+          ref={wireMatRef}
+          vertexShader={vertexShader}
+          fragmentShader={fragmentShaderWireframe}
+          uniforms={uniforms}
           wireframe
           transparent
-          opacity={0.25}
+          depthWrite={false}
         />
       </mesh>
 
-      {/* Inner Glowing Polyhedral Nucleus */}
-      <mesh ref={innerRef}>
-        <octahedronGeometry args={[0.7, 0]} />
-        <meshStandardMaterial
-          color="#ff5500"
-          emissive="#ff5500"
-          emissiveIntensity={0.65}
-          roughness={0.2}
-          metalness={0.9}
+      {/* 2. GPU Points Cloud at Nodes */}
+      <points geometry={geo}>
+        <shaderMaterial
+          ref={shaderMatRef}
+          vertexShader={vertexShader}
+          fragmentShader={fragmentShader}
+          uniforms={uniforms}
+          transparent
+          depthWrite={false}
         />
-      </mesh>
-
-      {/* Subtle Orbital Halo Ring */}
-      <mesh ref={ringRef}>
-        <torusGeometry args={[1.9, 0.008, 16, 90]} />
-        <meshBasicMaterial color="#ffffff" transparent opacity={0.35} />
-      </mesh>
+      </points>
     </group>
   );
 };
 
 export const HeroBackdrop3D: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Occlusion Culling: Pause 3D canvas when user scrolls past Hero
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { rootMargin: '100px' }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="absolute inset-0 w-full h-full pointer-events-none flex items-center justify-center opacity-70">
-      <Canvas
-        camera={{ position: [0, 0, 4.2], fov: 45 }}
-        dpr={[1, 1.75]}
-        gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
-      >
-        <ambientLight intensity={0.5} />
-        <pointLight position={[3, 3, 3]} intensity={2.5} color="#ff5500" />
-        <pointLight position={[-3, -3, 2]} intensity={1.5} color="#ffffff" />
-        <HolographicLattice />
-      </Canvas>
+    <div
+      ref={containerRef}
+      className="absolute inset-0 w-full h-full pointer-events-none flex items-center justify-center opacity-75 overflow-hidden"
+    >
+      {isVisible && (
+        <Canvas
+          camera={{ position: [0, 0, 5.2], fov: 50 }}
+          dpr={1} // Cap to 1 for zero GPU strain & cold temps
+          gl={{
+            antialias: false,
+            alpha: true,
+            powerPreference: 'low-power',
+            stencil: false,
+            depth: false,
+          }}
+        >
+          <NeuralTensorFieldGPU />
+        </Canvas>
+      )}
     </div>
   );
 };

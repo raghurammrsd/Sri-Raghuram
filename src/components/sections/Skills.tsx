@@ -16,16 +16,17 @@ export const Skills: React.FC = () => {
       className="scroll-mt-20 min-h-screen lg:h-screen lg:max-h-[920px] flex flex-col justify-between py-8 sm:py-12 border-b border-white/[0.08] relative bg-charcoal-950 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 my-auto flex flex-col justify-between h-full">
-        {/* Section Header */}
+        {/* Section Header with Kinetic Typography */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
           className="pb-4 border-b border-white/[0.08]"
         >
           <div className="flex items-center gap-2 mb-2">
-            <span className="font-mono text-[11px] font-bold tracking-widest text-electric-orange bg-electric-orange/10 border border-electric-orange/25 px-2.5 py-0.5 rounded">
+            <span className="font-mono text-[11px] font-bold tracking-widest text-electric-orange bg-electric-orange/10 border border-electric-orange/25 px-2.5 py-0.5 rounded flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-electric-orange animate-ping" />
               04 · TECHNICAL ARSENAL
             </span>
             <span className="font-mono text-[11px] tracking-wider text-warm-muted uppercase">
@@ -48,7 +49,7 @@ export const Skills: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* 4 Clean Monochrome Domain Tabs */}
+        {/* 4 Clean Monochrome Domain Tabs with Kinetic Hover */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 my-auto py-4">
           {SKILL_CATEGORIES.map((cat, idx) => {
             const Icon = categoryIcons[idx % categoryIcons.length];
@@ -63,19 +64,27 @@ export const Skills: React.FC = () => {
                   sound.click();
                   setActiveCategoryIndex(idx);
                 }}
-                className={`p-5 rounded-2xl text-left transition-all duration-300 border flex flex-col justify-between ${
+                className={`relative p-5 rounded-2xl text-left transition-all duration-300 border flex flex-col justify-between overflow-hidden ${
                   isSelected
-                    ? 'bg-charcoal-900 border-electric-orange/60 shadow-xl'
+                    ? 'bg-charcoal-900 border-electric-orange shadow-xl'
                     : 'bg-charcoal-900/40 border-white/[0.08] hover:border-white/20'
                 }`}
               >
-                <div className="flex items-center justify-between mb-3">
+                {isSelected && (
+                  <motion.div
+                    layoutId="skillsActiveBorder"
+                    className="absolute inset-0 border-2 border-electric-orange rounded-2xl pointer-events-none"
+                    transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                  />
+                )}
+
+                <div className="flex items-center justify-between mb-3 relative z-10">
                   <span className="font-mono text-xs font-bold text-warm-dark">
                     0{idx + 1}
                   </span>
                   <Icon className={`w-4 h-4 ${isSelected ? 'text-electric-orange' : 'text-warm-muted'}`} />
                 </div>
-                <div>
+                <div className="relative z-10">
                   <h4 className="font-syne font-bold text-base text-warm-white mb-1">{cat.title}</h4>
                   <p className="font-sans text-xs text-warm-muted line-clamp-2 leading-relaxed">{cat.description}</p>
                 </div>
@@ -84,7 +93,7 @@ export const Skills: React.FC = () => {
           })}
         </div>
 
-        {/* Active Domain Skills Grid */}
+        {/* Active Domain Skills Grid with Animated Entrance */}
         <div className="p-6 sm:p-8 rounded-2xl bg-charcoal-900/60 border border-white/[0.08] backdrop-blur-xl relative overflow-hidden shadow-2xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-white/[0.06]">
             <div>
@@ -100,29 +109,40 @@ export const Skills: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-            {activeCategory.skills.map((skill) => (
-              <motion.div
-                key={skill.name}
-                whileHover={{ y: -3, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 350, damping: 20 }}
-                className={`p-3.5 rounded-xl border transition-all flex items-center justify-between ${
-                  skill.highlight
-                    ? 'bg-white/[0.06] border-electric-orange/40 text-warm-white shadow-md'
-                    : 'bg-charcoal-950/70 border-white/[0.06] text-warm-cream hover:border-white/15'
-                }`}
-              >
-                <span className="font-mono text-xs font-semibold truncate mr-2">
-                  {skill.name}
-                </span>
-                {skill.highlight && (
-                  <span className="font-mono text-[9px] px-2 py-0.5 rounded font-black tracking-wide bg-electric-orange/15 text-electric-orange border border-electric-orange/30 shrink-0">
-                    CORE
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeCategory.title}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"
+            >
+              {activeCategory.skills.map((skill, sIdx) => (
+                <motion.div
+                  key={skill.name}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.25, delay: sIdx * 0.025 }}
+                  whileHover={{ y: -3, scale: 1.02 }}
+                  className={`p-3.5 rounded-xl border transition-all flex items-center justify-between ${
+                    skill.highlight
+                      ? 'bg-white/[0.06] border-electric-orange/40 text-warm-white shadow-md'
+                      : 'bg-charcoal-950/70 border-white/[0.06] text-warm-cream hover:border-white/15'
+                  }`}
+                >
+                  <span className="font-mono text-xs font-semibold truncate mr-2">
+                    {skill.name}
                   </span>
-                )}
-              </motion.div>
-            ))}
-          </div>
+                  {skill.highlight && (
+                    <span className="font-mono text-[9px] px-2 py-0.5 rounded font-black tracking-wide bg-electric-orange/15 text-electric-orange border border-electric-orange/30 shrink-0">
+                      CORE
+                    </span>
+                  )}
+                </motion.div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Bottom Status Ticker */}

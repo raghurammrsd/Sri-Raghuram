@@ -1,4 +1,4 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
@@ -8,12 +8,11 @@ const FullChromaticRing: React.FC = () => {
   const ringGlowRef = useRef<THREE.Mesh>(null);
   const groupRef = useRef<THREE.Group>(null);
 
-  // Radius for a tight, perfectly proportioned full circle that fits the desktop screen
   const RING_RADIUS = 1.62;
 
-  // Generate 2200 swirling particles tightly bound to a full 360 circle
+  // Optimized particle count for performance (1200 points is lush and lightweight)
   const { positions, colors } = useMemo(() => {
-    const count = 2200;
+    const count = 1200;
     const pos = new Float32Array(count * 3);
     const col = new Float32Array(count * 3);
 
@@ -25,7 +24,6 @@ const FullChromaticRing: React.FC = () => {
 
     for (let i = 0; i < count; i++) {
       const angle = (i / count) * Math.PI * 2;
-      // Tight radial distribution around the ring radius
       const r = RING_RADIUS + (Math.random() - 0.5) * 0.22;
       const z = (Math.random() - 0.5) * 0.18;
 
@@ -33,7 +31,6 @@ const FullChromaticRing: React.FC = () => {
       pos[i * 3 + 1] = Math.sin(angle) * r;
       pos[i * 3 + 2] = z;
 
-      // Dual chromatic color gradient (Red/Yellow on top-right, Cyan/Blue on bottom-left)
       const normAngle = (Math.atan2(Math.sin(angle), Math.cos(angle)) + Math.PI) / (Math.PI * 2);
 
       const color = new THREE.Color();
@@ -63,42 +60,37 @@ const FullChromaticRing: React.FC = () => {
     const t = state.clock.getElapsedTime();
     const { x, y } = state.pointer;
 
-    // Subtle, high-end 3D tilt without warping the circle
     if (groupRef.current) {
       groupRef.current.rotation.x = THREE.MathUtils.damp(
         groupRef.current.rotation.x,
-        -y * 0.12,
-        3.5,
+        -y * 0.1,
+        3.0,
         delta
       );
       groupRef.current.rotation.y = THREE.MathUtils.damp(
         groupRef.current.rotation.y,
-        x * 0.12,
-        3.5,
+        x * 0.1,
+        3.0,
         delta
       );
     }
 
-    // Smooth continuous particle orbital swirl
     if (pointsRef.current) {
-      pointsRef.current.rotation.z = t * 0.28;
+      pointsRef.current.rotation.z = t * 0.25;
     }
 
-    // Subtle breathing pulse on the inner glow ring
     if (ringGlowRef.current) {
-      ringGlowRef.current.rotation.z = -t * 0.18;
-      const s = 1 + Math.sin(t * 2.5) * 0.008;
-      ringGlowRef.current.scale.set(s, s, 1);
+      ringGlowRef.current.rotation.z = -t * 0.15;
     }
 
     if (ringPrimaryRef.current) {
-      ringPrimaryRef.current.rotation.z = t * 0.12;
+      ringPrimaryRef.current.rotation.z = t * 0.1;
     }
   });
 
   return (
     <group ref={groupRef}>
-      {/* 360 Full Circular Orbiting Particle Vortex */}
+      {/* Chromatic Swirling Particle Halo */}
       <points ref={pointsRef}>
         <bufferGeometry>
           <bufferAttribute
@@ -111,49 +103,67 @@ const FullChromaticRing: React.FC = () => {
           />
         </bufferGeometry>
         <pointsMaterial
-          size={0.034}
+          size={0.035}
           vertexColors
           transparent
-          opacity={0.88}
-          blending={THREE.AdditiveBlending}
+          opacity={0.8}
+          sizeAttenuation
           depthWrite={false}
         />
       </points>
 
       {/* Razor-Sharp Continuous Dual-Tone Torus Ring */}
       <mesh ref={ringPrimaryRef}>
-        <torusGeometry args={[RING_RADIUS, 0.012, 24, 160]} />
+        <torusGeometry args={[RING_RADIUS, 0.012, 16, 96]} />
         <meshBasicMaterial color="#ff3b00" transparent opacity={0.85} />
       </mesh>
 
       {/* Cyan Accent Outer Orbit Ring */}
       <mesh ref={ringGlowRef}>
-        <torusGeometry args={[RING_RADIUS + 0.04, 0.007, 24, 160]} />
+        <torusGeometry args={[RING_RADIUS + 0.04, 0.007, 16, 96]} />
         <meshBasicMaterial color="#00f0ff" transparent opacity={0.75} />
-      </mesh>
-
-      {/* Subtle Mechanical Aperture Halo */}
-      <mesh>
-        <torusGeometry args={[RING_RADIUS + 0.12, 0.02, 16, 120]} />
-        <meshStandardMaterial color="#121218" roughness={0.3} metalness={0.9} />
       </mesh>
     </group>
   );
 };
 
 export const ChromaticRingScene: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Pause Three.js render loop when out of viewport
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { rootMargin: '100px' }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="absolute inset-0 w-full h-full pointer-events-none flex items-center justify-center">
-      <Canvas
-        camera={{ position: [0, 0, 4.6], fov: 46 }}
-        dpr={[1, 1.8]}
-        gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
-      >
-        <ambientLight intensity={0.7} />
-        <pointLight position={[2, 2, 2]} intensity={2.5} color="#ff3b00" />
-        <pointLight position={[-2, -2, 2]} intensity={2.5} color="#00f0ff" />
-        <FullChromaticRing />
-      </Canvas>
+    <div ref={containerRef} className="absolute inset-0 w-full h-full pointer-events-none flex items-center justify-center">
+      {isVisible && (
+        <Canvas
+          camera={{ position: [0, 0, 4.6], fov: 46 }}
+          dpr={1}
+          gl={{
+            antialias: false,
+            alpha: true,
+            powerPreference: 'low-power',
+            depth: false,
+            stencil: false,
+          }}
+        >
+          <FullChromaticRing />
+        </Canvas>
+      )}
     </div>
   );
 };

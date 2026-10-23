@@ -1,6 +1,22 @@
 import React from 'react';
 
 export const RingEnergyConduits: React.FC = () => {
+  /**
+   * Coordinate space: 1200 x 700
+   * 3D Ring is centered at (600, 350) with approximate radius R ~ 250px.
+   * Central text container occupies approx: x: 420 to 780, y: 220 to 480.
+   *
+   * To ensure lines NEVER pass behind or intersect the central text:
+   * - Top conduits emerge from the ring's UPPER quadrant (y = 155-165, well above y=220)
+   * - Bottom conduits emerge from the ring's LOWER quadrant (y = 535-545, well below y=480)
+   *
+   * Card Dock Ports:
+   * - Card 1 (Top-Left):     (310, 180)
+   * - Card 2 (Bottom-Left):  (310, 520)
+   * - Card 3 (Top-Right):    (890, 180)
+   * - Card 4 (Bottom-Right): (890, 520)
+   */
+
   return (
     <svg
       className="absolute inset-0 w-full h-full pointer-events-none z-0 hidden lg:block"
@@ -10,110 +26,186 @@ export const RingEnergyConduits: React.FC = () => {
       preserveAspectRatio="xMidYMid meet"
     >
       <defs>
-        {/* Glowing Orange Laser Gradient */}
-        <linearGradient id="laserGradLeftTop" x1="500" y1="300" x2="310" y2="180" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#ff5500" stopOpacity="0.8" />
-          <stop offset="60%" stopColor="#ff7728" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#ff5500" stopOpacity="0.9" />
+        {/* Laser Conduit Gradients */}
+        <linearGradient id="conduitGradTL" x1="420" y1="160" x2="310" y2="180" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#ff5500" stopOpacity="0.95" />
+          <stop offset="50%" stopColor="#ff7728" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="#ff5500" stopOpacity="0.95" />
         </linearGradient>
 
-        <linearGradient id="laserGradLeftBottom" x1="500" y1="400" x2="310" y2="520" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#ff5500" stopOpacity="0.8" />
-          <stop offset="60%" stopColor="#ff7728" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#ff5500" stopOpacity="0.9" />
+        <linearGradient id="conduitGradBL" x1="420" y1="540" x2="310" y2="520" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#ff5500" stopOpacity="0.95" />
+          <stop offset="50%" stopColor="#ff7728" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="#ff5500" stopOpacity="0.95" />
         </linearGradient>
 
-        <linearGradient id="laserGradRightTop" x1="700" y1="300" x2="890" y2="180" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#ff5500" stopOpacity="0.8" />
-          <stop offset="60%" stopColor="#ff7728" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#ff5500" stopOpacity="0.9" />
+        <linearGradient id="conduitGradTR" x1="780" y1="160" x2="890" y2="180" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#ff5500" stopOpacity="0.95" />
+          <stop offset="50%" stopColor="#ff7728" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="#ff5500" stopOpacity="0.95" />
         </linearGradient>
 
-        <linearGradient id="laserGradRightBottom" x1="700" y1="400" x2="890" y2="520" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#ff5500" stopOpacity="0.8" />
-          <stop offset="60%" stopColor="#ff7728" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#ff5500" stopOpacity="0.9" />
+        <linearGradient id="conduitGradBR" x1="780" y1="540" x2="890" y2="520" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#ff5500" stopOpacity="0.95" />
+          <stop offset="50%" stopColor="#ff7728" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="#ff5500" stopOpacity="0.95" />
         </linearGradient>
 
-        {/* Pulse Filter */}
-        <filter id="glowOrange" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="3" result="blur" />
+        {/* High-Glow Filter */}
+        <filter id="laserGlow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="3.5" result="blur" />
           <feMerge>
             <feMergeNode in="blur" />
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
+
+        <filter id="intenseGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="6" result="blur1" />
+          <feGaussianBlur stdDeviation="2" result="blur2" />
+          <feMerge>
+            <feMergeNode in="blur1" />
+            <feMergeNode in="blur2" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
       </defs>
 
-      {/* Conduit 1: Ring (Left-Top) -> Card 1 (Top-Left) */}
+      {/* ============================================================ */}
+      {/* CONDUIT 1: Upper-Left Ring Perimeter -> Box 1 (Top-Left)     */}
+      {/* Emerges at (420, 160) - completely above the central text   */}
+      {/* ============================================================ */}
       <path
-        d="M 480 300 C 410 260, 360 210, 310 180"
+        id="pathTL"
+        d="M 420 160 C 370 135, 345 155, 310 180"
         stroke="rgba(255, 85, 0, 0.15)"
         strokeWidth="1.5"
+        fill="none"
       />
       <path
-        d="M 480 300 C 410 260, 360 210, 310 180"
-        stroke="url(#laserGradLeftTop)"
-        strokeWidth="2"
-        strokeDasharray="10 18"
-        filter="url(#glowOrange)"
-        className="animate-[dash_1.8s_linear_infinite]"
+        d="M 420 160 C 370 135, 345 155, 310 180"
+        stroke="url(#conduitGradTL)"
+        strokeWidth="2.2"
+        strokeDasharray="8 14"
+        filter="url(#laserGlow)"
+        className="animate-[dash_1.6s_linear_infinite]"
+        fill="none"
       />
-      {/* Emitter Node on Ring */}
-      <circle cx="480" cy="300" r="3.5" fill="#ff5500" filter="url(#glowOrange)" />
-      {/* Receiver Port on Card */}
-      <circle cx="310" cy="180" r="4.5" fill="#ff7728" stroke="#fff" strokeWidth="1" filter="url(#glowOrange)" />
+      {/* Traveling Energy Photon */}
+      <circle r="3" fill="#ffffff" filter="url(#intenseGlow)">
+        <animateMotion
+          path="M 420 160 C 370 135, 345 155, 310 180"
+          dur="1.8s"
+          repeatCount="indefinite"
+        />
+      </circle>
+      {/* Ring Perimeter Emitter Socket */}
+      <circle cx="420" cy="160" r="4.5" fill="#ff5500" filter="url(#intenseGlow)" />
+      <circle cx="420" cy="160" r="2" fill="#ffffff" />
+      {/* Card Docking Receiver Port */}
+      <circle cx="310" cy="180" r="5" fill="#ff7728" stroke="#ffffff" strokeWidth="1.5" filter="url(#laserGlow)" />
 
-      {/* Conduit 2: Ring (Left-Bottom) -> Card 2 (Bottom-Left) */}
+      {/* ============================================================ */}
+      {/* CONDUIT 2: Lower-Left Ring Perimeter -> Box 2 (Bottom-Left)  */}
+      {/* Emerges at (420, 540) - completely below the central text   */}
+      {/* ============================================================ */}
       <path
-        d="M 480 400 C 410 440, 360 490, 310 520"
+        id="pathBL"
+        d="M 420 540 C 370 565, 345 545, 310 520"
         stroke="rgba(255, 85, 0, 0.15)"
         strokeWidth="1.5"
+        fill="none"
       />
       <path
-        d="M 480 400 C 410 440, 360 490, 310 520"
-        stroke="url(#laserGradLeftBottom)"
-        strokeWidth="2"
-        strokeDasharray="10 18"
-        filter="url(#glowOrange)"
+        d="M 420 540 C 370 565, 345 545, 310 520"
+        stroke="url(#conduitGradBL)"
+        strokeWidth="2.2"
+        strokeDasharray="8 14"
+        filter="url(#laserGlow)"
+        className="animate-[dash_2.0s_linear_infinite]"
+        fill="none"
+      />
+      {/* Traveling Energy Photon */}
+      <circle r="3" fill="#ffffff" filter="url(#intenseGlow)">
+        <animateMotion
+          path="M 420 540 C 370 565, 345 545, 310 520"
+          dur="2.0s"
+          repeatCount="indefinite"
+        />
+      </circle>
+      {/* Ring Perimeter Emitter Socket */}
+      <circle cx="420" cy="540" r="4.5" fill="#ff5500" filter="url(#intenseGlow)" />
+      <circle cx="420" cy="540" r="2" fill="#ffffff" />
+      {/* Card Docking Receiver Port */}
+      <circle cx="310" cy="520" r="5" fill="#ff7728" stroke="#ffffff" strokeWidth="1.5" filter="url(#laserGlow)" />
+
+      {/* ============================================================ */}
+      {/* CONDUIT 3: Upper-Right Ring Perimeter -> Box 3 (Top-Right)    */}
+      {/* Emerges at (780, 160) - completely above the central text   */}
+      {/* ============================================================ */}
+      <path
+        id="pathTR"
+        d="M 780 160 C 830 135, 855 155, 890 180"
+        stroke="rgba(255, 85, 0, 0.15)"
+        strokeWidth="1.5"
+        fill="none"
+      />
+      <path
+        d="M 780 160 C 830 135, 855 155, 890 180"
+        stroke="url(#conduitGradTR)"
+        strokeWidth="2.2"
+        strokeDasharray="8 14"
+        filter="url(#laserGlow)"
+        className="animate-[dash_1.7s_linear_infinite]"
+        fill="none"
+      />
+      {/* Traveling Energy Photon */}
+      <circle r="3" fill="#ffffff" filter="url(#intenseGlow)">
+        <animateMotion
+          path="M 780 160 C 830 135, 855 155, 890 180"
+          dur="1.9s"
+          repeatCount="indefinite"
+        />
+      </circle>
+      {/* Ring Perimeter Emitter Socket */}
+      <circle cx="780" cy="160" r="4.5" fill="#ff5500" filter="url(#intenseGlow)" />
+      <circle cx="780" cy="160" r="2" fill="#ffffff" />
+      {/* Card Docking Receiver Port */}
+      <circle cx="890" cy="180" r="5" fill="#ff7728" stroke="#ffffff" strokeWidth="1.5" filter="url(#laserGlow)" />
+
+      {/* ============================================================ */}
+      {/* CONDUIT 4: Lower-Right Ring Perimeter -> Box 4 (Bottom-Right) */}
+      {/* Emerges at (780, 540) - completely below the central text   */}
+      {/* ============================================================ */}
+      <path
+        id="pathBR"
+        d="M 780 540 C 830 565, 855 545, 890 520"
+        stroke="rgba(255, 85, 0, 0.15)"
+        strokeWidth="1.5"
+        fill="none"
+      />
+      <path
+        d="M 780 540 C 830 565, 855 545, 890 520"
+        stroke="url(#conduitGradBR)"
+        strokeWidth="2.2"
+        strokeDasharray="8 14"
+        filter="url(#laserGlow)"
         className="animate-[dash_2.1s_linear_infinite]"
+        fill="none"
       />
-      <circle cx="480" cy="400" r="3.5" fill="#ff5500" filter="url(#glowOrange)" />
-      <circle cx="310" cy="520" r="4.5" fill="#ff7728" stroke="#fff" strokeWidth="1" filter="url(#glowOrange)" />
-
-      {/* Conduit 3: Ring (Right-Top) -> Card 3 (Top-Right) */}
-      <path
-        d="M 720 300 C 790 260, 840 210, 890 180"
-        stroke="rgba(255, 85, 0, 0.15)"
-        strokeWidth="1.5"
-      />
-      <path
-        d="M 720 300 C 790 260, 840 210, 890 180"
-        stroke="url(#laserGradRightTop)"
-        strokeWidth="2"
-        strokeDasharray="10 18"
-        filter="url(#glowOrange)"
-        className="animate-[dash_1.9s_linear_infinite]"
-      />
-      <circle cx="720" cy="300" r="3.5" fill="#ff5500" filter="url(#glowOrange)" />
-      <circle cx="890" cy="180" r="4.5" fill="#ff7728" stroke="#fff" strokeWidth="1" filter="url(#glowOrange)" />
-
-      {/* Conduit 4: Ring (Right-Bottom) -> Card 4 (Bottom-Right) */}
-      <path
-        d="M 720 400 C 790 440, 840 490, 890 520"
-        stroke="rgba(255, 85, 0, 0.15)"
-        strokeWidth="1.5"
-      />
-      <path
-        d="M 720 400 C 790 440, 840 490, 890 520"
-        stroke="url(#laserGradRightBottom)"
-        strokeWidth="2"
-        strokeDasharray="10 18"
-        filter="url(#glowOrange)"
-        className="animate-[dash_2.2s_linear_infinite]"
-      />
-      <circle cx="720" cy="400" r="3.5" fill="#ff5500" filter="url(#glowOrange)" />
-      <circle cx="890" cy="520" r="4.5" fill="#ff7728" stroke="#fff" strokeWidth="1" filter="url(#glowOrange)" />
+      {/* Traveling Energy Photon */}
+      <circle r="3" fill="#ffffff" filter="url(#intenseGlow)">
+        <animateMotion
+          path="M 780 540 C 830 565, 855 545, 890 520"
+          dur="2.1s"
+          repeatCount="indefinite"
+        />
+      </circle>
+      {/* Ring Perimeter Emitter Socket */}
+      <circle cx="780" cy="540" r="4.5" fill="#ff5500" filter="url(#intenseGlow)" />
+      <circle cx="780" cy="540" r="2" fill="#ffffff" />
+      {/* Card Docking Receiver Port */}
+      <circle cx="890" cy="520" r="5" fill="#ff7728" stroke="#ffffff" strokeWidth="1.5" filter="url(#laserGlow)" />
     </svg>
   );
 };

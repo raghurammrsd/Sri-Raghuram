@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
@@ -16,14 +16,14 @@ const AcademicGimbal: React.FC = () => {
     if (groupRef.current) {
       groupRef.current.rotation.x = THREE.MathUtils.damp(
         groupRef.current.rotation.x,
-        -y * 0.22,
-        3,
+        -y * 0.18,
+        3.0,
         delta
       );
       groupRef.current.rotation.y = THREE.MathUtils.damp(
         groupRef.current.rotation.y,
-        x * 0.22,
-        3,
+        x * 0.18,
+        3.0,
         delta
       );
     }
@@ -33,19 +33,19 @@ const AcademicGimbal: React.FC = () => {
     }
 
     if (midRingRef.current) {
-      midRingRef.current.rotation.x = t * 0.35;
+      midRingRef.current.rotation.x = t * 0.3;
       midRingRef.current.rotation.y = t * 0.15;
     }
 
     if (innerRingRef.current) {
-      innerRingRef.current.rotation.y = -t * 0.45;
-      innerRingRef.current.rotation.z = t * 0.25;
+      innerRingRef.current.rotation.y = -t * 0.4;
+      innerRingRef.current.rotation.z = t * 0.2;
     }
 
     if (coreRef.current) {
-      coreRef.current.rotation.x = t * 0.5;
-      coreRef.current.rotation.y = t * 0.5;
-      const s = 1 + Math.sin(t * 3) * 0.06;
+      coreRef.current.rotation.x = t * 0.4;
+      coreRef.current.rotation.y = t * 0.4;
+      const s = 1 + Math.sin(t * 2.5) * 0.04;
       coreRef.current.scale.set(s, s, s);
     }
   });
@@ -54,19 +54,19 @@ const AcademicGimbal: React.FC = () => {
     <group ref={groupRef}>
       {/* Outer Electric Orange Gimbal Ring */}
       <mesh ref={outerRingRef}>
-        <torusGeometry args={[1.45, 0.016, 16, 100]} />
+        <torusGeometry args={[1.45, 0.016, 12, 64]} />
         <meshBasicMaterial color="#ff5500" transparent opacity={0.85} />
       </mesh>
 
       {/* Mid Warm White Gimbal Ring */}
       <mesh ref={midRingRef}>
-        <torusGeometry args={[1.2, 0.014, 16, 90]} />
+        <torusGeometry args={[1.2, 0.014, 12, 64]} />
         <meshBasicMaterial color="#ffffff" transparent opacity={0.6} />
       </mesh>
 
       {/* Inner Electric Orange Ring */}
       <mesh ref={innerRingRef}>
-        <torusGeometry args={[0.95, 0.012, 16, 80]} />
+        <torusGeometry args={[0.95, 0.012, 12, 64]} />
         <meshBasicMaterial color="#ff6611" transparent opacity={0.8} />
       </mesh>
 
@@ -86,18 +86,43 @@ const AcademicGimbal: React.FC = () => {
 };
 
 export const PedigreeSphere3D: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { rootMargin: '100px' }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="w-full h-full min-h-[260px] sm:min-h-[300px] relative pointer-events-none flex items-center justify-center">
-      <Canvas
-        camera={{ position: [0, 0, 4.0], fov: 44 }}
-        dpr={[1, 1.75]}
-        gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
-      >
-        <ambientLight intensity={0.6} />
-        <pointLight position={[3, 3, 3]} intensity={2.5} color="#ff5500" />
-        <pointLight position={[-3, -3, 2]} intensity={2.0} color="#ffffff" />
-        <AcademicGimbal />
-      </Canvas>
+    <div ref={containerRef} className="w-full h-full min-h-[180px] relative pointer-events-none flex items-center justify-center">
+      {isVisible && (
+        <Canvas
+          camera={{ position: [0, 0, 4.0], fov: 44 }}
+          dpr={1}
+          gl={{
+            antialias: false,
+            alpha: true,
+            powerPreference: 'low-power',
+            depth: false,
+            stencil: false,
+          }}
+        >
+          <ambientLight intensity={0.6} />
+          <pointLight position={[3, 3, 3]} intensity={2.5} color="#ff5500" />
+          <AcademicGimbal />
+        </Canvas>
+      )}
     </div>
   );
 };
