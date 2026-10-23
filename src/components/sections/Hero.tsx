@@ -40,87 +40,45 @@ export const Hero: React.FC<HeroProps> = ({ onCopyPip, pipCopied }) => {
           </span>
         </motion.div>
 
-        {/* Dynamic Asymmetrical Kinetic Headline (Properly Proportioned!) */}
+        {/* Kinetic Animated Headline: FROM IDEA TO IMPACT */}
         <div className="mb-6 select-none">
           <motion.div
             initial={{ opacity: 0, y: 35 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col items-center justify-center"
           >
-            {/* Stepped Tier 1: Left-Biased Upper Heading + Micro Directive Index */}
-            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 sm:-translate-x-6">
-              <span className="font-mono text-[10px] sm:text-xs font-bold text-electric-orange tracking-widest uppercase bg-electric-orange/10 border border-electric-orange/25 px-2.5 py-0.5 rounded hidden md:inline-flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-electric-orange" />
-                PHASE 01
-              </span>
-
-              <h1 className="font-syne text-4xl sm:text-6xl md:text-7xl lg:text-[5.4rem] font-black tracking-tight uppercase leading-none text-warm-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
-                FROM IDEA
-              </h1>
-
-              {/* Kinetic Directional Vector Arrow */}
-              <div className="hidden lg:flex items-center gap-1 text-electric-orange/80 animate-pulse">
-                <div className="w-6 h-[2px] bg-electric-orange" />
-                <ArrowRight className="w-5 h-5 stroke-[3]" />
-              </div>
-            </div>
-
-            {/* Stepped Tier 2: Right-Biased High-Voltage Skewed Power Block */}
-            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 sm:translate-x-6 mt-1 sm:mt-1.5">
-              <motion.div
-                whileHover={{ scale: 1.03, rotate: 0 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                className="relative group cursor-default transform -skew-x-3 sm:-skew-x-6 sm:-rotate-1"
+            <h1 className="font-syne text-4xl sm:text-6xl md:text-7xl lg:text-[6.8rem] font-black tracking-tight text-warm-white uppercase leading-[0.93] flex flex-wrap items-center justify-center gap-3 sm:gap-6">
+              <motion.span
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.15 }}
+                className="whitespace-nowrap"
               >
-                {/* Neon Drop Glow */}
-                <div className="absolute inset-0 bg-electric-orange blur-xl opacity-35 group-hover:opacity-55 transition-opacity" />
-
-                {/* Main Angled Power Block */}
-                <div
-                  style={{ backgroundColor: '#ff5500', color: '#000000' }}
-                  className="relative px-5 sm:px-8 py-1 sm:py-2 rounded-lg shadow-[0_15px_40px_rgba(255,85,0,0.4)] border-2 border-white/20 overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/35 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000" />
-
-                  <span className="font-syne text-4xl sm:text-6xl md:text-7xl lg:text-[5.2rem] font-black tracking-tight uppercase leading-none inline-block whitespace-nowrap">
-                    TO IMPACT
-                  </span>
-                </div>
-              </motion.div>
-
-              <span className="font-mono text-[10px] sm:text-xs font-bold text-warm-cream tracking-widest uppercase bg-charcoal-900/90 border border-white/10 px-2.5 py-0.5 rounded hidden md:inline-flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                PRODUCTION READY
-              </span>
-            </div>
+                FROM IDEA
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, scale: 0.9, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
+                style={{ backgroundColor: '#ff5500', color: '#000000' }}
+                className="px-5 sm:px-8 py-0.5 rounded-sm inline-block shadow-2xl font-black whitespace-nowrap"
+              >
+                TO IMPACT
+              </motion.span>
+            </h1>
           </motion.div>
         </div>
 
-        {/* Dynamic Stepped Editorial Subtitle */}
+        {/* Editorial Subtitle */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-3xl mx-auto mb-4"
         >
-          <div className="flex flex-col items-center justify-center gap-2">
-            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-              <span className="font-serif italic text-xl sm:text-3xl text-warm-cream font-normal">
-                Building Systems
-              </span>
-              <span className="font-mono text-[10px] sm:text-[11px] font-bold tracking-widest text-electric-orange bg-electric-orange/10 border border-electric-orange/30 px-3 py-0.5 rounded-full uppercase inline-flex items-center gap-1.5 shadow-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-electric-orange animate-ping" />
-                AT THE INTERSECTION OF
-              </span>
-            </div>
-
-            <div className="flex items-center justify-center">
-              <span className="font-serif italic text-xl sm:text-3xl text-warm-white font-normal underline decoration-electric-orange/50 underline-offset-8">
-                AI, Determinism & Technology
-              </span>
-            </div>
-          </div>
+          <h2 className="font-serif italic text-2xl sm:text-4xl text-warm-cream font-normal leading-tight">
+            Building Systems at the Intersection of AI, Determinism & Technology
+          </h2>
         </motion.div>
 
         {/* Supporting Pitch */}

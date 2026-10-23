@@ -56,22 +56,15 @@ export const Projects: React.FC = () => {
               </span>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight leading-tight">
-              <span className="text-warm-white">FLAGSHIP ARSENAL.</span>
-              <motion.span
-                whileHover={{ scale: 1.02 }}
-                style={{ backgroundColor: '#ff5500', color: '#000000' }}
-                className="px-4 py-0.5 rounded-sm inline-block font-black shadow-2xl cursor-default"
-              >
-                BUILT AND DEPLOYED.
-              </motion.span>
-            </div>
+            <h2 className="font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight text-warm-white leading-tight">
+              Engineered tools. <span className="text-electric-orange">Built and deployed.</span>
+            </h2>
           </motion.div>
         </div>
 
-        {/* High-Visibility Recruiter Project Selector Deck (Bold 4-Card Responsive Grid) */}
+        {/* Project Switcher Tabs */}
         <div className="pt-4 pb-2">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="flex flex-wrap items-center gap-2">
             {PROJECTS.map((proj) => {
               const isSelected = activeProjectId === proj.id;
               return (
@@ -81,51 +74,16 @@ export const Projects: React.FC = () => {
                     sound.click();
                     setActiveProjectId(proj.id);
                   }}
-                  className={`text-left p-3.5 sm:p-4 rounded-xl border transition-all duration-300 relative overflow-hidden group cursor-pointer ${
+                  className={`px-4 py-2 rounded-full font-mono text-xs tracking-wider transition-all flex items-center gap-2 border cursor-pointer ${
                     isSelected
-                      ? 'bg-charcoal-900 border-electric-orange shadow-[0_0_25px_rgba(255,85,0,0.25)] ring-1 ring-electric-orange/60'
-                      : 'bg-charcoal-900/60 border-white/15 hover:border-electric-orange/50 hover:bg-white/[0.05]'
+                      ? 'bg-warm-white text-charcoal-950 font-black shadow-lg border-warm-white'
+                      : 'bg-charcoal-900/80 text-warm-muted hover:text-warm-white hover:bg-white/[0.06] border-white/[0.08]'
                   }`}
                 >
-                  {/* Top Highlight Indicator Bar for Active Project */}
-                  {isSelected && (
-                    <motion.div
-                      layoutId="activeProjectTopBar"
-                      className="absolute top-0 left-0 right-0 h-1 bg-electric-orange shadow-[0_0_12px_#ff5500]"
-                    />
-                  )}
-
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span
-                      className={`font-mono text-xs font-black tracking-wider ${
-                        isSelected ? 'text-electric-orange' : 'text-warm-muted group-hover:text-electric-orange'
-                      }`}
-                    >
-                      {proj.number}
-                    </span>
-
-                    <span
-                      className={`font-mono text-[9px] px-2 py-0.5 rounded font-bold uppercase tracking-wider ${
-                        isSelected
-                          ? 'bg-electric-orange text-black font-black'
-                          : 'bg-white/[0.05] border border-white/10 text-warm-muted'
-                      }`}
-                    >
-                      {isSelected ? 'ACTIVE VIEW' : 'CLICK TO VIEW'}
-                    </span>
-                  </div>
-
-                  <h4
-                    className={`font-syne text-sm sm:text-base font-black tracking-tight mb-1 truncate ${
-                      isSelected ? 'text-warm-white' : 'text-warm-cream group-hover:text-white'
-                    }`}
-                  >
-                    {proj.title}
-                  </h4>
-
-                  <p className="font-mono text-[10px] text-warm-muted truncate">
-                    {projectTabMeta[proj.id] || proj.category}
-                  </p>
+                  <span className={isSelected ? 'text-charcoal-950 font-black' : 'text-electric-orange'}>
+                    {proj.number}
+                  </span>
+                  <span>{proj.title}</span>
                 </button>
               );
             })}
@@ -155,7 +113,7 @@ export const Projects: React.FC = () => {
                   </span>
                 </div>
 
-                <h3 className="font-syne text-3xl sm:text-4xl font-black text-electric-orange tracking-tight leading-tight mb-3">
+                <h3 className="font-syne text-3xl sm:text-4xl font-black text-warm-white tracking-tight leading-tight mb-3">
                   {activeProject.title}
                 </h3>
 

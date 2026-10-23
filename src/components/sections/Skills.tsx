@@ -34,15 +34,9 @@ export const Skills: React.FC = () => {
             </span>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight leading-tight">
-            <span className="text-warm-white">TECHNICAL ARSENAL.</span>
-            <span
-              style={{ backgroundColor: '#ff5500', color: '#000000' }}
-              className="px-4 py-0.5 rounded-sm inline-block font-black shadow-xl"
-            >
-              ZERO FLUFF. REAL CODE.
-            </span>
-          </div>
+          <h2 className="font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight text-warm-white leading-tight">
+            Technical Matrix. <span className="text-electric-orange">Zero fluff. Real code.</span>
+          </h2>
 
           <p className="font-sans text-xs sm:text-sm text-warm-muted mt-2 max-w-xl">
             Grounded in systems engineering, deterministic data structures, and production delivery.
@@ -100,7 +94,7 @@ export const Skills: React.FC = () => {
               <span className="font-mono text-[10px] text-electric-orange font-bold uppercase tracking-wider block mb-1">
                 ACTIVE DOMAIN
               </span>
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-electric-orange">
+              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white">
                 {activeCategory.title}
               </h3>
             </div>

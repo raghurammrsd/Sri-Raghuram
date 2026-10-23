@@ -99,8 +99,8 @@ export const AreasOfExpertise: React.FC = () => {
                 </span>
               </div>
 
-              {/* Heading in Electric Orange as requested */}
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-electric-orange tracking-tight mb-2.5">
+              {/* Heading in Warm White */}
+              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white group-hover:text-white tracking-tight mb-2.5">
                 {cards[0].title}
               </h3>
 
@@ -144,8 +144,8 @@ export const AreasOfExpertise: React.FC = () => {
                 </span>
               </div>
 
-              {/* Heading in Electric Orange */}
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-electric-orange tracking-tight mb-2.5">
+              {/* Heading in Warm White */}
+              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white group-hover:text-white tracking-tight mb-2.5">
                 {cards[1].title}
               </h3>
 
@@ -177,7 +177,7 @@ export const AreasOfExpertise: React.FC = () => {
           </div>
 
           <h2 className="text-4xl sm:text-6xl font-light text-warm-white tracking-tight mb-3">
-            Areas of <span className="font-serif italic font-normal text-electric-orange">Expertise</span>
+            Areas of <span className="font-serif italic font-normal text-warm-white">Expertise</span>
           </h2>
 
           <p className="font-sans text-xs sm:text-sm text-warm-cream/90 max-w-sm leading-relaxed mb-6">
@@ -227,8 +227,8 @@ export const AreasOfExpertise: React.FC = () => {
                 </span>
               </div>
 
-              {/* Heading in Electric Orange */}
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-electric-orange tracking-tight mb-2.5">
+              {/* Heading in Warm White */}
+              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white group-hover:text-white tracking-tight mb-2.5">
                 {cards[2].title}
               </h3>
 
@@ -272,8 +272,8 @@ export const AreasOfExpertise: React.FC = () => {
                 </span>
               </div>
 
-              {/* Heading in Electric Orange */}
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-electric-orange tracking-tight mb-2.5">
+              {/* Heading in Warm White */}
+              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white group-hover:text-white tracking-tight mb-2.5">
                 {cards[3].title}
               </h3>
 
