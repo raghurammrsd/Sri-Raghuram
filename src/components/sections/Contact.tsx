@@ -84,7 +84,7 @@ export const Contact: React.FC<ContactProps> = ({ onCopyEmail, copied }) => {
           <div className="p-4 sm:p-5 rounded-xl bg-charcoal-900/80 border border-white/[0.08] backdrop-blur-xl flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <span className="font-mono text-[10px] text-warm-muted uppercase">EMAIL</span>
+                <span className="font-mono text-[10px] font-bold tracking-wider text-electric-orange uppercase">EMAIL</span>
                 <Mail className="w-3.5 h-3.5 text-electric-orange" />
               </div>
               <p className="font-mono text-xs text-warm-white truncate font-semibold">
@@ -107,7 +107,7 @@ export const Contact: React.FC<ContactProps> = ({ onCopyEmail, copied }) => {
           <div className="p-4 sm:p-5 rounded-xl bg-charcoal-900/80 border border-white/[0.08] backdrop-blur-xl flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <span className="font-mono text-[10px] text-warm-muted uppercase">LINKEDIN</span>
+                <span className="font-mono text-[10px] font-bold tracking-wider text-electric-orange uppercase">LINKEDIN</span>
                 <LinkedinIcon className="w-3.5 h-3.5 text-electric-orange" />
               </div>
               <p className="font-mono text-xs text-warm-white truncate font-semibold">
@@ -130,7 +130,7 @@ export const Contact: React.FC<ContactProps> = ({ onCopyEmail, copied }) => {
           <div className="p-4 sm:p-5 rounded-xl bg-charcoal-900/80 border border-white/[0.08] backdrop-blur-xl flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <span className="font-mono text-[10px] text-warm-muted uppercase">GITHUB</span>
+                <span className="font-mono text-[10px] font-bold tracking-wider text-electric-orange uppercase">GITHUB</span>
                 <GithubIcon className="w-3.5 h-3.5 text-electric-orange" />
               </div>
               <p className="font-mono text-xs text-warm-white truncate font-semibold">
@@ -153,7 +153,7 @@ export const Contact: React.FC<ContactProps> = ({ onCopyEmail, copied }) => {
           <div className="p-4 sm:p-5 rounded-xl bg-charcoal-900/80 border border-white/[0.08] backdrop-blur-xl flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <span className="font-mono text-[10px] text-warm-muted uppercase">PHONE</span>
+                <span className="font-mono text-[10px] font-bold tracking-wider text-electric-orange uppercase">PHONE</span>
                 <Phone className="w-3.5 h-3.5 text-electric-orange" />
               </div>
               <p className="font-mono text-xs text-warm-white truncate font-semibold">
@@ -174,7 +174,7 @@ export const Contact: React.FC<ContactProps> = ({ onCopyEmail, copied }) => {
         {/* Bottom Ticker */}
         <div className="pt-2 border-t border-white/[0.06] flex items-center justify-between font-mono text-[11px] text-warm-dark">
           <div>
-            <span>MOHAN SRI RAGHURAM · BASED IN INDIA · GLOBAL MISSIONS</span>
+            <span className="text-warm-muted">MOHAN SRI RAGHURAM <span className="text-electric-orange font-bold">·</span> BASED IN INDIA <span className="text-electric-orange font-bold">·</span> GLOBAL MISSIONS</span>
           </div>
           <div>
             <span className="text-electric-orange font-bold">●</span> ACTIVE 2026

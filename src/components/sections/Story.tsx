@@ -134,25 +134,25 @@ export const Story: React.FC = () => {
 
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="font-mono text-2xl font-black text-warm-dark group-hover:text-electric-orange transition-colors">
+                    <span className="font-mono text-2xl font-black text-electric-orange">
                       {item.number}
                     </span>
-                    <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/10 flex items-center justify-center text-warm-muted group-hover:text-electric-orange group-hover:border-electric-orange/40 transition-all">
+                    <div className="w-8 h-8 rounded-lg bg-electric-orange/10 border border-electric-orange/30 flex items-center justify-center text-electric-orange transition-all">
                       <Icon className="w-4 h-4" />
                     </div>
                   </div>
 
-                  <h3 className="font-syne text-xl font-bold text-electric-orange tracking-tight mb-3">
+                  <h3 className="font-syne text-xl font-bold text-warm-white group-hover:text-electric-orange transition-colors tracking-tight mb-3">
                     {item.title}
                   </h3>
 
-                  <p className="font-sans text-xs sm:text-sm text-warm-muted leading-relaxed">
+                  <p className="font-sans text-xs sm:text-sm text-warm-cream/90 leading-relaxed font-normal">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="pt-6 border-t border-white/[0.08] mt-6 flex items-center justify-between font-mono text-[11px] text-warm-cream">
-                  <span className="tracking-wider">{item.metric}</span>
+                <div className="pt-6 border-t border-white/[0.08] mt-6 flex items-center justify-between font-mono text-[11px]">
+                  <span className="tracking-wider text-electric-orange font-bold font-mono">{item.metric}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-electric-orange group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </div>
               </motion.div>
@@ -170,9 +170,9 @@ export const Story: React.FC = () => {
         >
           <div className="flex items-center gap-2">
             <span className="text-electric-orange">●</span>
-            <span>SYSTEM ARCHITECTURE PRINCIPLES</span>
+            <span className="text-warm-muted">SYSTEM ARCHITECTURE PRINCIPLES</span>
           </div>
-          <span>ZERO GUESSWORK · HIGH PRECISION</span>
+          <span className="text-electric-orange font-bold font-mono">ZERO GUESSWORK · HIGH PRECISION</span>
         </motion.div>
       </div>
     </section>

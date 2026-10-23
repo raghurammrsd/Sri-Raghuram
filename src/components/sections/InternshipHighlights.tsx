@@ -115,7 +115,7 @@ export const InternshipHighlights: React.FC = () => {
                   </span>
                 </div>
 
-                <h3 className="font-syne text-3xl sm:text-4xl font-black text-electric-orange tracking-tight leading-tight mb-3">
+                <h3 className="font-syne text-3xl sm:text-4xl font-black text-warm-white tracking-tight leading-tight mb-3">
                   {activeSystem.title}
                 </h3>
 
@@ -130,8 +130,8 @@ export const InternshipHighlights: React.FC = () => {
                     className="p-5 rounded-2xl bg-charcoal-900/80 border border-white/10 hover:border-white/30 backdrop-blur-xl shadow-xl transition-all"
                   >
                     <div className="flex items-center gap-1.5 mb-2">
-                      <AlertCircle className="w-3.5 h-3.5 text-warm-muted" />
-                      <span className="font-mono text-[10px] text-warm-muted uppercase tracking-widest font-bold">
+                      <AlertCircle className="w-3.5 h-3.5 text-electric-orange" />
+                      <span className="font-mono text-[10px] text-electric-orange uppercase tracking-widest font-bold">
                         THE ARCHITECTURAL BOTTLENECK:
                       </span>
                     </div>
@@ -162,7 +162,7 @@ export const InternshipHighlights: React.FC = () => {
                     <motion.span
                       key={tech}
                       whileHover={{ y: -2, scale: 1.05 }}
-                      className="font-mono text-[11px] px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-warm-cream hover:border-electric-orange/50 hover:text-white transition-all cursor-default"
+                      className="font-mono text-[11px] px-3 py-1 rounded-full bg-white/[0.04] border border-electric-orange/30 text-warm-cream hover:border-electric-orange hover:text-white transition-all cursor-default"
                     >
                       {tech}
                     </motion.span>
@@ -231,7 +231,7 @@ export const InternshipHighlights: React.FC = () => {
                     <span className="w-1.5 h-1.5 rounded-full bg-electric-orange group-hover:animate-ping" />
                     <span className="text-[11px] text-warm-muted uppercase tracking-wider">{m.label}</span>
                   </div>
-                  <span className="text-xs font-black text-warm-white group-hover:text-electric-orange transition-colors">
+                  <span className="text-xs font-black text-electric-orange">
                     {m.value}
                   </span>
                 </motion.div>
@@ -244,9 +244,9 @@ export const InternshipHighlights: React.FC = () => {
         <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between font-mono text-[11px] text-warm-dark">
           <div className="flex items-center gap-2">
             <span className="text-electric-orange">●</span>
-            <span className="text-warm-muted">DEPLOYED AT THE AI SIGNAL / ONE ATLAS · FRONTIER ATLAS PLATFORM</span>
+            <span className="text-warm-muted">DEPLOYED AT <span className="text-electric-orange font-semibold">THE AI SIGNAL / ONE ATLAS</span> · <span className="text-warm-white">FRONTIER ATLAS PLATFORM</span></span>
           </div>
-          <span className="hidden sm:inline text-warm-dark">600+ VERIFIED INGESTION SOURCES</span>
+          <span className="hidden sm:inline text-electric-orange font-bold font-mono">600+ VERIFIED INGESTION SOURCES</span>
         </div>
       </div>
     </section>

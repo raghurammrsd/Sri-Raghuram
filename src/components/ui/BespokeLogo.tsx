@@ -96,7 +96,7 @@ export const BespokeLogo: React.FC = () => {
           </span>
           <span className="w-1.5 h-1.5 rounded-full bg-electric-orange shadow-[0_0_8px_#ff5500] animate-pulse" />
         </div>
-        <span className="font-mono text-[9px] text-warm-muted tracking-widest uppercase mt-0.5">
+        <span className="font-mono text-[9px] text-electric-orange font-bold tracking-widest uppercase mt-0.5">
           AI SYSTEMS ARCHITECT
         </span>
       </div>

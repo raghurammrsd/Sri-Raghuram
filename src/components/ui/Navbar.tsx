@@ -119,7 +119,7 @@ export const Navbar: React.FC = () => {
                     />
                   )}
 
-                  <span className={`text-[10px] ${isActive ? 'text-electric-orange font-bold' : 'text-warm-dark'}`}>
+                  <span className={`text-[10px] ${isActive ? 'text-electric-orange font-bold' : 'text-electric-orange/80 font-bold'}`}>
                     {link.num}
                   </span>
                   <span className={isActive ? 'text-warm-white font-bold' : 'text-warm-muted'}>
@@ -142,7 +142,7 @@ export const Navbar: React.FC = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
               </span>
-              <span className="font-bold text-warm-white">IST</span>
+              <span className="font-bold text-electric-orange">IST</span>
               <span className="text-warm-muted">{time || 'LIVE'}</span>
             </div>
 
@@ -161,7 +161,7 @@ export const Navbar: React.FC = () => {
               ) : (
                 <VolumeX className="w-3.5 h-3.5 text-warm-dark" />
               )}
-              <span className="hidden md:inline font-mono text-[9px] font-bold text-warm-muted">
+              <span className="hidden md:inline font-mono text-[9px] font-bold text-electric-orange">
                 {soundEnabled ? 'FX' : 'OFF'}
               </span>
             </button>
