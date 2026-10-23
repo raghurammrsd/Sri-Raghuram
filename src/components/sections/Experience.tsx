@@ -11,7 +11,7 @@ export const Experience: React.FC = () => {
   return (
     <section
       id="experience"
-      className="scroll-mt-20 min-h-screen flex flex-col justify-between py-12 sm:py-16 border-b border-white/[0.08] relative bg-charcoal-950"
+      className="scroll-mt-20 min-h-screen lg:h-screen lg:max-h-[920px] flex flex-col justify-between py-8 sm:py-12 border-b border-white/[0.08] relative bg-charcoal-950 overflow-hidden"
     >
       {/* Background Ambient Glow */}
       <div className="absolute top-1/2 right-1/4 w-[600px] h-[600px] bg-electric-orange/[0.04] rounded-full blur-[200px] pointer-events-none" />
@@ -35,9 +35,16 @@ export const Experience: React.FC = () => {
               </span>
             </div>
 
-            <h2 className="font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight text-warm-white leading-tight">
-              Academic Foundation. <span className="text-electric-orange">Verified rigor.</span>
-            </h2>
+            <div className="flex flex-wrap items-center gap-3 font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight leading-tight">
+              <span className="text-warm-white">ACADEMIC FOUNDATION.</span>
+              <motion.span
+                whileHover={{ scale: 1.02 }}
+                style={{ backgroundColor: '#ff5500', color: '#000000' }}
+                className="px-4 py-0.5 rounded-sm inline-block font-black shadow-2xl cursor-default"
+              >
+                VERIFIED RIGOR.
+              </motion.span>
+            </div>
           </motion.div>
 
           <div className="font-mono text-xs text-warm-muted flex items-center gap-2">
@@ -63,7 +70,7 @@ export const Experience: React.FC = () => {
                     <GraduationCap className="w-6 h-6 text-electric-orange" />
                   </div>
                   <div>
-                    <h3 className="font-syne text-2xl font-bold text-warm-white leading-tight">
+                    <h3 className="font-syne text-2xl font-black text-electric-orange leading-tight">
                       {EDUCATION_DATA.institution}
                     </h3>
                     <p className="font-mono text-xs text-warm-muted">{EDUCATION_DATA.location}</p>
@@ -143,7 +150,7 @@ export const Experience: React.FC = () => {
             <div className="p-6 rounded-2xl bg-charcoal-900/80 border border-white/10 backdrop-blur-2xl flex flex-col justify-between shadow-2xl space-y-4">
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-syne text-xl font-bold text-warm-white">
+                  <h4 className="font-syne text-xl font-black text-electric-orange">
                     Official Resume
                   </h4>
                   <span className="font-mono text-[10px] text-warm-white font-bold px-2 py-0.5 rounded bg-white/10 border border-white/20">

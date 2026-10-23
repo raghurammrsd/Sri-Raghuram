@@ -27,7 +27,7 @@ export const Contact: React.FC<ContactProps> = ({ onCopyEmail, copied }) => {
   return (
     <section
       id="contact"
-      className="scroll-mt-20 min-h-screen flex flex-col justify-between py-12 sm:py-16 border-b border-white/[0.08] relative bg-charcoal-950"
+      className="scroll-mt-20 min-h-screen lg:h-screen lg:max-h-[920px] flex flex-col justify-between py-6 sm:py-8 lg:py-10 border-b border-white/[0.08] relative overflow-hidden bg-charcoal-950"
     >
       {/* Background Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[500px] bg-electric-glow rounded-full blur-[200px] pointer-events-none opacity-20" />

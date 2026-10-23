@@ -13,7 +13,7 @@ export const Skills: React.FC = () => {
   return (
     <section
       id="skills"
-      className="scroll-mt-20 min-h-screen flex flex-col justify-between py-12 sm:py-16 border-b border-white/[0.08] relative bg-charcoal-950"
+      className="scroll-mt-20 min-h-screen lg:h-screen lg:max-h-[920px] flex flex-col justify-between py-8 sm:py-12 border-b border-white/[0.08] relative bg-charcoal-950 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 my-auto flex flex-col justify-between h-full">
         {/* Section Header with Kinetic Typography */}
@@ -34,9 +34,15 @@ export const Skills: React.FC = () => {
             </span>
           </div>
 
-          <h2 className="font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight text-warm-white leading-tight">
-            Technical Matrix. <span className="text-electric-orange">Zero fluff. Real code.</span>
-          </h2>
+          <div className="flex flex-wrap items-center gap-3 font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight leading-tight">
+            <span className="text-warm-white">TECHNICAL ARSENAL.</span>
+            <span
+              style={{ backgroundColor: '#ff5500', color: '#000000' }}
+              className="px-4 py-0.5 rounded-sm inline-block font-black shadow-xl"
+            >
+              ZERO FLUFF. REAL CODE.
+            </span>
+          </div>
 
           <p className="font-sans text-xs sm:text-sm text-warm-muted mt-2 max-w-xl">
             Grounded in systems engineering, deterministic data structures, and production delivery.
@@ -94,7 +100,7 @@ export const Skills: React.FC = () => {
               <span className="font-mono text-[10px] text-electric-orange font-bold uppercase tracking-wider block mb-1">
                 ACTIVE DOMAIN
               </span>
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white">
+              <h3 className="font-syne text-xl sm:text-2xl font-black text-electric-orange">
                 {activeCategory.title}
               </h3>
             </div>

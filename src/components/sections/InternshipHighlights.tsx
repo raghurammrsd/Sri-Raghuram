@@ -16,7 +16,7 @@ export const InternshipHighlights: React.FC = () => {
   return (
     <section
       id="internship"
-      className="scroll-mt-20 min-h-screen flex flex-col justify-between py-12 sm:py-16 border-b border-white/[0.08] relative bg-charcoal-950"
+      className="scroll-mt-20 min-h-screen lg:h-screen lg:max-h-[920px] flex flex-col justify-between py-8 sm:py-12 border-b border-white/[0.08] relative bg-charcoal-950 overflow-hidden"
     >
       {/* Dynamic Ambient Glow */}
       <div className="absolute top-1/2 right-1/4 w-[600px] h-[600px] bg-electric-orange/[0.045] rounded-full blur-[200px] pointer-events-none" />
@@ -40,9 +40,16 @@ export const InternshipHighlights: React.FC = () => {
               </span>
             </div>
 
-            <h2 className="font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight text-warm-white leading-tight">
-              Production pipelines. <span className="text-electric-orange">Scaled to 600+ sources.</span>
-            </h2>
+            <div className="flex flex-wrap items-center gap-3 font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight leading-tight">
+              <span className="text-warm-white">PRODUCTION PIPELINES.</span>
+              <motion.span
+                whileHover={{ scale: 1.02 }}
+                style={{ backgroundColor: '#ff5500', color: '#000000' }}
+                className="px-4 py-0.5 rounded-sm inline-block font-black shadow-2xl cursor-default"
+              >
+                SCALED TO 600+ SOURCES.
+              </motion.span>
+            </div>
           </motion.div>
 
           {/* System Selector Switcher with Animated Highlight */}
@@ -108,7 +115,7 @@ export const InternshipHighlights: React.FC = () => {
                   </span>
                 </div>
 
-                <h3 className="font-syne text-3xl sm:text-4xl font-black text-warm-white tracking-tight leading-tight mb-3">
+                <h3 className="font-syne text-3xl sm:text-4xl font-black text-electric-orange tracking-tight leading-tight mb-3">
                   {activeSystem.title}
                 </h3>
 

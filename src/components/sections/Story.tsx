@@ -34,7 +34,7 @@ export const Story: React.FC = () => {
   return (
     <section
       id="story"
-      className="scroll-mt-20 min-h-screen flex flex-col justify-between py-12 sm:py-16 border-b border-white/[0.08] relative bg-charcoal-950"
+      className="scroll-mt-20 min-h-screen lg:h-screen lg:max-h-[920px] flex flex-col justify-between py-8 sm:py-12 border-b border-white/[0.08] relative bg-charcoal-950 overflow-hidden"
     >
       {/* Background Volumetric Depth */}
       <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-electric-orange/[0.035] rounded-full blur-[180px] pointer-events-none" />
@@ -60,12 +60,32 @@ export const Story: React.FC = () => {
           </motion.div>
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-            <div>
-              <h2 className="font-syne text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-warm-white leading-[0.95]">
+            <div className="overflow-hidden">
+              {/* Line 1 Kinetic Reveal */}
+              <motion.h2
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                className="font-syne text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-warm-white leading-[0.95]"
+              >
                 Not just models.
-                <br />
-                <span className="text-electric-orange">Systems that work.</span>
-              </h2>
+              </motion.h2>
+
+              {/* Line 2 Kinetic Reveal with Solid Orange Banner */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.92, y: 30 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <span
+                  style={{ backgroundColor: '#ff5500', color: '#000000' }}
+                  className="px-4 sm:px-6 py-1 rounded-sm inline-block font-black shadow-2xl mt-2 font-syne text-3xl sm:text-5xl lg:text-6xl tracking-tight uppercase"
+                >
+                  SYSTEMS THAT WORK.
+                </span>
+              </motion.div>
             </div>
 
             {/* Paragraph with Smooth Unmasking */}
@@ -122,7 +142,7 @@ export const Story: React.FC = () => {
                     </div>
                   </div>
 
-                  <h3 className="font-syne text-xl font-bold text-warm-white group-hover:text-electric-orange transition-colors tracking-tight mb-3">
+                  <h3 className="font-syne text-xl font-bold text-electric-orange tracking-tight mb-3">
                     {item.title}
                   </h3>
 
