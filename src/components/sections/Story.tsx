@@ -84,7 +84,7 @@ export const Story: React.FC = () => {
                   <span className="w-2 h-2 rounded-full bg-white/20 group-hover:bg-electric-orange transition-colors" />
                 </div>
 
-                <h3 className="font-syne text-xl font-bold text-warm-white tracking-tight mb-3">
+                <h3 className="font-syne text-xl font-bold text-electric-orange tracking-tight mb-3">
                   {item.title}
                 </h3>
 

@@ -85,7 +85,7 @@ export const Skills: React.FC = () => {
               <span className="font-mono text-[10px] text-electric-orange font-bold uppercase tracking-wider block mb-1">
                 ACTIVE DOMAIN
               </span>
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white">
+              <h3 className="font-syne text-xl sm:text-2xl font-black text-electric-orange">
                 {activeCategory.title}
               </h3>
             </div>

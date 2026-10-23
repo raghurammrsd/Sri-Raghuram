@@ -99,7 +99,7 @@ export const Projects: React.FC = () => {
                   </span>
                 </div>
 
-                <h3 className="font-syne text-3xl sm:text-4xl font-black text-warm-white tracking-tight leading-tight mb-3">
+                <h3 className="font-syne text-3xl sm:text-4xl font-black text-electric-orange tracking-tight leading-tight mb-3">
                   {activeProject.title}
                 </h3>
 

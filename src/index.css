@@ -62,6 +62,16 @@ html, body {
   color: #070709;
 }
 
+/* Traveling Laser Conduits */
+@keyframes dash {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -56;
+  }
+}
+
 /* Subtle grid */
 .tech-grid {
   background-image: radial-gradient(rgba(245, 242, 235, 0.06) 1px, transparent 1px);

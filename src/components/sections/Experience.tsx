@@ -57,7 +57,7 @@ export const Experience: React.FC = () => {
                     <GraduationCap className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-syne text-2xl font-bold text-warm-white leading-tight">
+                    <h3 className="font-syne text-2xl font-black text-electric-orange leading-tight">
                       {EDUCATION_DATA.institution}
                     </h3>
                     <p className="font-mono text-xs text-warm-muted">{EDUCATION_DATA.location}</p>
@@ -133,7 +133,7 @@ export const Experience: React.FC = () => {
             <div className="p-6 rounded-2xl bg-charcoal-900/60 border border-white/[0.08] backdrop-blur-xl flex flex-col justify-between shadow-2xl space-y-4">
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-syne text-xl font-bold text-warm-white">
+                  <h4 className="font-syne text-xl font-black text-electric-orange">
                     Official Resume
                   </h4>
                   <span className="font-mono text-[10px] text-warm-white font-bold px-2 py-0.5 rounded bg-white/10 border border-white/20">
