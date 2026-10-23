@@ -32,12 +32,12 @@ export const Projects: React.FC = () => {
   return (
     <section
       id="projects"
-      className="scroll-mt-20 min-h-screen lg:h-screen lg:max-h-[960px] flex flex-col justify-between py-8 sm:py-12 border-b border-white/[0.08] relative bg-charcoal-950 overflow-hidden"
+      className="scroll-mt-20 min-h-screen flex flex-col justify-between py-10 sm:py-14 border-b border-white/[0.08] relative bg-transparent"
     >
       {/* Background Ambient Glow */}
       <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] bg-electric-orange/[0.04] rounded-full blur-[200px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 my-auto flex flex-col justify-between h-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 flex flex-col justify-between space-y-6">
         {/* Section Header */}
         <div className="pb-4 border-b border-white/[0.08]">
           <motion.div
@@ -133,7 +133,7 @@ export const Projects: React.FC = () => {
         </div>
 
         {/* 12-Column Case Study: Left Narrative | Right 3D Reactor & Architecture Specs */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center my-auto py-4 sm:py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start pt-2 pb-4">
           {/* Left Column (7 Cols): The Architectural Reality */}
           <AnimatePresence mode="wait">
             <motion.div
@@ -210,7 +210,7 @@ export const Projects: React.FC = () => {
                 </div>
               </div>
 
-              {/* Prominent High-Visibility Recruiter Action Buttons */}
+              {/* Prominent High-Visibility Recruiter Action Buttons (Glassomorphic) */}
               <div className="flex flex-wrap items-center gap-3 pt-2 border-t border-white/[0.08]">
                 {activeProject.links.liveDemo && (
                   <Magnetic strength={0.25}>
@@ -219,7 +219,7 @@ export const Projects: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => sound.click()}
-                      className="px-6 py-3.5 rounded-full font-mono text-xs font-black tracking-wider transition-all flex items-center gap-2 bg-electric-orange text-charcoal-950 hover:bg-white hover:text-charcoal-950 shadow-xl shadow-electric-orange/25 hover:scale-105 active:scale-95 cursor-pointer"
+                      className="px-6 py-3.5 rounded-full font-mono text-xs font-black tracking-wider transition-all flex items-center gap-2 bg-gradient-to-r from-electric-orange to-electric-light text-charcoal-950 backdrop-blur-xl border border-white/30 shadow-[0_0_25px_rgba(255,85,0,0.35),inset_0_1px_0_rgba(255,255,255,0.4)] hover:shadow-[0_0_35px_rgba(255,85,0,0.6)] hover:scale-105 active:scale-95 cursor-pointer"
                     >
                       <Globe className="w-4 h-4 stroke-[2.5]" />
                       <span className="font-black">
@@ -237,7 +237,7 @@ export const Projects: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => sound.click()}
-                      className="px-6 py-3.5 rounded-full bg-charcoal-900/90 hover:bg-white/[0.1] border border-white/20 hover:border-white/40 text-warm-white font-mono text-xs font-bold tracking-wider transition-all flex items-center gap-2 hover:scale-105 active:scale-95"
+                      className="px-6 py-3.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] backdrop-blur-xl border border-white/20 hover:border-white/40 text-warm-white font-mono text-xs font-bold tracking-wider transition-all flex items-center gap-2 hover:scale-105 active:scale-95 shadow-lg shadow-black/40"
                     >
                       <GithubIcon className="w-4 h-4" />
                       <span>GITHUB REPOSITORY</span>
@@ -249,7 +249,7 @@ export const Projects: React.FC = () => {
                 {activeProject.links.github && (
                   <button
                     onClick={() => handleCopyClone(activeProject.links.github!)}
-                    className="px-4 py-3.5 rounded-full border border-white/10 hover:border-white/25 text-warm-muted hover:text-warm-white font-mono text-xs tracking-wider transition-all flex items-center gap-2 bg-charcoal-900/60 hover:scale-105 active:scale-95 cursor-pointer"
+                    className="px-4 py-3.5 rounded-full bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-xl border border-white/10 hover:border-white/25 text-warm-muted hover:text-warm-white font-mono text-xs tracking-wider transition-all flex items-center gap-2 hover:scale-105 active:scale-95 cursor-pointer shadow-lg shadow-black/30"
                     title="Copy git clone command"
                   >
                     {copiedClone ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <GitFork className="w-3.5 h-3.5 text-electric-orange" />}

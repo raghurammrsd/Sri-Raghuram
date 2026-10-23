@@ -59,6 +59,18 @@ const NeuralTensorFieldGPU: React.FC = () => {
   const groupRef = useRef<THREE.Group>(null);
   const shaderMatRef = useRef<THREE.ShaderMaterial>(null);
   const wireMatRef = useRef<THREE.ShaderMaterial>(null);
+  const mouseRef = useRef(new THREE.Vector2(0, 0));
+  const targetRef = useRef(new THREE.Vector2(0, 0));
+
+  // Global window mouse tracking so 3D reacts even through overlay text
+  useEffect(() => {
+    const onPointerMove = (e: MouseEvent) => {
+      targetRef.current.x = (e.clientX / window.innerWidth) * 2 - 1;
+      targetRef.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
+    };
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+    return () => window.removeEventListener('pointermove', onPointerMove);
+  }, []);
 
   // Optimized grid dimensions (Lightweight, super smooth on all devices)
   const geo = useMemo(() => new THREE.PlaneGeometry(15, 9, 36, 24), []);
@@ -73,29 +85,32 @@ const NeuralTensorFieldGPU: React.FC = () => {
 
   useFrame((state, delta) => {
     const t = state.clock.getElapsedTime();
-    const { x, y } = state.pointer;
+
+    // Smooth damp mouse position
+    mouseRef.current.x = THREE.MathUtils.damp(mouseRef.current.x, targetRef.current.x, 3.5, delta);
+    mouseRef.current.y = THREE.MathUtils.damp(mouseRef.current.y, targetRef.current.y, 3.5, delta);
 
     // Update uniforms directly to GPU
     if (shaderMatRef.current) {
       shaderMatRef.current.uniforms.uTime.value = t;
-      shaderMatRef.current.uniforms.uPointer.value.set(x, y);
+      shaderMatRef.current.uniforms.uPointer.value.copy(mouseRef.current);
     }
     if (wireMatRef.current) {
       wireMatRef.current.uniforms.uTime.value = t;
-      wireMatRef.current.uniforms.uPointer.value.set(x, y);
+      wireMatRef.current.uniforms.uPointer.value.copy(mouseRef.current);
     }
 
-    // Smooth group parallax
+    // Smooth group parallax reacting to cursor
     if (groupRef.current) {
       groupRef.current.rotation.x = THREE.MathUtils.damp(
         groupRef.current.rotation.x,
-        -0.55 - y * 0.12,
+        -0.55 - mouseRef.current.y * 0.18,
         3.0,
         delta
       );
       groupRef.current.rotation.y = THREE.MathUtils.damp(
         groupRef.current.rotation.y,
-        x * 0.15,
+        mouseRef.current.x * 0.22,
         3.0,
         delta
       );

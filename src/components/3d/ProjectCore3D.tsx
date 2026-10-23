@@ -151,7 +151,7 @@ export const ProjectCore3D: React.FC<ProjectCoreProps> = ({ colorHex }) => {
   }, []);
 
   return (
-    <div ref={containerRef} className="w-full h-full min-h-[200px] relative pointer-events-none flex items-center justify-center">
+    <div ref={containerRef} className="w-full h-full min-h-[200px] relative pointer-events-auto cursor-grab active:cursor-grabbing flex items-center justify-center">
       {isVisible && (
         <Canvas
           camera={{ position: [0, 0, 3.8], fov: 45 }}

@@ -11,12 +11,12 @@ export const Experience: React.FC = () => {
   return (
     <section
       id="experience"
-      className="scroll-mt-20 min-h-screen lg:h-screen lg:max-h-[920px] flex flex-col justify-between py-8 sm:py-12 border-b border-white/[0.08] relative bg-charcoal-950 overflow-hidden"
+      className="scroll-mt-20 min-h-screen flex flex-col justify-between py-10 sm:py-14 border-b border-white/[0.08] relative bg-transparent"
     >
       {/* Background Ambient Glow */}
       <div className="absolute top-1/2 right-1/4 w-[600px] h-[600px] bg-electric-orange/[0.04] rounded-full blur-[200px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 my-auto flex flex-col justify-between h-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 flex flex-col justify-between space-y-6">
         {/* Section Header with Staggered Kinetic Typography */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-white/[0.08]">
           <motion.div
@@ -167,10 +167,10 @@ export const Experience: React.FC = () => {
                   href={PERSONAL_INFO.resumePdf}
                   download="Mohan_Sri_Raghuram_resume.pdf"
                   onClick={() => sound.click()}
-                  className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-electric-orange text-white font-mono text-xs font-black tracking-wider hover:scale-105 active:scale-95 transition-all shadow-xl shadow-electric-orange/25 cursor-pointer"
+                  className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-gradient-to-r from-electric-orange via-electric-orange to-electric-light text-charcoal-950 font-mono text-xs font-black tracking-wider hover:scale-105 active:scale-95 transition-all backdrop-blur-xl border border-white/30 shadow-[0_0_25px_rgba(255,85,0,0.35),inset_0_1px_0_rgba(255,255,255,0.4)] cursor-pointer"
                   data-cursor-text="DOWNLOAD"
                 >
-                  <FileDown className="w-4 h-4" />
+                  <FileDown className="w-4 h-4 stroke-[2.5]" />
                   <span>DOWNLOAD VERIFIED RESUME (PDF)</span>
                 </a>
               </Magnetic>

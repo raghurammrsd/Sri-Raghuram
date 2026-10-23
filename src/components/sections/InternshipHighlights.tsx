@@ -16,12 +16,12 @@ export const InternshipHighlights: React.FC = () => {
   return (
     <section
       id="internship"
-      className="scroll-mt-20 min-h-screen lg:h-screen lg:max-h-[920px] flex flex-col justify-between py-8 sm:py-12 border-b border-white/[0.08] relative bg-charcoal-950 overflow-hidden"
+      className="scroll-mt-20 min-h-screen flex flex-col justify-between py-10 sm:py-14 border-b border-white/[0.08] relative bg-transparent"
     >
       {/* Dynamic Ambient Glow */}
       <div className="absolute top-1/2 right-1/4 w-[600px] h-[600px] bg-electric-orange/[0.045] rounded-full blur-[200px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 my-auto flex flex-col justify-between h-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 flex flex-col justify-between space-y-6">
         {/* Section Header with Staggered Kinetic Typography */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-white/[0.08]">
           <motion.div
@@ -93,7 +93,7 @@ export const InternshipHighlights: React.FC = () => {
         </div>
 
         {/* Executive Case Study: Left Narrative (3D Tilt Cards) | Right Interactive Visualizer */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-auto py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start pt-2 pb-4">
           {/* Left Column (7 Cols): The Engineering Reality */}
           <AnimatePresence mode="wait">
             <motion.div

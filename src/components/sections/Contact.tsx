@@ -27,12 +27,12 @@ export const Contact: React.FC<ContactProps> = ({ onCopyEmail, copied }) => {
   return (
     <section
       id="contact"
-      className="scroll-mt-20 min-h-screen lg:h-screen lg:max-h-[920px] flex flex-col justify-between py-6 sm:py-8 lg:py-10 border-b border-white/[0.08] relative overflow-hidden bg-charcoal-950"
+      className="scroll-mt-20 min-h-screen flex flex-col justify-between py-10 sm:py-14 border-b border-white/[0.08] relative bg-transparent"
     >
       {/* Background Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[500px] bg-electric-glow rounded-full blur-[200px] pointer-events-none opacity-20" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 my-auto text-center flex flex-col justify-between h-full">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 text-center flex flex-col justify-between space-y-6">
         {/* Top Marker */}
         <div className="pt-2">
           <div className="inline-flex items-center gap-2 font-mono text-[11px] font-bold tracking-widest text-electric-orange bg-electric-orange/10 border border-electric-orange/25 px-3 py-1 rounded">
@@ -63,16 +63,16 @@ export const Contact: React.FC<ContactProps> = ({ onCopyEmail, copied }) => {
             Available for AI engineering, intelligent developer tools, and scalable system architectures.
           </p>
 
-          {/* Primary Action Button */}
+          {/* Primary Action Button (Glassomorphic) */}
           <div className="flex justify-center mb-8">
             <Magnetic strength={0.35}>
               <button
                 onClick={handleHeroAction}
-                className="px-8 sm:px-14 py-4 sm:py-5 rounded-full bg-electric-orange text-white font-mono text-lg sm:text-2xl font-black tracking-tight hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-electric-orange/40 cursor-pointer flex items-center gap-3.5"
+                className="px-8 sm:px-14 py-4 sm:py-5 rounded-full bg-gradient-to-r from-electric-orange via-electric-orange to-electric-light text-charcoal-950 font-mono text-lg sm:text-2xl font-black tracking-tight hover:scale-105 active:scale-95 transition-all shadow-[0_0_35px_rgba(255,85,0,0.45),inset_0_1px_0_rgba(255,255,255,0.4)] backdrop-blur-xl border border-white/30 cursor-pointer flex items-center gap-3.5"
                 data-cursor-text="FIRE"
               >
                 <span>DISPATCH EMAIL</span>
-                <span className="text-base sm:text-xl">→</span>
+                <span className="text-base sm:text-xl font-black">→</span>
               </button>
             </Magnetic>
           </div>
