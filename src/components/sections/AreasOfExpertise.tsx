@@ -54,7 +54,7 @@ export const AreasOfExpertise: React.FC = () => {
   return (
     <section
       id="expertise"
-      className="scroll-mt-20 min-h-screen lg:h-screen lg:max-h-[920px] flex flex-col justify-between relative overflow-hidden py-8 sm:py-10 px-4 sm:px-6 lg:px-8 border-b border-white/[0.08]"
+      className="scroll-mt-20 min-h-screen flex flex-col justify-between relative py-12 sm:py-16 px-4 sm:px-6 lg:px-8 border-b border-white/[0.08]"
     >
       {/* 3D Chromatic Plasma Ring Scene (Center Vortex) */}
       <ChromaticRingScene />

@@ -32,7 +32,7 @@ export const Projects: React.FC = () => {
   return (
     <section
       id="projects"
-      className="scroll-mt-20 min-h-screen lg:h-screen lg:max-h-[960px] flex flex-col justify-between py-8 sm:py-12 border-b border-white/[0.08] relative bg-charcoal-950 overflow-hidden"
+      className="scroll-mt-20 min-h-screen flex flex-col justify-between py-12 sm:py-16 border-b border-white/[0.08] relative bg-charcoal-950"
     >
       {/* Background Ambient Glow */}
       <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] bg-electric-orange/[0.04] rounded-full blur-[200px] pointer-events-none" />

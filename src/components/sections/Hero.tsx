@@ -13,7 +13,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onCopyPip, pipCopied }) => {
   return (
-    <section className="relative min-h-screen lg:h-screen lg:max-h-[960px] flex flex-col justify-between pt-24 sm:pt-28 pb-6 sm:pb-8 border-b border-white/[0.08] overflow-hidden bg-charcoal-950">
+    <section className="relative min-h-screen flex flex-col justify-between pt-24 sm:pt-28 pb-10 sm:pb-14 border-b border-white/[0.08] bg-charcoal-950">
       {/* 3D Kinetic Neural Manifold / Topological Tensor Grid */}
       <HeroBackdrop3D />
 
@@ -21,13 +21,13 @@ export const Hero: React.FC<HeroProps> = ({ onCopyPip, pipCopied }) => {
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[650px] h-[650px] bg-white/[0.025] rounded-full blur-[180px] pointer-events-none" />
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[650px] h-[650px] bg-electric-orange/[0.06] rounded-full blur-[180px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 my-auto text-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 my-auto text-center py-4">
         {/* Availability Tag with Radar Beacon & Kinetic Border */}
         <motion.div
           initial={{ opacity: 0, y: -10, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-charcoal-900/90 border border-white/10 mb-6 sm:mb-8 shadow-2xl backdrop-blur-md relative overflow-hidden group hover:border-electric-orange/40 transition-colors"
+          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-charcoal-900/90 border border-white/10 mb-5 sm:mb-6 shadow-2xl backdrop-blur-md relative overflow-hidden group hover:border-electric-orange/40 transition-colors"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-electric-orange/[0.08] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
 
@@ -40,8 +40,8 @@ export const Hero: React.FC<HeroProps> = ({ onCopyPip, pipCopied }) => {
           </span>
         </motion.div>
 
-        {/* Dynamic Asymmetrical Kinetic Headline (Replaces boring straight line!) */}
-        <div className="mb-8 select-none">
+        {/* Dynamic Asymmetrical Kinetic Headline (Properly Proportioned!) */}
+        <div className="mb-6 select-none">
           <motion.div
             initial={{ opacity: 0, y: 35 }}
             animate={{ opacity: 1, y: 0 }}
@@ -49,48 +49,47 @@ export const Hero: React.FC<HeroProps> = ({ onCopyPip, pipCopied }) => {
             className="flex flex-col items-center justify-center"
           >
             {/* Stepped Tier 1: Left-Biased Upper Heading + Micro Directive Index */}
-            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 sm:-translate-x-12">
-              <span className="font-mono text-[10px] sm:text-xs font-bold text-electric-orange tracking-widest uppercase bg-electric-orange/10 border border-electric-orange/25 px-2.5 py-1 rounded hidden md:inline-flex items-center gap-1.5">
+            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 sm:-translate-x-6">
+              <span className="font-mono text-[10px] sm:text-xs font-bold text-electric-orange tracking-widest uppercase bg-electric-orange/10 border border-electric-orange/25 px-2.5 py-0.5 rounded hidden md:inline-flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-electric-orange" />
                 PHASE 01
               </span>
 
-              <h1 className="font-syne text-5xl sm:text-7xl md:text-8xl lg:text-[7.6rem] font-black tracking-tight uppercase leading-none text-warm-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+              <h1 className="font-syne text-4xl sm:text-6xl md:text-7xl lg:text-[5.4rem] font-black tracking-tight uppercase leading-none text-warm-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
                 FROM IDEA
               </h1>
 
               {/* Kinetic Directional Vector Arrow */}
               <div className="hidden lg:flex items-center gap-1 text-electric-orange/80 animate-pulse">
-                <div className="w-8 h-[2px] bg-electric-orange" />
-                <ArrowRight className="w-6 h-6 stroke-[3]" />
+                <div className="w-6 h-[2px] bg-electric-orange" />
+                <ArrowRight className="w-5 h-5 stroke-[3]" />
               </div>
             </div>
 
             {/* Stepped Tier 2: Right-Biased High-Voltage Skewed Power Block */}
-            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 sm:translate-x-12 -mt-2 sm:-mt-4">
+            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 sm:translate-x-6 mt-1 sm:mt-1.5">
               <motion.div
                 whileHover={{ scale: 1.03, rotate: 0 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                 className="relative group cursor-default transform -skew-x-3 sm:-skew-x-6 sm:-rotate-1"
               >
                 {/* Neon Drop Glow */}
-                <div className="absolute inset-0 bg-electric-orange blur-2xl opacity-40 group-hover:opacity-60 transition-opacity" />
+                <div className="absolute inset-0 bg-electric-orange blur-xl opacity-35 group-hover:opacity-55 transition-opacity" />
 
                 {/* Main Angled Power Block */}
                 <div
                   style={{ backgroundColor: '#ff5500', color: '#000000' }}
-                  className="relative px-6 sm:px-12 py-1.5 sm:py-3 rounded-lg shadow-[0_20px_50px_rgba(255,85,0,0.45)] border-2 border-white/20 overflow-hidden"
+                  className="relative px-5 sm:px-8 py-1 sm:py-2 rounded-lg shadow-[0_15px_40px_rgba(255,85,0,0.4)] border-2 border-white/20 overflow-hidden"
                 >
-                  {/* Dynamic Continuous Sheen Sweep */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/35 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000" />
 
-                  <span className="font-syne text-5xl sm:text-7xl md:text-8xl lg:text-[7.4rem] font-black tracking-tight uppercase leading-none inline-block whitespace-nowrap">
+                  <span className="font-syne text-4xl sm:text-6xl md:text-7xl lg:text-[5.2rem] font-black tracking-tight uppercase leading-none inline-block whitespace-nowrap">
                     TO IMPACT
                   </span>
                 </div>
               </motion.div>
 
-              <span className="font-mono text-[10px] sm:text-xs font-bold text-warm-cream tracking-widest uppercase bg-charcoal-900/90 border border-white/10 px-3 py-1 rounded hidden md:inline-flex items-center gap-1.5">
+              <span className="font-mono text-[10px] sm:text-xs font-bold text-warm-cream tracking-widest uppercase bg-charcoal-900/90 border border-white/10 px-2.5 py-0.5 rounded hidden md:inline-flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
                 PRODUCTION READY
               </span>
@@ -103,23 +102,21 @@ export const Hero: React.FC<HeroProps> = ({ onCopyPip, pipCopied }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-4xl mx-auto mb-6"
+          className="max-w-3xl mx-auto mb-4"
         >
-          <div className="flex flex-col items-center justify-center gap-2.5">
-            {/* Stepped Upper Tier */}
-            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5">
-              <span className="font-serif italic text-2xl sm:text-4xl text-warm-cream font-normal">
+          <div className="flex flex-col items-center justify-center gap-2">
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+              <span className="font-serif italic text-xl sm:text-3xl text-warm-cream font-normal">
                 Building Systems
               </span>
-              <span className="font-mono text-[10px] sm:text-[11px] font-bold tracking-widest text-electric-orange bg-electric-orange/10 border border-electric-orange/30 px-3 py-1 rounded-full uppercase inline-flex items-center gap-1.5 shadow-sm">
+              <span className="font-mono text-[10px] sm:text-[11px] font-bold tracking-widest text-electric-orange bg-electric-orange/10 border border-electric-orange/30 px-3 py-0.5 rounded-full uppercase inline-flex items-center gap-1.5 shadow-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-electric-orange animate-ping" />
                 AT THE INTERSECTION OF
               </span>
             </div>
 
-            {/* Stepped Lower Tier with Elegant Accent Underline */}
             <div className="flex items-center justify-center">
-              <span className="font-serif italic text-2xl sm:text-4xl text-warm-white font-normal underline decoration-electric-orange/50 underline-offset-8">
+              <span className="font-serif italic text-xl sm:text-3xl text-warm-white font-normal underline decoration-electric-orange/50 underline-offset-8">
                 AI, Determinism & Technology
               </span>
             </div>
@@ -131,19 +128,19 @@ export const Hero: React.FC<HeroProps> = ({ onCopyPip, pipCopied }) => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.45 }}
-          className="max-w-xl mx-auto mb-10"
+          className="max-w-xl mx-auto mb-8"
         >
           <p className="font-sans text-xs sm:text-sm text-warm-muted leading-relaxed">
             AI engineering, intelligent developer tools, and high-concurrency data systems. Built to solve real architectural bottlenecks.
           </p>
         </motion.div>
 
-        {/* Action Row */}
+        {/* Action Row - Highly Visible & Prominent */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.55 }}
-          className="flex flex-wrap items-center justify-center gap-4 mb-8"
+          className="flex flex-wrap items-center justify-center gap-4 mb-6"
         >
           <Magnetic strength={0.3}>
             <a
@@ -160,7 +157,7 @@ export const Hero: React.FC<HeroProps> = ({ onCopyPip, pipCopied }) => {
             <a
               href="#contact"
               onClick={() => sound.click()}
-              className="px-8 py-3.5 rounded-full font-mono text-xs sm:text-sm font-bold tracking-wider bg-white/[0.05] border border-white/10 hover:border-white/30 text-warm-white transition-all flex items-center gap-2"
+              className="px-8 py-3.5 rounded-full font-mono text-xs sm:text-sm font-bold tracking-wider bg-white/[0.05] border border-white/10 hover:border-white/30 text-warm-white transition-all flex items-center gap-2 hover:scale-105 active:scale-95"
             >
               <span>LETS CONTACT</span>
               <ArrowUpRight className="w-4 h-4 text-warm-muted" />
@@ -192,7 +189,7 @@ export const Hero: React.FC<HeroProps> = ({ onCopyPip, pipCopied }) => {
         </div>
 
         {/* Rotating Circular Scroll Down Badge */}
-        <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center">
+        <div className="relative w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center">
           <div className="absolute inset-0 animate-[spin_12s_linear_infinite] flex items-center justify-center">
             <svg viewBox="0 0 100 100" className="w-full h-full fill-warm-muted">
               <path
@@ -207,7 +204,7 @@ export const Hero: React.FC<HeroProps> = ({ onCopyPip, pipCopied }) => {
               </text>
             </svg>
           </div>
-          <ArrowDown className="w-4 h-4 text-electric-orange animate-bounce" />
+          <ArrowDown className="w-3.5 h-3.5 text-electric-orange animate-bounce" />
         </div>
       </div>
     </section>
