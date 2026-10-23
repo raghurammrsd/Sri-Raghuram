@@ -34,9 +34,15 @@ export const InternshipHighlights: React.FC = () => {
                 THE AI SIGNAL & FRONTIER ATLAS
               </span>
             </div>
-            <h2 className="font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight text-warm-white leading-tight">
-              Production pipelines. <span className="text-electric-orange">Scaled to 600+ sources.</span>
-            </h2>
+            <div className="flex flex-wrap items-center gap-3 font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight leading-tight">
+              <span className="text-warm-white">PRODUCTION PIPELINES.</span>
+              <span
+                style={{ backgroundColor: '#ff5500', color: '#000000' }}
+                className="px-4 py-0.5 rounded-sm inline-block font-black shadow-xl"
+              >
+                SCALED TO 600+ SOURCES.
+              </span>
+            </div>
           </div>
 
           {/* System Selector Switcher */}

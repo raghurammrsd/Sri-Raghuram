@@ -55,7 +55,12 @@ export const Story: React.FC = () => {
             <h2 className="font-syne text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-warm-white leading-[0.95]">
               Not just models.
               <br />
-              <span className="text-electric-orange">Systems that work.</span>
+              <span
+                style={{ backgroundColor: '#ff5500', color: '#000000' }}
+                className="px-4 py-0.5 rounded-sm inline-block font-black shadow-xl mt-1.5"
+              >
+                SYSTEMS THAT WORK.
+              </span>
             </h2>
 
             <p className="font-sans text-xs sm:text-sm text-warm-cream/90 max-w-xl leading-relaxed">

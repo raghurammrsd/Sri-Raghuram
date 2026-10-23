@@ -45,9 +45,15 @@ export const Projects: React.FC = () => {
                 RESUME VERIFIED ARSENAL
               </span>
             </div>
-            <h2 className="font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight text-warm-white leading-tight">
-              Engineered tools. <span className="text-electric-orange">Built and deployed.</span>
-            </h2>
+            <div className="flex flex-wrap items-center gap-3 font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight leading-tight">
+              <span className="text-warm-white">FLAGSHIP ARSENAL.</span>
+              <span
+                style={{ backgroundColor: '#ff5500', color: '#000000' }}
+                className="px-4 py-0.5 rounded-sm inline-block font-black shadow-xl"
+              >
+                BUILT AND DEPLOYED.
+              </span>
+            </div>
           </div>
 
           {/* Project Switcher Tabs */}

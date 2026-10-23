@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PERSONAL_INFO } from '../../data/portfolioData';
+import { HeroBackdrop3D } from '../3d/HeroBackdrop3D';
 import { ArrowDown, ArrowUpRight, Terminal, Copy, Check, Sparkles } from 'lucide-react';
 import { Magnetic } from '../Magnetic';
 import { sound } from '../../utils/sound';
@@ -13,8 +14,11 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onCopyPip, pipCopied }) => {
   return (
     <section className="relative min-h-[calc(100vh-5rem)] lg:h-[calc(100vh-5rem)] lg:max-h-[920px] flex flex-col justify-between py-6 sm:py-8 lg:py-10 border-b border-white/[0.08] overflow-hidden bg-charcoal-950">
-      {/* Ambient Lighting: Pure Warm White & Electric Orange */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[650px] h-[650px] bg-white/[0.03] rounded-full blur-[180px] pointer-events-none" />
+      {/* 3D Interactive Holographic Lattice Sculpture */}
+      <HeroBackdrop3D />
+
+      {/* Atmospheric Ambient Lighting: Warm White & Electric Orange */}
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[650px] h-[650px] bg-white/[0.025] rounded-full blur-[180px] pointer-events-none" />
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[650px] h-[650px] bg-electric-orange/[0.06] rounded-full blur-[180px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 my-auto text-center">
@@ -34,34 +38,28 @@ export const Hero: React.FC<HeroProps> = ({ onCopyPip, pipCopied }) => {
           </span>
         </motion.div>
 
-        {/* Kinetic Animated Headline: FROM IDEA TO IMPACT */}
+        {/* Kinetic Headline: FROM IDEA + Solid Filled Orange Block TO IMPACT */}
         <div className="mb-6 overflow-hidden">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h1 className="font-syne text-5xl sm:text-7xl md:text-8xl lg:text-[7.4rem] font-black tracking-tight text-warm-white uppercase leading-[0.93] flex flex-wrap items-center justify-center gap-3 sm:gap-6">
-              <motion.span
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, delay: 0.15 }}
-              >
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 font-syne text-5xl sm:text-7xl md:text-8xl lg:text-[7.2rem] font-black tracking-tight uppercase leading-none">
+              <span className="text-warm-white">
                 FROM IDEA
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0, scale: 0.9, y: 15 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
-                className="bg-electric-orange text-charcoal-950 px-5 sm:px-8 py-0.5 rounded-sm inline-block shadow-2xl"
+              </span>
+              <span
+                style={{ backgroundColor: '#ff5500', color: '#000000' }}
+                className="px-5 sm:px-8 py-1 rounded-sm shadow-[0_0_40px_rgba(255,85,0,0.5)] font-black inline-block"
               >
                 TO IMPACT
-              </motion.span>
-            </h1>
+              </span>
+            </div>
           </motion.div>
         </div>
 
-        {/* Editorial Subtitle with Kinetic Float Animation */}
+        {/* Editorial Subtitle */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

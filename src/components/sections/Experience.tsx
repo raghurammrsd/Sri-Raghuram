@@ -30,9 +30,15 @@ export const Experience: React.FC = () => {
                 FOUNDATIONAL RIGOR & CREDENTIALS
               </span>
             </div>
-            <h2 className="font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight text-warm-white leading-tight">
-              Academic Foundation. <span className="text-electric-orange">Verified rigor.</span>
-            </h2>
+            <div className="flex flex-wrap items-center gap-3 font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight leading-tight">
+              <span className="text-warm-white">ACADEMIC FOUNDATION.</span>
+              <span
+                style={{ backgroundColor: '#ff5500', color: '#000000' }}
+                className="px-4 py-0.5 rounded-sm inline-block font-black shadow-xl"
+              >
+                VERIFIED RIGOR.
+              </span>
+            </div>
           </div>
 
           <div className="font-mono text-xs text-warm-muted">

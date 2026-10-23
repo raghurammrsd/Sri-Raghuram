@@ -51,7 +51,10 @@ export const Contact: React.FC<ContactProps> = ({ onCopyEmail, copied }) => {
         >
           <div className="flex flex-col items-center justify-center gap-2 font-syne text-4xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-[0.92] mb-4">
             <span className="text-warm-white">BUILD SOMETHING</span>
-            <span className="bg-electric-orange text-charcoal-950 px-5 sm:px-8 py-1 sm:py-2 rounded-sm inline-block shadow-2xl">
+            <span
+              style={{ backgroundColor: '#ff5500', color: '#000000' }}
+              className="px-6 sm:px-10 py-1 sm:py-2 rounded-sm inline-block font-black shadow-2xl"
+            >
               INTELLIGENT.
             </span>
           </div>
