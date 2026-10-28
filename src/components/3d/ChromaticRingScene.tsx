@@ -8,41 +8,29 @@ const FullChromaticRing: React.FC = () => {
   const ringGlowRef = useRef<THREE.Mesh>(null);
   const groupRef = useRef<THREE.Group>(null);
 
-  const RING_RADIUS = 1.62;
+  const RING_RADIUS = 1.38;
 
-  // Optimized particle count for performance (1200 points is lush and lightweight)
+  // Reduced particle count: clean, delicate, luxury floating embers (zero muddy speckle)
   const { positions, colors } = useMemo(() => {
-    const count = 1200;
+    const count = 320;
     const pos = new Float32Array(count * 3);
     const col = new Float32Array(count * 3);
 
-    const cBurgundy = new THREE.Color('#790d16');
-    const cSlate = new THREE.Color('#aec4d4');
-    const cSand = new THREE.Color('#e5d3af');
-    const cCream = new THREE.Color('#f5efe1');
-    const cWhite = new THREE.Color('#ffffff');
+    // Only 2 elegant, harmonious colors: Soft Champagne Sand & Soft Slate Fog
+    const cSand = new THREE.Color('#c9af84');
+    const cSlate = new THREE.Color('#8da8be');
 
     for (let i = 0; i < count; i++) {
       const angle = (i / count) * Math.PI * 2;
-      const r = RING_RADIUS + (Math.random() - 0.5) * 0.22;
-      const z = (Math.random() - 0.5) * 0.18;
+      const r = RING_RADIUS + (Math.random() - 0.5) * 0.16;
+      const z = (Math.random() - 0.5) * 0.12;
 
       pos[i * 3] = Math.cos(angle) * r;
       pos[i * 3 + 1] = Math.sin(angle) * r;
       pos[i * 3 + 2] = z;
 
       const normAngle = (Math.atan2(Math.sin(angle), Math.cos(angle)) + Math.PI) / (Math.PI * 2);
-
-      const color = new THREE.Color();
-      if (normAngle < 0.25) {
-        color.lerpColors(cBurgundy, cSand, normAngle * 4);
-      } else if (normAngle < 0.5) {
-        color.lerpColors(cSand, cCream, (normAngle - 0.25) * 4);
-      } else if (normAngle < 0.75) {
-        color.lerpColors(cCream, cSlate, (normAngle - 0.5) * 4);
-      } else {
-        color.lerpColors(cSlate, cBurgundy, (normAngle - 0.75) * 4);
-      }
+      const color = new THREE.Color().lerpColors(cSand, cSlate, Math.sin(normAngle * Math.PI));
 
       col[i * 3] = color.r;
       col[i * 3 + 1] = color.g;
@@ -59,34 +47,34 @@ const FullChromaticRing: React.FC = () => {
     if (groupRef.current) {
       groupRef.current.rotation.x = THREE.MathUtils.damp(
         groupRef.current.rotation.x,
-        -y * 0.1,
+        -y * 0.08,
         3.0,
         delta
       );
       groupRef.current.rotation.y = THREE.MathUtils.damp(
         groupRef.current.rotation.y,
-        x * 0.1,
+        x * 0.08,
         3.0,
         delta
       );
     }
 
     if (pointsRef.current) {
-      pointsRef.current.rotation.z = t * 0.25;
+      pointsRef.current.rotation.z = t * 0.18;
     }
 
     if (ringGlowRef.current) {
-      ringGlowRef.current.rotation.z = -t * 0.15;
+      ringGlowRef.current.rotation.z = -t * 0.12;
     }
 
     if (ringPrimaryRef.current) {
-      ringPrimaryRef.current.rotation.z = t * 0.1;
+      ringPrimaryRef.current.rotation.z = t * 0.08;
     }
   });
 
   return (
     <group ref={groupRef}>
-      {/* Chromatic Swirling Particle Halo */}
+      {/* Delicate, Minimalist Floating Halo Points */}
       <points ref={pointsRef}>
         <bufferGeometry>
           <bufferAttribute
@@ -99,25 +87,25 @@ const FullChromaticRing: React.FC = () => {
           />
         </bufferGeometry>
         <pointsMaterial
-          size={0.035}
+          size={0.032}
           vertexColors
           transparent
-          opacity={0.8}
+          opacity={0.65}
           sizeAttenuation
           depthWrite={false}
         />
       </points>
 
-      {/* Razor-Sharp Continuous Dual-Tone Torus Ring */}
+      {/* Razor-Thin Elegant Burgundy Torus Ring */}
       <mesh ref={ringPrimaryRef}>
-        <torusGeometry args={[RING_RADIUS, 0.012, 16, 96]} />
-        <meshBasicMaterial color="#790d16" transparent opacity={0.88} />
+        <torusGeometry args={[RING_RADIUS, 0.008, 16, 96]} />
+        <meshBasicMaterial color="#790d16" transparent opacity={0.85} />
       </mesh>
 
-      {/* Slate Accent Outer Orbit Ring */}
-      <mesh ref={ringGlowRef}>
-        <torusGeometry args={[RING_RADIUS + 0.04, 0.007, 16, 96]} />
-        <meshBasicMaterial color="#aec4d4" transparent opacity={0.85} />
+      {/* Subtle Slate Outer Orbit Wire */}
+      <mesh ref={ringGlowRef} rotation={[0.2, 0.1, 0]}>
+        <torusGeometry args={[RING_RADIUS + 0.035, 0.005, 16, 96]} />
+        <meshBasicMaterial color="#8da8be" transparent opacity={0.65} />
       </mesh>
     </group>
   );
@@ -147,7 +135,7 @@ export const ChromaticRingScene: React.FC = () => {
     <div ref={containerRef} className="absolute inset-0 w-full h-full pointer-events-none flex items-center justify-center">
       {isVisible && (
         <Canvas
-          camera={{ position: [0, 0, 5.0], fov: 45 }}
+          camera={{ position: [0, 0, 5.0], fov: 44 }}
           dpr={1}
           gl={{
             antialias: false,
