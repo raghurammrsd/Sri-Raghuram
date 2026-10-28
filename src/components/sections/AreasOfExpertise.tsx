@@ -54,7 +54,7 @@ export const AreasOfExpertise: React.FC = () => {
   return (
     <section
       id="expertise"
-      className="scroll-mt-20 relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#e5d3af]/50"
+      className="scroll-mt-20 relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 border-b-2 border-[#e5d3af]/60"
     >
       {/* 3D Chromatic Plasma Ring Scene (Center Vortex) */}
       <ChromaticRingScene />
@@ -63,7 +63,7 @@ export const AreasOfExpertise: React.FC = () => {
       <RingEnergyConduits />
 
       {/* Atmospheric Ambient Depth */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-electric-orange/[0.045] rounded-full blur-[200px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#966b44]/15 rounded-full blur-[200px] pointer-events-none" />
 
       {/* Main 12-Column Spatial Grid: 4 Pristine 3D Floating Boxes emerging from the Ring */}
       <div className="max-w-7xl w-full mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
@@ -84,33 +84,33 @@ export const AreasOfExpertise: React.FC = () => {
           >
             <TiltCard3D
               glowColor="#790d16"
-              className="p-6 sm:p-7 rounded-2xl bg-white/90 backdrop-blur-2xl border border-[#e5d3af] hover:border-[#790d16]/60 shadow-[0_12px_40px_rgba(121,13,22,0.06),0_2px_8px_rgba(0,0,0,0.02)] group relative overflow-hidden"
+              className="p-6 sm:p-7 rounded-2xl bg-white border-2 border-[#e5d3af] hover:border-[#790d16] shadow-[0_12px_40px_rgba(121,13,22,0.06),0_2px_8px_rgba(0,0,0,0.02)] group relative overflow-hidden transition-all duration-300"
             >
               {/* Ring Docking Energy Port */}
               <div className="absolute top-4 right-4 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-electric-orange animate-ping" />
-                <span className="w-1.5 h-1.5 rounded-full bg-electric-orange" />
+                <span className="w-2 h-2 rounded-full bg-[#790d16] animate-ping" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#790d16]" />
               </div>
 
               {/* Domain Tag */}
               <div className="flex items-center gap-2 mb-3">
-                <span className="font-mono text-[10px] font-bold text-electric-orange tracking-wider uppercase">
+                <span className="font-mono text-[10px] font-bold text-[#790d16] tracking-wider uppercase">
                   {cards[0].domain}
                 </span>
               </div>
 
               {/* Heading */}
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white group-hover:text-electric-orange transition-colors tracking-tight mb-2.5">
+              <h3 className="font-syne text-xl sm:text-2xl font-black text-black group-hover:text-[#790d16] transition-colors tracking-tight mb-2.5">
                 {cards[0].title}
               </h3>
 
-              <p className="font-sans text-xs text-warm-muted leading-relaxed mb-4">
+              <p className="font-sans text-xs sm:text-sm text-[#222222] font-medium leading-relaxed mb-4">
                 {cards[0].description}
               </p>
 
-              <div className="pt-3 border-t border-[#e5d3af] font-mono text-[10px] text-warm-cream flex items-center justify-between">
+              <div className="pt-3 border-t-2 border-[#e5d3af] font-mono text-[10px] text-black font-bold flex items-center justify-between">
                 <span>{cards[0].tag}</span>
-                <Cpu className="w-3.5 h-3.5 text-electric-orange" />
+                <Cpu className="w-3.5 h-3.5 text-[#790d16]" />
               </div>
             </TiltCard3D>
           </motion.div>
@@ -130,38 +130,38 @@ export const AreasOfExpertise: React.FC = () => {
           >
             <TiltCard3D
               glowColor="#790d16"
-              className="p-6 sm:p-7 rounded-2xl bg-white/90 backdrop-blur-2xl border border-[#e5d3af] hover:border-[#790d16]/60 shadow-[0_12px_40px_rgba(121,13,22,0.06),0_2px_8px_rgba(0,0,0,0.02)] group relative overflow-hidden"
+              className="p-6 sm:p-7 rounded-2xl bg-white border-2 border-[#e5d3af] hover:border-[#790d16] shadow-[0_12px_40px_rgba(121,13,22,0.06),0_2px_8px_rgba(0,0,0,0.02)] group relative overflow-hidden transition-all duration-300"
             >
               {/* Ring Docking Energy Port */}
               <div className="absolute top-4 right-4 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-electric-orange animate-ping" />
-                <span className="w-1.5 h-1.5 rounded-full bg-electric-orange" />
+                <span className="w-2 h-2 rounded-full bg-[#790d16] animate-ping" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#790d16]" />
               </div>
 
               <div className="flex items-center gap-2 mb-3">
-                <span className="font-mono text-[10px] font-bold text-electric-orange tracking-wider uppercase">
+                <span className="font-mono text-[10px] font-bold text-[#790d16] tracking-wider uppercase">
                   {cards[1].domain}
                 </span>
               </div>
 
               {/* Heading */}
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white group-hover:text-electric-orange transition-colors tracking-tight mb-2.5">
+              <h3 className="font-syne text-xl sm:text-2xl font-black text-black group-hover:text-[#790d16] transition-colors tracking-tight mb-2.5">
                 {cards[1].title}
               </h3>
 
-              <p className="font-sans text-xs text-warm-muted leading-relaxed mb-4">
+              <p className="font-sans text-xs sm:text-sm text-[#222222] font-medium leading-relaxed mb-4">
                 {cards[1].description}
               </p>
 
-              <div className="pt-3 border-t border-[#e5d3af] font-mono text-[10px] text-warm-cream flex items-center justify-between">
+              <div className="pt-3 border-t-2 border-[#e5d3af] font-mono text-[10px] text-black font-bold flex items-center justify-between">
                 <span>{cards[1].tag}</span>
-                <Layout className="w-3.5 h-3.5 text-electric-orange" />
+                <Layout className="w-3.5 h-3.5 text-[#790d16]" />
               </div>
             </TiltCard3D>
           </motion.div>
         </div>
 
-        {/* Center: The Core Ring Heading (Orange Accent as requested!) */}
+        {/* Center: The Core Ring Heading */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -169,18 +169,19 @@ export const AreasOfExpertise: React.FC = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-6 flex flex-col items-center justify-center text-center p-4 order-1 lg:order-2"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#aec4d4] mb-4 shadow-sm backdrop-blur-md">
-            <span className="w-1.5 h-1.5 rounded-full bg-electric-orange animate-ping" />
-            <span className="font-mono text-[10px] text-warm-white tracking-widest uppercase font-bold">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border-2 border-[#e5d3af] mb-4 shadow-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#790d16] animate-ping" />
+            <span className="font-mono text-xs text-black tracking-widest uppercase font-bold">
               CORE CAPABILITIES
             </span>
           </div>
 
-          <h2 className="font-syne text-4xl sm:text-6xl font-black text-warm-white tracking-tight mb-3">
-            Areas of <span className="text-electric-orange">Expertise.</span>
+          <h2 className="font-syne text-4xl sm:text-6xl font-black tracking-tight mb-3">
+            <span className="text-black drop-shadow-sm">Areas of </span>
+            <span className="text-[#790d16]">Expertise.</span>
           </h2>
 
-          <p className="font-sans text-xs sm:text-sm text-warm-cream/90 max-w-sm leading-relaxed mb-6">
+          <p className="font-sans text-xs sm:text-sm text-[#222222] font-semibold max-w-sm leading-relaxed mb-6">
             Bridging probabilistic AI models and production systems with deterministic AST static analysis, asynchronous crawlers, and verifiable contracts.
           </p>
 
@@ -188,10 +189,10 @@ export const AreasOfExpertise: React.FC = () => {
             <a
               href="#internship"
               onClick={() => sound.click()}
-              className="px-8 py-3.5 rounded-full font-mono text-xs font-black tracking-wider bg-[#790d16] text-[#f5efe1] hover:bg-[#600a11] transition-all flex items-center gap-2.5 shadow-[0_8px_24px_rgba(121,13,22,0.25)] hover:scale-105 active:scale-95"
+              className="px-8 py-3.5 rounded-full font-mono text-xs font-black tracking-wider bg-[#790d16] text-[#ffffff] hover:bg-[#5c0910] transition-all flex items-center gap-2.5 shadow-[0_8px_24px_rgba(121,13,22,0.25)] hover:scale-105 active:scale-95 cursor-pointer"
             >
               <span>EXPLORE SYSTEMS</span>
-              <ArrowUpRight className="w-4 h-4 text-[#f5efe1]" />
+              <ArrowUpRight className="w-4 h-4 text-[#ffffff] stroke-[2.5]" />
             </a>
           </Magnetic>
         </motion.div>
@@ -213,32 +214,32 @@ export const AreasOfExpertise: React.FC = () => {
           >
             <TiltCard3D
               glowColor="#790d16"
-              className="p-6 sm:p-7 rounded-2xl bg-white/90 backdrop-blur-2xl border border-[#e5d3af] hover:border-[#790d16]/60 shadow-[0_12px_40px_rgba(121,13,22,0.06),0_2px_8px_rgba(0,0,0,0.02)] group relative overflow-hidden"
+              className="p-6 sm:p-7 rounded-2xl bg-white border-2 border-[#e5d3af] hover:border-[#790d16] shadow-[0_12px_40px_rgba(121,13,22,0.06),0_2px_8px_rgba(0,0,0,0.02)] group relative overflow-hidden transition-all duration-300"
             >
               {/* Ring Docking Energy Port */}
               <div className="absolute top-4 left-4 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-electric-orange" />
-                <span className="w-2 h-2 rounded-full bg-electric-orange animate-ping" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#790d16]" />
+                <span className="w-2 h-2 rounded-full bg-[#790d16] animate-ping" />
               </div>
 
               <div className="flex items-center justify-end gap-2 mb-3">
-                <span className="font-mono text-[10px] font-bold text-electric-orange tracking-wider uppercase">
+                <span className="font-mono text-[10px] font-bold text-[#790d16] tracking-wider uppercase">
                   {cards[2].domain}
                 </span>
               </div>
 
               {/* Heading */}
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white group-hover:text-electric-orange transition-colors tracking-tight mb-2.5">
+              <h3 className="font-syne text-xl sm:text-2xl font-black text-black group-hover:text-[#790d16] transition-colors tracking-tight mb-2.5">
                 {cards[2].title}
               </h3>
 
-              <p className="font-sans text-xs text-warm-muted leading-relaxed mb-4">
+              <p className="font-sans text-xs sm:text-sm text-[#222222] font-medium leading-relaxed mb-4">
                 {cards[2].description}
               </p>
 
-              <div className="pt-3 border-t border-[#e5d3af] font-mono text-[10px] text-warm-cream flex items-center justify-between">
+              <div className="pt-3 border-t-2 border-[#e5d3af] font-mono text-[10px] text-black font-bold flex items-center justify-between">
                 <span>{cards[2].tag}</span>
-                <Database className="w-3.5 h-3.5 text-electric-orange" />
+                <Database className="w-3.5 h-3.5 text-[#790d16]" />
               </div>
             </TiltCard3D>
           </motion.div>
@@ -258,32 +259,32 @@ export const AreasOfExpertise: React.FC = () => {
           >
             <TiltCard3D
               glowColor="#790d16"
-              className="p-6 sm:p-7 rounded-2xl bg-white/90 backdrop-blur-2xl border border-[#e5d3af] hover:border-[#790d16]/60 shadow-[0_12px_40px_rgba(121,13,22,0.06),0_2px_8px_rgba(0,0,0,0.02)] group relative overflow-hidden"
+              className="p-6 sm:p-7 rounded-2xl bg-white border-2 border-[#e5d3af] hover:border-[#790d16] shadow-[0_12px_40px_rgba(121,13,22,0.06),0_2px_8px_rgba(0,0,0,0.02)] group relative overflow-hidden transition-all duration-300"
             >
               {/* Ring Docking Energy Port */}
               <div className="absolute top-4 left-4 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-electric-orange" />
-                <span className="w-2 h-2 rounded-full bg-electric-orange animate-ping" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#790d16]" />
+                <span className="w-2 h-2 rounded-full bg-[#790d16] animate-ping" />
               </div>
 
               <div className="flex items-center justify-end gap-2 mb-3">
-                <span className="font-mono text-[10px] font-bold text-electric-orange tracking-wider uppercase">
+                <span className="font-mono text-[10px] font-bold text-[#790d16] tracking-wider uppercase">
                   {cards[3].domain}
                 </span>
               </div>
 
               {/* Heading */}
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white group-hover:text-electric-orange transition-colors tracking-tight mb-2.5">
+              <h3 className="font-syne text-xl sm:text-2xl font-black text-black group-hover:text-[#790d16] transition-colors tracking-tight mb-2.5">
                 {cards[3].title}
               </h3>
 
-              <p className="font-sans text-xs text-warm-muted leading-relaxed mb-4">
+              <p className="font-sans text-xs sm:text-sm text-[#222222] font-medium leading-relaxed mb-4">
                 {cards[3].description}
               </p>
 
-              <div className="pt-3 border-t border-[#e5d3af] font-mono text-[10px] text-warm-cream flex items-center justify-between">
+              <div className="pt-3 border-t-2 border-[#e5d3af] font-mono text-[10px] text-black font-bold flex items-center justify-between">
                 <span>{cards[3].tag}</span>
-                <Network className="w-3.5 h-3.5 text-electric-orange" />
+                <Network className="w-3.5 h-3.5 text-[#790d16]" />
               </div>
             </TiltCard3D>
           </motion.div>
@@ -291,12 +292,12 @@ export const AreasOfExpertise: React.FC = () => {
       </div>
 
       {/* Bottom Status Ticker */}
-      <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between font-mono text-[11px] text-warm-dark relative z-10">
+      <div className="pt-4 border-t-2 border-[#e5d3af] flex items-center justify-between font-mono text-xs text-[#333333] relative z-10 font-bold mt-8">
         <div className="flex items-center gap-2">
-          <span className="text-electric-orange">●</span>
-          <span className="text-warm-muted">DETERMINISTIC AI · HIGH-CONCURRENCY INGESTION · VERIFIED CONTRACTS</span>
+          <span className="text-[#790d16]">●</span>
+          <span className="text-black font-semibold">DETERMINISTIC AI · HIGH-CONCURRENCY INGESTION · VERIFIED CONTRACTS</span>
         </div>
-        <span className="hidden sm:inline text-warm-dark">INTERACTIVE CORE ARCHITECTURE</span>
+        <span className="hidden sm:inline text-black font-bold">INTERACTIVE CORE ARCHITECTURE</span>
       </div>
     </section>
   );

@@ -10,7 +10,7 @@ interface TiltCard3DProps {
 export const TiltCard3D: React.FC<TiltCard3DProps> = ({
   children,
   className = '',
-  glowColor = '#ff5500',
+  glowColor = '#790d16',
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
