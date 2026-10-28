@@ -10,8 +10,10 @@ const vertexShader = `
   uniform float uTime;
   uniform vec2 uPointer;
   varying float vElevation;
+  varying vec2 vUv;
 
   void main() {
+    vUv = uv;
     vec3 pos = position;
 
     // Multi-harmonic GPU wave calculation
@@ -33,31 +35,51 @@ const vertexShader = `
 
 const fragmentShader = `
   varying float vElevation;
+  varying vec2 vUv;
 
   void main() {
-    // Exact requested palette: Lite Brown & Sky Blue
-    vec3 colorLiteBrown = vec3(0.72, 0.54, 0.38); // Warm refined lite brown
-    vec3 colorSkyBlue = vec3(0.46, 0.70, 0.88);   // Luminous soft sky blue
+    // Distance from center: 0 in middle, ~1 at outer perimeter
+    vec2 center = vec2(0.5, 0.5);
+    float distEdge = distance(vUv, center) * 1.414;
+    float edgeFactor = smoothstep(0.2, 0.95, distEdge);
 
-    float mixRatio = clamp((vElevation + 0.5) * 0.85, 0.0, 1.0);
-    vec3 finalColor = mix(colorSkyBlue, colorLiteBrown, mixRatio);
+    // Lite Brown transitioning to a richer warm brown at edges
+    vec3 colorSkyBlue = vec3(0.46, 0.70, 0.88);    // Luminous soft sky blue
+    vec3 colorLiteBrown = vec3(0.68, 0.50, 0.35);  // Warm refined lite brown
+    vec3 colorRichBrown = vec3(0.56, 0.38, 0.24);  // Rich grounded brown at edges
 
-    gl_FragColor = vec4(finalColor, 0.70);
+    vec3 brownShade = mix(colorLiteBrown, colorRichBrown, edgeFactor);
+    float elevationMix = clamp((vElevation + 0.5) * 0.85, 0.0, 1.0);
+    vec3 baseColor = mix(colorSkyBlue, brownShade, elevationMix);
+
+    // Strengthen warm brown depth towards outer edges
+    vec3 finalColor = mix(baseColor, brownShade, edgeFactor * 0.75);
+
+    gl_FragColor = vec4(finalColor, 0.75);
   }
 `;
 
 const fragmentShaderWireframe = `
   varying float vElevation;
+  varying vec2 vUv;
 
   void main() {
-    // Dynamic lite brown wireframe with subtle sky blue crests
-    vec3 colorLiteBrown = vec3(0.72, 0.54, 0.38);
+    vec2 center = vec2(0.5, 0.5);
+    float distEdge = distance(vUv, center) * 1.414;
+    float edgeFactor = smoothstep(0.15, 0.92, distEdge);
+
+    // Brown tones at edges with sky blue towards center
     vec3 colorSkyBlue = vec3(0.46, 0.70, 0.88);
+    vec3 colorLiteBrown = vec3(0.68, 0.50, 0.35);
+    vec3 colorRichBrown = vec3(0.54, 0.36, 0.22);
 
-    float mixRatio = clamp((vElevation + 0.5) * 0.8, 0.0, 1.0);
-    vec3 finalColor = mix(colorLiteBrown, colorSkyBlue, mixRatio);
+    vec3 brownTone = mix(colorLiteBrown, colorRichBrown, edgeFactor);
+    vec3 wireColor = mix(colorSkyBlue, brownTone, edgeFactor * 0.75 + 0.25);
 
-    gl_FragColor = vec4(finalColor, 0.20);
+    // More pronounced wireframe contrast at the edges
+    float alpha = mix(0.14, 0.28, edgeFactor);
+
+    gl_FragColor = vec4(wireColor, alpha);
   }
 `;
 
