@@ -54,7 +54,7 @@ export const AreasOfExpertise: React.FC = () => {
   return (
     <section
       id="expertise"
-      className="scroll-mt-20 relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 border-b border-white/[0.08]"
+      className="scroll-mt-20 relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#e5d3af]/50"
     >
       {/* 3D Chromatic Plasma Ring Scene (Center Vortex) */}
       <ChromaticRingScene />
@@ -83,8 +83,8 @@ export const AreasOfExpertise: React.FC = () => {
             }}
           >
             <TiltCard3D
-              glowColor="#ff5500"
-              className="p-6 sm:p-7 rounded-2xl bg-charcoal-900/90 backdrop-blur-2xl border border-white/10 hover:border-electric-orange/50 shadow-2xl group relative overflow-hidden"
+              glowColor="#790d16"
+              className="p-6 sm:p-7 rounded-2xl bg-white/90 backdrop-blur-2xl border border-[#e5d3af] hover:border-[#790d16]/60 shadow-[0_12px_40px_rgba(121,13,22,0.06),0_2px_8px_rgba(0,0,0,0.02)] group relative overflow-hidden"
             >
               {/* Ring Docking Energy Port */}
               <div className="absolute top-4 right-4 flex items-center gap-1.5">
@@ -108,7 +108,7 @@ export const AreasOfExpertise: React.FC = () => {
                 {cards[0].description}
               </p>
 
-              <div className="pt-3 border-t border-white/[0.08] font-mono text-[10px] text-warm-cream flex items-center justify-between">
+              <div className="pt-3 border-t border-[#e5d3af] font-mono text-[10px] text-warm-cream flex items-center justify-between">
                 <span>{cards[0].tag}</span>
                 <Cpu className="w-3.5 h-3.5 text-electric-orange" />
               </div>
@@ -129,8 +129,8 @@ export const AreasOfExpertise: React.FC = () => {
             }}
           >
             <TiltCard3D
-              glowColor="#ff5500"
-              className="p-6 sm:p-7 rounded-2xl bg-charcoal-900/90 backdrop-blur-2xl border border-white/10 hover:border-electric-orange/50 shadow-2xl group relative overflow-hidden"
+              glowColor="#790d16"
+              className="p-6 sm:p-7 rounded-2xl bg-white/90 backdrop-blur-2xl border border-[#e5d3af] hover:border-[#790d16]/60 shadow-[0_12px_40px_rgba(121,13,22,0.06),0_2px_8px_rgba(0,0,0,0.02)] group relative overflow-hidden"
             >
               {/* Ring Docking Energy Port */}
               <div className="absolute top-4 right-4 flex items-center gap-1.5">
@@ -153,7 +153,7 @@ export const AreasOfExpertise: React.FC = () => {
                 {cards[1].description}
               </p>
 
-              <div className="pt-3 border-t border-white/[0.08] font-mono text-[10px] text-warm-cream flex items-center justify-between">
+              <div className="pt-3 border-t border-[#e5d3af] font-mono text-[10px] text-warm-cream flex items-center justify-between">
                 <span>{cards[1].tag}</span>
                 <Layout className="w-3.5 h-3.5 text-electric-orange" />
               </div>
@@ -169,7 +169,7 @@ export const AreasOfExpertise: React.FC = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-6 flex flex-col items-center justify-center text-center p-4 order-1 lg:order-2"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-charcoal-900/90 border border-white/10 mb-4 shadow-xl backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#aec4d4] mb-4 shadow-sm backdrop-blur-md">
             <span className="w-1.5 h-1.5 rounded-full bg-electric-orange animate-ping" />
             <span className="font-mono text-[10px] text-warm-white tracking-widest uppercase font-bold">
               CORE CAPABILITIES
@@ -188,10 +188,10 @@ export const AreasOfExpertise: React.FC = () => {
             <a
               href="#internship"
               onClick={() => sound.click()}
-              className="px-8 py-3.5 rounded-full font-mono text-xs font-black tracking-wider gradient-border-chromatic text-warm-white hover:text-white transition-all flex items-center gap-2.5 shadow-2xl hover:scale-105 active:scale-95"
+              className="px-8 py-3.5 rounded-full font-mono text-xs font-black tracking-wider bg-[#790d16] text-[#f5efe1] hover:bg-[#600a11] transition-all flex items-center gap-2.5 shadow-[0_8px_24px_rgba(121,13,22,0.25)] hover:scale-105 active:scale-95"
             >
               <span>EXPLORE SYSTEMS</span>
-              <ArrowUpRight className="w-4 h-4 text-electric-orange" />
+              <ArrowUpRight className="w-4 h-4 text-[#f5efe1]" />
             </a>
           </Magnetic>
         </motion.div>
@@ -212,8 +212,8 @@ export const AreasOfExpertise: React.FC = () => {
             }}
           >
             <TiltCard3D
-              glowColor="#ff5500"
-              className="p-6 sm:p-7 rounded-2xl bg-charcoal-900/90 backdrop-blur-2xl border border-white/10 hover:border-electric-orange/50 shadow-2xl group relative overflow-hidden"
+              glowColor="#790d16"
+              className="p-6 sm:p-7 rounded-2xl bg-white/90 backdrop-blur-2xl border border-[#e5d3af] hover:border-[#790d16]/60 shadow-[0_12px_40px_rgba(121,13,22,0.06),0_2px_8px_rgba(0,0,0,0.02)] group relative overflow-hidden"
             >
               {/* Ring Docking Energy Port */}
               <div className="absolute top-4 left-4 flex items-center gap-1.5">
@@ -236,7 +236,7 @@ export const AreasOfExpertise: React.FC = () => {
                 {cards[2].description}
               </p>
 
-              <div className="pt-3 border-t border-white/[0.08] font-mono text-[10px] text-warm-cream flex items-center justify-between">
+              <div className="pt-3 border-t border-[#e5d3af] font-mono text-[10px] text-warm-cream flex items-center justify-between">
                 <span>{cards[2].tag}</span>
                 <Database className="w-3.5 h-3.5 text-electric-orange" />
               </div>
@@ -257,8 +257,8 @@ export const AreasOfExpertise: React.FC = () => {
             }}
           >
             <TiltCard3D
-              glowColor="#ff5500"
-              className="p-6 sm:p-7 rounded-2xl bg-charcoal-900/90 backdrop-blur-2xl border border-white/10 hover:border-electric-orange/50 shadow-2xl group relative overflow-hidden"
+              glowColor="#790d16"
+              className="p-6 sm:p-7 rounded-2xl bg-white/90 backdrop-blur-2xl border border-[#e5d3af] hover:border-[#790d16]/60 shadow-[0_12px_40px_rgba(121,13,22,0.06),0_2px_8px_rgba(0,0,0,0.02)] group relative overflow-hidden"
             >
               {/* Ring Docking Energy Port */}
               <div className="absolute top-4 left-4 flex items-center gap-1.5">
@@ -281,7 +281,7 @@ export const AreasOfExpertise: React.FC = () => {
                 {cards[3].description}
               </p>
 
-              <div className="pt-3 border-t border-white/[0.08] font-mono text-[10px] text-warm-cream flex items-center justify-between">
+              <div className="pt-3 border-t border-[#e5d3af] font-mono text-[10px] text-warm-cream flex items-center justify-between">
                 <span>{cards[3].tag}</span>
                 <Network className="w-3.5 h-3.5 text-electric-orange" />
               </div>

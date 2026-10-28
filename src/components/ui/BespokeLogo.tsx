@@ -28,7 +28,7 @@ export const BespokeLogo: React.FC = () => {
             width="40"
             height="40"
             rx="10"
-            stroke="rgba(255, 255, 255, 0.12)"
+            stroke="#e5d3af"
             strokeWidth="1.5"
           />
 
@@ -39,7 +39,7 @@ export const BespokeLogo: React.FC = () => {
             width="40"
             height="40"
             rx="10"
-            stroke="#ff5500"
+            stroke="#790d16"
             strokeWidth="1.8"
             strokeDasharray="24 100"
             className="animate-[dash_4s_linear_infinite]"
@@ -50,10 +50,10 @@ export const BespokeLogo: React.FC = () => {
         <motion.div
           whileHover={{ scale: 1.08 }}
           transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-          className="relative z-10 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-charcoal-900 border border-white/20 group-hover:border-electric-orange/80 transition-all flex items-center justify-center shadow-inner overflow-hidden"
+          className="relative z-10 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white border border-[#e5d3af] group-hover:border-[#790d16] transition-all flex items-center justify-center shadow-sm overflow-hidden"
         >
           {/* Dynamic Laser Sheen Effect on Hover */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-electric-orange/30 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-700" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#790d16]/15 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-700" />
 
           {/* High-Precision Architectural SVG Monogram */}
           <svg
@@ -65,22 +65,22 @@ export const BespokeLogo: React.FC = () => {
             {/* Vertical Spine */}
             <path
               d="M 6 4 L 6 20"
-              stroke="#ffffff"
+              stroke="#1a0f11"
               strokeWidth="2.8"
               strokeLinecap="round"
             />
-            {/* Top Loop */}
+            {/* Top Loop (Deep Burgundy) */}
             <path
               d="M 6 4 H 14 C 17.5 4, 17.5 12, 14 12 H 6"
-              stroke="#ff5500"
+              stroke="#790d16"
               strokeWidth="2.8"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
-            {/* Diagonal Kinetic Leg */}
+            {/* Diagonal Kinetic Leg (Slate Blue) */}
             <path
               d="M 12.5 11.5 L 18 20"
-              stroke="#ffffff"
+              stroke="#aec4d4"
               strokeWidth="2.8"
               strokeLinecap="round"
             />
@@ -91,12 +91,12 @@ export const BespokeLogo: React.FC = () => {
       {/* 2. Brand Identity Typography */}
       <div className="flex flex-col text-left">
         <div className="flex items-center gap-1.5">
-          <span className="font-syne text-base sm:text-lg font-black tracking-tight text-warm-white group-hover:text-electric-orange transition-colors leading-none">
+          <span className="font-syne text-base sm:text-lg font-black tracking-tight text-black group-hover:text-[#790d16] transition-colors leading-none">
             RAGHURAM
           </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-electric-orange shadow-[0_0_8px_#ff5500] animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#790d16] shadow-[0_0_8px_#790d16] animate-pulse" />
         </div>
-        <span className="font-mono text-[9px] text-warm-muted tracking-widest uppercase mt-0.5">
+        <span className="font-mono text-[9px] text-[#333333] font-bold tracking-widest uppercase mt-0.5">
           AI SYSTEMS ARCHITECT
         </span>
       </div>

@@ -26,29 +26,29 @@ export const RingEnergyConduits: React.FC = () => {
       preserveAspectRatio="xMidYMid meet"
     >
       <defs>
-        {/* Laser Conduit Gradients */}
+        {/* Laser Conduit Gradients (User Palette) */}
         <linearGradient id="conduitGradTL" x1="420" y1="160" x2="310" y2="180" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#ff5500" stopOpacity="0.95" />
-          <stop offset="50%" stopColor="#ff7728" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#ff5500" stopOpacity="0.95" />
+          <stop offset="0%" stopColor="#790d16" stopOpacity="0.95" />
+          <stop offset="50%" stopColor="#aec4d4" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#e5d3af" stopOpacity="0.95" />
         </linearGradient>
 
         <linearGradient id="conduitGradBL" x1="420" y1="540" x2="310" y2="520" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#ff5500" stopOpacity="0.95" />
-          <stop offset="50%" stopColor="#ff7728" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#ff5500" stopOpacity="0.95" />
+          <stop offset="0%" stopColor="#790d16" stopOpacity="0.95" />
+          <stop offset="50%" stopColor="#aec4d4" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#e5d3af" stopOpacity="0.95" />
         </linearGradient>
 
         <linearGradient id="conduitGradTR" x1="780" y1="160" x2="890" y2="180" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#ff5500" stopOpacity="0.95" />
-          <stop offset="50%" stopColor="#ff7728" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#ff5500" stopOpacity="0.95" />
+          <stop offset="0%" stopColor="#790d16" stopOpacity="0.95" />
+          <stop offset="50%" stopColor="#aec4d4" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#e5d3af" stopOpacity="0.95" />
         </linearGradient>
 
         <linearGradient id="conduitGradBR" x1="780" y1="540" x2="890" y2="520" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#ff5500" stopOpacity="0.95" />
-          <stop offset="50%" stopColor="#ff7728" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#ff5500" stopOpacity="0.95" />
+          <stop offset="0%" stopColor="#790d16" stopOpacity="0.95" />
+          <stop offset="50%" stopColor="#aec4d4" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#e5d3af" stopOpacity="0.95" />
         </linearGradient>
 
         {/* High-Glow Filter */}
@@ -78,7 +78,7 @@ export const RingEnergyConduits: React.FC = () => {
       <path
         id="pathTL"
         d="M 420 160 C 370 135, 345 155, 310 180"
-        stroke="rgba(255, 85, 0, 0.15)"
+        stroke="rgba(121, 13, 22, 0.15)"
         strokeWidth="1.5"
         fill="none"
       />
@@ -100,10 +100,10 @@ export const RingEnergyConduits: React.FC = () => {
         />
       </circle>
       {/* Ring Perimeter Emitter Socket */}
-      <circle cx="420" cy="160" r="4.5" fill="#ff5500" filter="url(#intenseGlow)" />
+      <circle cx="420" cy="160" r="4.5" fill="#790d16" filter="url(#intenseGlow)" />
       <circle cx="420" cy="160" r="2" fill="#ffffff" />
       {/* Card Docking Receiver Port */}
-      <circle cx="310" cy="180" r="5" fill="#ff7728" stroke="#ffffff" strokeWidth="1.5" filter="url(#laserGlow)" />
+      <circle cx="310" cy="180" r="5" fill="#aec4d4" stroke="#790d16" strokeWidth="1.5" filter="url(#laserGlow)" />
 
       {/* ============================================================ */}
       {/* CONDUIT 2: Lower-Left Ring Perimeter -> Box 2 (Bottom-Left)  */}
@@ -112,7 +112,7 @@ export const RingEnergyConduits: React.FC = () => {
       <path
         id="pathBL"
         d="M 420 540 C 370 565, 345 545, 310 520"
-        stroke="rgba(255, 85, 0, 0.15)"
+        stroke="rgba(121, 13, 22, 0.15)"
         strokeWidth="1.5"
         fill="none"
       />
@@ -134,10 +134,10 @@ export const RingEnergyConduits: React.FC = () => {
         />
       </circle>
       {/* Ring Perimeter Emitter Socket */}
-      <circle cx="420" cy="540" r="4.5" fill="#ff5500" filter="url(#intenseGlow)" />
+      <circle cx="420" cy="540" r="4.5" fill="#790d16" filter="url(#intenseGlow)" />
       <circle cx="420" cy="540" r="2" fill="#ffffff" />
       {/* Card Docking Receiver Port */}
-      <circle cx="310" cy="520" r="5" fill="#ff7728" stroke="#ffffff" strokeWidth="1.5" filter="url(#laserGlow)" />
+      <circle cx="310" cy="520" r="5" fill="#aec4d4" stroke="#790d16" strokeWidth="1.5" filter="url(#laserGlow)" />
 
       {/* ============================================================ */}
       {/* CONDUIT 3: Upper-Right Ring Perimeter -> Box 3 (Top-Right)    */}
@@ -146,7 +146,7 @@ export const RingEnergyConduits: React.FC = () => {
       <path
         id="pathTR"
         d="M 780 160 C 830 135, 855 155, 890 180"
-        stroke="rgba(255, 85, 0, 0.15)"
+        stroke="rgba(121, 13, 22, 0.15)"
         strokeWidth="1.5"
         fill="none"
       />
@@ -168,10 +168,10 @@ export const RingEnergyConduits: React.FC = () => {
         />
       </circle>
       {/* Ring Perimeter Emitter Socket */}
-      <circle cx="780" cy="160" r="4.5" fill="#ff5500" filter="url(#intenseGlow)" />
+      <circle cx="780" cy="160" r="4.5" fill="#790d16" filter="url(#intenseGlow)" />
       <circle cx="780" cy="160" r="2" fill="#ffffff" />
       {/* Card Docking Receiver Port */}
-      <circle cx="890" cy="180" r="5" fill="#ff7728" stroke="#ffffff" strokeWidth="1.5" filter="url(#laserGlow)" />
+      <circle cx="890" cy="180" r="5" fill="#aec4d4" stroke="#790d16" strokeWidth="1.5" filter="url(#laserGlow)" />
 
       {/* ============================================================ */}
       {/* CONDUIT 4: Lower-Right Ring Perimeter -> Box 4 (Bottom-Right) */}
@@ -180,7 +180,7 @@ export const RingEnergyConduits: React.FC = () => {
       <path
         id="pathBR"
         d="M 780 540 C 830 565, 855 545, 890 520"
-        stroke="rgba(255, 85, 0, 0.15)"
+        stroke="rgba(121, 13, 22, 0.15)"
         strokeWidth="1.5"
         fill="none"
       />
@@ -202,10 +202,10 @@ export const RingEnergyConduits: React.FC = () => {
         />
       </circle>
       {/* Ring Perimeter Emitter Socket */}
-      <circle cx="780" cy="540" r="4.5" fill="#ff5500" filter="url(#intenseGlow)" />
+      <circle cx="780" cy="540" r="4.5" fill="#790d16" filter="url(#intenseGlow)" />
       <circle cx="780" cy="540" r="2" fill="#ffffff" />
       {/* Card Docking Receiver Port */}
-      <circle cx="890" cy="520" r="5" fill="#ff7728" stroke="#ffffff" strokeWidth="1.5" filter="url(#laserGlow)" />
+      <circle cx="890" cy="520" r="5" fill="#aec4d4" stroke="#790d16" strokeWidth="1.5" filter="url(#laserGlow)" />
     </svg>
   );
 };

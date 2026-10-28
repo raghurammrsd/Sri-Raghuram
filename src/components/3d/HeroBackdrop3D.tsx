@@ -35,14 +35,14 @@ const fragmentShader = `
   varying float vElevation;
 
   void main() {
-    // Dynamic color gradient: Electric Orange at peaks, Warm White at crests
-    vec3 colorOrange = vec3(1.0, 0.333, 0.0); // #ff5500
-    vec3 colorWhite = vec3(0.96, 0.96, 0.97);
+    // Exact requested palette: Lite Brown & Sky Blue
+    vec3 colorLiteBrown = vec3(0.72, 0.54, 0.38); // Warm refined lite brown
+    vec3 colorSkyBlue = vec3(0.46, 0.70, 0.88);   // Luminous soft sky blue
 
-    float mixRatio = clamp((vElevation + 0.5) * 0.8, 0.0, 1.0);
-    vec3 finalColor = mix(colorWhite, colorOrange, mixRatio);
+    float mixRatio = clamp((vElevation + 0.5) * 0.85, 0.0, 1.0);
+    vec3 finalColor = mix(colorSkyBlue, colorLiteBrown, mixRatio);
 
-    gl_FragColor = vec4(finalColor, 0.55);
+    gl_FragColor = vec4(finalColor, 0.70);
   }
 `;
 
@@ -50,8 +50,14 @@ const fragmentShaderWireframe = `
   varying float vElevation;
 
   void main() {
-    vec3 colorOrange = vec3(1.0, 0.333, 0.0);
-    gl_FragColor = vec4(colorOrange, 0.18);
+    // Dynamic lite brown wireframe with subtle sky blue crests
+    vec3 colorLiteBrown = vec3(0.72, 0.54, 0.38);
+    vec3 colorSkyBlue = vec3(0.46, 0.70, 0.88);
+
+    float mixRatio = clamp((vElevation + 0.5) * 0.8, 0.0, 1.0);
+    vec3 finalColor = mix(colorLiteBrown, colorSkyBlue, mixRatio);
+
+    gl_FragColor = vec4(finalColor, 0.20);
   }
 `;
 

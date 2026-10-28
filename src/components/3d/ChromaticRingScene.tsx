@@ -16,11 +16,11 @@ const FullChromaticRing: React.FC = () => {
     const pos = new Float32Array(count * 3);
     const col = new Float32Array(count * 3);
 
-    const cRed = new THREE.Color('#ff1800');
-    const cOrange = new THREE.Color('#ff6600');
-    const cYellow = new THREE.Color('#ffbb00');
-    const cCyan = new THREE.Color('#00f0ff');
-    const cBlue = new THREE.Color('#0055ff');
+    const cBurgundy = new THREE.Color('#790d16');
+    const cSlate = new THREE.Color('#aec4d4');
+    const cSand = new THREE.Color('#e5d3af');
+    const cCream = new THREE.Color('#f5efe1');
+    const cWhite = new THREE.Color('#ffffff');
 
     for (let i = 0; i < count; i++) {
       const angle = (i / count) * Math.PI * 2;
@@ -34,18 +34,14 @@ const FullChromaticRing: React.FC = () => {
       const normAngle = (Math.atan2(Math.sin(angle), Math.cos(angle)) + Math.PI) / (Math.PI * 2);
 
       const color = new THREE.Color();
-      if (normAngle < 0.5) {
-        if (normAngle < 0.25) {
-          color.lerpColors(cRed, cOrange, normAngle * 4);
-        } else {
-          color.lerpColors(cOrange, cYellow, (normAngle - 0.25) * 4);
-        }
+      if (normAngle < 0.25) {
+        color.lerpColors(cBurgundy, cSand, normAngle * 4);
+      } else if (normAngle < 0.5) {
+        color.lerpColors(cSand, cCream, (normAngle - 0.25) * 4);
+      } else if (normAngle < 0.75) {
+        color.lerpColors(cCream, cSlate, (normAngle - 0.5) * 4);
       } else {
-        if (normAngle < 0.75) {
-          color.lerpColors(cCyan, cBlue, (normAngle - 0.5) * 4);
-        } else {
-          color.lerpColors(cBlue, cRed, (normAngle - 0.75) * 4);
-        }
+        color.lerpColors(cSlate, cBurgundy, (normAngle - 0.75) * 4);
       }
 
       col[i * 3] = color.r;
@@ -115,13 +111,13 @@ const FullChromaticRing: React.FC = () => {
       {/* Razor-Sharp Continuous Dual-Tone Torus Ring */}
       <mesh ref={ringPrimaryRef}>
         <torusGeometry args={[RING_RADIUS, 0.012, 16, 96]} />
-        <meshBasicMaterial color="#ff3b00" transparent opacity={0.85} />
+        <meshBasicMaterial color="#790d16" transparent opacity={0.88} />
       </mesh>
 
-      {/* Cyan Accent Outer Orbit Ring */}
+      {/* Slate Accent Outer Orbit Ring */}
       <mesh ref={ringGlowRef}>
         <torusGeometry args={[RING_RADIUS + 0.04, 0.007, 16, 96]} />
-        <meshBasicMaterial color="#00f0ff" transparent opacity={0.75} />
+        <meshBasicMaterial color="#aec4d4" transparent opacity={0.85} />
       </mesh>
     </group>
   );

@@ -76,7 +76,7 @@ export const Navbar: React.FC = () => {
           initial={{ opacity: 0, y: -25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-7xl mx-auto rounded-full bg-charcoal-950/40 backdrop-blur-3xl backdrop-saturate-150 border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.25),0_0_30px_rgba(255,85,0,0.08)] px-4 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between pointer-events-auto"
+          className="max-w-7xl mx-auto rounded-full bg-white/80 backdrop-blur-3xl backdrop-saturate-150 border border-[#e5d3af] shadow-[0_12px_40px_rgba(121,13,22,0.06),inset_0_1px_1px_rgba(255,255,255,0.9),0_0_20px_rgba(174,196,212,0.12)] px-4 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between pointer-events-auto"
         >
           {/* Left: Bespoke Motion Graphic Monogram Logo */}
           <div className="flex items-center">
@@ -84,7 +84,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Center: Motion Graphic Navigation Dock (Hidden only on small screens) */}
-          <nav className="hidden lg:flex items-center gap-1 p-1 rounded-full bg-white/[0.04] backdrop-blur-xl border border-white/10 shadow-inner relative">
+          <nav className="hidden lg:flex items-center gap-1 p-1 rounded-full bg-[#f5efe1] border border-[#e5d3af] shadow-inner relative">
             {navLinks.map((link, idx) => {
               const isActive = activeSection === link.id;
               const isHovered = hoveredIndex === idx;
@@ -105,7 +105,7 @@ export const Navbar: React.FC = () => {
                   {isHovered && (
                     <motion.span
                       layoutId="navHoverPill"
-                      className="absolute inset-0 bg-white/[0.08] backdrop-blur-md rounded-full -z-10 border border-white/20 shadow-sm"
+                      className="absolute inset-0 bg-[#aec4d4]/30 backdrop-blur-md rounded-full -z-10 border border-[#aec4d4] shadow-sm"
                       transition={{ type: 'spring', stiffness: 450, damping: 30 }}
                     />
                   )}
@@ -114,20 +114,20 @@ export const Navbar: React.FC = () => {
                   {isActive && !isHovered && (
                     <motion.span
                       layoutId="navActivePill"
-                      className="absolute inset-0 bg-electric-orange/20 backdrop-blur-md rounded-full -z-10 border border-electric-orange/50 shadow-[0_0_15px_rgba(255,85,0,0.35)]"
+                      className="absolute inset-0 bg-[#e5d3af] backdrop-blur-md rounded-full -z-10 border border-[#790d16]/40 shadow-sm"
                       transition={{ type: 'spring', stiffness: 450, damping: 30 }}
                     />
                   )}
 
-                  <span className={`text-[10px] ${isActive ? 'text-electric-orange font-bold' : 'text-warm-dark'}`}>
+                  <span className={`text-[10px] ${isActive ? 'text-[#790d16] font-black' : 'text-[#444444] font-bold'}`}>
                     {link.num}
                   </span>
-                  <span className={isActive ? 'text-warm-white font-bold' : 'text-warm-muted'}>
+                  <span className={isActive ? 'text-black font-black' : 'text-[#222222] font-bold hover:text-[#790d16]'}>
                     {link.label}
                   </span>
 
                   {isActive && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-electric-orange shadow-[0_0_6px_#ff5500]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#790d16] shadow-[0_0_6px_#790d16]" />
                   )}
                 </a>
               );
@@ -137,47 +137,47 @@ export const Navbar: React.FC = () => {
           {/* Right: Live Telemetry + Audio Equalizer + Resume Capsule */}
           <div className="flex items-center gap-2 sm:gap-3">
             {/* Real-time Precision IST Clock */}
-            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.04] backdrop-blur-xl border border-white/15 font-mono text-[11px] text-warm-cream shadow-sm">
+            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 border border-[#e5d3af] font-mono text-[11px] text-black shadow-sm">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-600 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
               </span>
-              <span className="font-bold text-warm-white">IST</span>
-              <span className="text-warm-muted">{time || 'LIVE'}</span>
+              <span className="font-bold text-black">IST</span>
+              <span className="text-[#333333] font-semibold">{time || 'LIVE'}</span>
             </div>
 
             {/* Interactive Audio Equalizer Waveform Button */}
             <button
               onClick={toggleSound}
-              className="px-2.5 py-1.5 rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-xl hover:bg-white/[0.09] hover:border-electric-orange/50 text-warm-muted hover:text-warm-white transition-all flex items-center gap-1.5 shadow-sm"
+              className="px-2.5 py-1.5 rounded-full border border-[#e5d3af] bg-white/90 hover:bg-[#f5efe1] hover:border-[#790d16]/50 text-black transition-all flex items-center gap-1.5 shadow-sm"
               title={soundEnabled ? "Mute interactive audio" : "Enable interactive audio"}
             >
               {soundEnabled ? (
                 <div className="flex items-end gap-[2px] h-3 w-3.5">
-                  <span className="w-[2px] h-2 bg-electric-orange animate-[pulse_0.6s_ease-in-out_infinite]" />
-                  <span className="w-[2px] h-3 bg-electric-orange animate-[pulse_0.9s_ease-in-out_infinite]" />
-                  <span className="w-[2px] h-1.5 bg-electric-orange animate-[pulse_0.4s_ease-in-out_infinite]" />
+                  <span className="w-[2px] h-2 bg-[#790d16] animate-[pulse_0.6s_ease-in-out_infinite]" />
+                  <span className="w-[2px] h-3 bg-[#790d16] animate-[pulse_0.9s_ease-in-out_infinite]" />
+                  <span className="w-[2px] h-1.5 bg-[#790d16] animate-[pulse_0.4s_ease-in-out_infinite]" />
                 </div>
               ) : (
-                <VolumeX className="w-3.5 h-3.5 text-warm-dark" />
+                <VolumeX className="w-3.5 h-3.5 text-black" />
               )}
-              <span className="hidden md:inline font-mono text-[9px] font-bold text-warm-muted">
+              <span className="hidden md:inline font-mono text-[9px] font-bold text-black">
                 {soundEnabled ? 'FX' : 'OFF'}
               </span>
             </button>
 
-            {/* High-Impact Glassomorphic Electric Orange Resume Action */}
+            {/* High-Impact Glassomorphic Resume Action (User Palette: Burgundy & Cream) */}
             <Magnetic strength={0.25}>
               <a
                 href={PERSONAL_INFO.resumePdf}
                 download="Mohan_Sri_Raghuram_resume.pdf"
                 onClick={() => sound.click()}
-                className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-electric-orange via-electric-orange to-electric-light text-charcoal-950 font-mono text-xs font-black tracking-wider transition-all flex items-center gap-1.5 shadow-[0_0_25px_rgba(255,85,0,0.45),inset_0_1px_1px_rgba(255,255,255,0.6)] hover:shadow-[0_0_35px_rgba(255,85,0,0.7),inset_0_1px_1px_rgba(255,255,255,0.8)] backdrop-blur-2xl border border-white/40 hover:scale-105 active:scale-95 cursor-pointer"
+                className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-[#790d16] via-[#790d16] to-[#5c0910] text-[#ffffff] font-mono text-xs font-black tracking-wider transition-all flex items-center gap-1.5 shadow-[0_4px_20px_rgba(121,13,22,0.3)] hover:shadow-[0_6px_25px_rgba(121,13,22,0.45)] border border-[#790d16]/30 hover:scale-105 active:scale-95 cursor-pointer"
                 data-cursor-text="RESUME"
               >
-                <FileDown className="w-3.5 h-3.5 text-charcoal-950 stroke-[2.5]" />
-                <span className="font-black">RESUME</span>
-                <ArrowUpRight className="w-3 h-3 stroke-[2.5]" />
+                <FileDown className="w-3.5 h-3.5 text-[#ffffff] stroke-[2.5]" />
+                <span className="font-black text-[#ffffff]">RESUME</span>
+                <ArrowUpRight className="w-3 h-3 text-[#ffffff] stroke-[2.5]" />
               </a>
             </Magnetic>
 
@@ -204,13 +204,13 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-x-3 top-20 z-40 p-6 rounded-3xl bg-charcoal-950/95 backdrop-blur-2xl border border-white/10 shadow-2xl lg:hidden space-y-4"
+            className="fixed inset-x-3 top-20 z-40 p-6 rounded-3xl bg-[#f5efe1]/95 backdrop-blur-2xl border border-[#e5d3af] shadow-2xl lg:hidden space-y-4"
           >
-            <div className="flex items-center justify-between pb-3 border-b border-white/10">
-              <span className="font-mono text-xs text-electric-orange font-bold uppercase tracking-wider">
+            <div className="flex items-center justify-between pb-3 border-b border-[#e5d3af]">
+              <span className="font-mono text-xs text-[#790d16] font-bold uppercase tracking-wider">
                 NAVIGATION MATRIX
               </span>
-              <span className="font-mono text-[10px] text-warm-muted">IST {time}</span>
+              <span className="font-mono text-[10px] text-warm-dark">IST {time}</span>
             </div>
 
             <nav className="flex flex-col gap-2">
@@ -222,10 +222,10 @@ export const Navbar: React.FC = () => {
                     sound.click();
                     setMobileMenuOpen(false);
                   }}
-                  className="px-4 py-3 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] hover:border-electric-orange/30 border border-transparent font-mono text-sm tracking-wider text-warm-white flex items-center justify-between transition-all"
+                  className="px-4 py-3 rounded-xl bg-white/80 hover:bg-white hover:border-[#790d16]/30 border border-[#e5d3af] font-mono text-sm tracking-wider text-black flex items-center justify-between transition-all"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-electric-orange font-bold text-xs">{link.num}</span>
+                    <span className="text-[#790d16] font-bold text-xs">{link.num}</span>
                     <span>{link.label}</span>
                   </div>
                   <ArrowUpRight className="w-4 h-4 text-warm-muted" />
@@ -238,7 +238,7 @@ export const Navbar: React.FC = () => {
                 href={PERSONAL_INFO.resumePdf}
                 download="Mohan_Sri_Raghuram_resume.pdf"
                 onClick={() => sound.click()}
-                className="w-full py-3.5 rounded-xl bg-electric-orange text-charcoal-950 font-mono text-xs font-black tracking-wider flex items-center justify-center gap-2 shadow-xl shadow-electric-orange/20"
+                className="w-full py-3.5 rounded-xl bg-[#790d16] text-[#ffffff] font-mono text-xs font-black tracking-wider flex items-center justify-center gap-2 shadow-xl shadow-[#790d16]/20"
               >
                 <FileDown className="w-4 h-4 stroke-[2.5]" />
                 <span>DOWNLOAD VERIFIED RESUME (PDF)</span>

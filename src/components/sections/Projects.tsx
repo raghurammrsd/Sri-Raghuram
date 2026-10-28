@@ -203,8 +203,8 @@ export const Projects: React.FC = () => {
                 </div>
               </div>
 
-              {/* Prominent High-Visibility Recruiter Action Buttons (Glassomorphic) */}
-              <div className="flex flex-wrap items-center gap-3 pt-2 border-t border-white/[0.08]">
+              {/* Prominent High-Visibility Recruiter Action Buttons (User Palette) */}
+              <div className="flex flex-wrap items-center gap-3 pt-2 border-t border-[#e5d3af]">
                 {activeProject.links.liveDemo && (
                   <Magnetic strength={0.25}>
                     <a
@@ -212,10 +212,10 @@ export const Projects: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => sound.click()}
-                      className="px-6 py-3.5 rounded-full font-mono text-xs font-black tracking-wider transition-all flex items-center gap-2 bg-gradient-to-r from-electric-orange to-electric-light text-charcoal-950 backdrop-blur-2xl border border-white/40 shadow-[0_0_25px_rgba(255,85,0,0.35),inset_0_1px_1px_rgba(255,255,255,0.6)] hover:shadow-[0_0_35px_rgba(255,85,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.8)] hover:scale-105 active:scale-95 cursor-pointer"
+                      className="px-6 py-3.5 rounded-full font-mono text-xs font-black tracking-wider transition-all flex items-center gap-2 bg-[#790d16] text-[#f5efe1] hover:bg-[#600a11] border border-[#790d16]/30 shadow-[0_4px_20px_rgba(121,13,22,0.3),inset_0_1px_1px_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 cursor-pointer"
                     >
                       <Globe className="w-4 h-4 stroke-[2.5]" />
-                      <span className="font-black">
+                      <span className="font-black text-[#f5efe1]">
                         {activeProject.id === 'codegraph-mcp' ? 'VIEW ON PYPI REGISTRY' : 'LAUNCH LIVE DEMO'}
                       </span>
                       <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
@@ -230,9 +230,9 @@ export const Projects: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => sound.click()}
-                      className="px-6 py-3.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] backdrop-blur-2xl border border-white/20 hover:border-white/40 text-warm-white font-mono text-xs font-bold tracking-wider transition-all flex items-center gap-2 hover:scale-105 active:scale-95 shadow-[0_8px_24px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.2)]"
+                      className="px-6 py-3.5 rounded-full bg-white/90 hover:bg-white backdrop-blur-2xl border border-[#aec4d4] hover:border-[#790d16] text-warm-white font-mono text-xs font-bold tracking-wider transition-all flex items-center gap-2 hover:scale-105 active:scale-95 shadow-sm"
                     >
-                      <GithubIcon className="w-4 h-4" />
+                      <GithubIcon className="w-4 h-4 text-warm-white" />
                       <span>GITHUB REPOSITORY</span>
                       <ArrowUpRight className="w-3.5 h-3.5 text-warm-muted" />
                     </a>
@@ -242,10 +242,10 @@ export const Projects: React.FC = () => {
                 {activeProject.links.github && (
                   <button
                     onClick={() => handleCopyClone(activeProject.links.github!)}
-                    className="px-4 py-3.5 rounded-full bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-2xl border border-white/10 hover:border-white/25 text-warm-muted hover:text-warm-white font-mono text-xs tracking-wider transition-all flex items-center gap-2 hover:scale-105 active:scale-95 cursor-pointer shadow-[0_8px_24px_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.12)]"
+                    className="px-4 py-3.5 rounded-full bg-white/80 hover:bg-white backdrop-blur-2xl border border-[#e5d3af] hover:border-[#790d16] text-warm-muted hover:text-warm-white font-mono text-xs tracking-wider transition-all flex items-center gap-2 hover:scale-105 active:scale-95 cursor-pointer shadow-sm"
                     title="Copy git clone command"
                   >
-                    {copiedClone ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <GitFork className="w-3.5 h-3.5 text-electric-orange" />}
+                    {copiedClone ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <GitFork className="w-3.5 h-3.5 text-electric-orange" />}
                     <span>{copiedClone ? 'COPIED TO CLIPBOARD' : 'GIT CLONE'}</span>
                   </button>
                 )}

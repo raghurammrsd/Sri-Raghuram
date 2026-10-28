@@ -34,14 +34,14 @@ export const Story: React.FC = () => {
   return (
     <section
       id="story"
-      className="scroll-mt-20 min-h-screen flex flex-col justify-between py-12 sm:py-16 border-b border-white/[0.08] relative bg-transparent"
+      className="scroll-mt-20 min-h-screen flex flex-col justify-between py-12 sm:py-16 border-b border-[#e5d3af]/50 relative bg-transparent"
     >
       {/* Background Volumetric Depth */}
-      <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-electric-orange/[0.035] rounded-full blur-[180px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-[#790d16]/[0.035] rounded-full blur-[180px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 my-auto flex flex-col justify-between h-full">
         {/* Section Header with Staggered Kinetic Typography */}
-        <div className="pb-6 border-b border-white/[0.08]">
+        <div className="pb-6 border-b border-[#e5d3af]/50">
           {/* Top Tag with Pulse */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -54,7 +54,7 @@ export const Story: React.FC = () => {
               <span className="w-1.5 h-1.5 rounded-full bg-electric-orange animate-ping" />
               01 · PHILOSOPHY
             </span>
-            <span className="font-mono text-[11px] tracking-wider text-warm-muted uppercase">
+            <span className="font-mono text-[11px] tracking-wider text-warm-muted uppercase font-bold">
               ENGINEERING THESIS
             </span>
           </motion.div>
@@ -79,7 +79,7 @@ export const Story: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="font-sans text-xs sm:text-sm text-warm-cream/90 max-w-xl leading-relaxed"
+              className="font-sans text-xs sm:text-sm text-warm-muted max-w-xl leading-relaxed font-normal"
             >
               Most AI prototypes fail when context windows drown in noise and agents hallucinate imports. My focus is practical AI engineering: building deterministic tools, local-first repository intelligence, and high-concurrency data systems.
             </motion.p>
@@ -103,7 +103,7 @@ export const Story: React.FC = () => {
                 }}
                 whileHover={{ y: -8, transition: { duration: 0.25 } }}
                 onMouseEnter={() => sound.hover()}
-                className="p-7 rounded-2xl bg-charcoal-900/80 border border-white/[0.08] hover:border-electric-orange/50 transition-all duration-300 flex flex-col justify-between shadow-2xl relative group backdrop-blur-xl overflow-hidden"
+                className="p-7 rounded-2xl bg-white/90 border border-[#e5d3af] hover:border-[#790d16]/50 transition-all duration-300 flex flex-col justify-between shadow-[0_12px_40px_rgba(121,13,22,0.06)] relative group backdrop-blur-xl overflow-hidden"
               >
                 {/* Dynamic Top Progress Accent Bar */}
                 <motion.div
@@ -111,18 +111,18 @@ export const Story: React.FC = () => {
                   whileInView={{ width: '100%' }}
                   viewport={{ once: true }}
                   transition={{ duration: 1.2, delay: 0.4 + idx * 0.2, ease: 'easeOut' }}
-                  className="absolute top-0 left-0 h-[2px] bg-gradient-to-r from-electric-orange via-electric-orange/80 to-transparent"
+                  className="absolute top-0 left-0 h-[2px] bg-gradient-to-r from-[#790d16] via-[#aec4d4] to-[#e5d3af]"
                 />
 
                 {/* Ambient Card Glare on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-b from-electric-orange/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#790d16]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
                 <div>
                   <div className="flex items-center justify-between mb-6">
                     <span className="font-mono text-2xl font-black text-warm-dark group-hover:text-electric-orange transition-colors">
                       {item.number}
                     </span>
-                    <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/10 flex items-center justify-center text-warm-muted group-hover:text-electric-orange group-hover:border-electric-orange/40 transition-all">
+                    <div className="w-8 h-8 rounded-lg bg-[#e5d3af]/25 border border-[#e5d3af] flex items-center justify-center text-warm-muted group-hover:text-electric-orange group-hover:border-[#790d16]/40 transition-all">
                       <Icon className="w-4 h-4" />
                     </div>
                   </div>
@@ -136,7 +136,7 @@ export const Story: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="pt-6 border-t border-white/[0.08] mt-6 flex items-center justify-between font-mono text-[11px] text-warm-cream">
+                <div className="pt-6 border-t border-[#e5d3af]/60 mt-6 flex items-center justify-between font-mono text-[11px] text-warm-dark font-bold">
                   <span className="tracking-wider">{item.metric}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-electric-orange group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </div>
@@ -151,13 +151,13 @@ export const Story: React.FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="pt-3 border-t border-white/[0.06] flex items-center justify-between font-mono text-[11px] text-warm-dark"
+          className="pt-3 border-t border-[#e5d3af]/50 flex items-center justify-between font-mono text-[11px] text-warm-dark"
         >
           <div className="flex items-center gap-2">
             <span className="text-electric-orange">●</span>
-            <span>SYSTEM ARCHITECTURE PRINCIPLES</span>
+            <span className="font-semibold">SYSTEM ARCHITECTURE PRINCIPLES</span>
           </div>
-          <span>ZERO GUESSWORK · HIGH PRECISION</span>
+          <span className="font-semibold">ZERO GUESSWORK · HIGH PRECISION</span>
         </motion.div>
       </div>
     </section>

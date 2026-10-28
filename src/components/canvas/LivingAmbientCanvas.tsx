@@ -51,13 +51,13 @@ export const LivingAmbientCanvas: React.FC = () => {
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
 
-    // 5 Multi-harmonic Cybernetic Wave Lines
+    // 5 Multi-harmonic Cybernetic Wave Lines (User Palette)
     const lines = [
       {
         baseY: 0.22,
         amplitude: 50,
         freq: 0.0015,
-        color: '255, 85, 0',
+        color: '121, 13, 22', // Deep Burgundy (#790d16)
         alpha: 0.22,
         lineWidth: 1.5,
         speed: 0.8,
@@ -67,8 +67,8 @@ export const LivingAmbientCanvas: React.FC = () => {
         baseY: 0.42,
         amplitude: 65,
         freq: 0.0012,
-        color: '255, 120, 40',
-        alpha: 0.18,
+        color: '174, 196, 212', // Soft Slate Fog (#aec4d4)
+        alpha: 0.28,
         lineWidth: 1.2,
         speed: 1.1,
         pulseOffset: 0.4,
@@ -77,8 +77,8 @@ export const LivingAmbientCanvas: React.FC = () => {
         baseY: 0.62,
         amplitude: 55,
         freq: 0.0018,
-        color: '255, 85, 0',
-        alpha: 0.20,
+        color: '229, 211, 175', // Warm Sand Tan (#e5d3af)
+        alpha: 0.32,
         lineWidth: 1.4,
         speed: 0.9,
         pulseOffset: 0.7,
@@ -87,8 +87,8 @@ export const LivingAmbientCanvas: React.FC = () => {
         baseY: 0.78,
         amplitude: 60,
         freq: 0.0014,
-        color: '245, 242, 235',
-        alpha: 0.12,
+        color: '121, 13, 22', // Deep Burgundy
+        alpha: 0.16,
         lineWidth: 1.0,
         speed: 0.7,
         pulseOffset: 0.25,
@@ -97,8 +97,8 @@ export const LivingAmbientCanvas: React.FC = () => {
         baseY: 0.92,
         amplitude: 45,
         freq: 0.002,
-        color: '255, 85, 0',
-        alpha: 0.15,
+        color: '174, 196, 212', // Soft Slate Fog
+        alpha: 0.22,
         lineWidth: 1.0,
         speed: 1.2,
         pulseOffset: 0.85,
@@ -197,9 +197,9 @@ export const LivingAmbientCanvas: React.FC = () => {
         height * 0.45,
         width * 0.55
       );
-      gradCenter.addColorStop(0, 'rgba(255, 85, 0, 0.035)');
-      gradCenter.addColorStop(0.5, 'rgba(255, 120, 40, 0.012)');
-      gradCenter.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      gradCenter.addColorStop(0, 'rgba(121, 13, 22, 0.035)');
+      gradCenter.addColorStop(0.5, 'rgba(174, 196, 212, 0.03)');
+      gradCenter.addColorStop(1, 'rgba(245, 239, 225, 0)');
       ctx.fillStyle = gradCenter;
       ctx.fillRect(0, 0, width, height);
 
@@ -253,66 +253,18 @@ export const LivingAmbientCanvas: React.FC = () => {
         if (pulseX > 0 && pulseY > 0) {
           ctx.beginPath();
           ctx.arc(pulseX, pulseY, 2.5, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, 255, 255, 0.85)`;
+          ctx.fillStyle = `rgba(121, 13, 22, 0.95)`;
           ctx.fill();
 
           ctx.beginPath();
           ctx.arc(pulseX, pulseY, 5.5, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, 85, 0, 0.4)`;
+          ctx.fillStyle = `rgba(174, 196, 212, 0.5)`;
           ctx.fill();
         }
       });
 
-      // 3. Architectural Code Matrix Streams (Subtle high-tech code design)
-      // Intensifies organically when scrolled past expertise or throughout the site
-      const scrollFactor = Math.min(1.0, Math.max(0.4, scrollY / 700));
-      const codeAlpha = 0.05 + scrollFactor * 0.04; // 0.05 to 0.09 max - stays readable
-
-      ctx.font = '10px "JetBrains Mono", monospace';
-      CODE_BLOCKS.forEach((block, bIdx) => {
-        const startX = block.xRatio * width;
-        const startY = (block.yRatio * height + Math.sin(time * 0.3 + bIdx) * 12) % height;
-
-        block.lines.forEach((codeLine, lineIdx) => {
-          const y = startY + lineIdx * 16;
-          if (y > 40 && y < height - 40) {
-            // Line numbering in electric orange
-            ctx.fillStyle = `rgba(255, 85, 0, ${codeAlpha * 1.5})`;
-            ctx.fillText(
-              `0${bIdx + 1}:${lineIdx + 1}`,
-              startX - 36,
-              y
-            );
-
-            // Code syntax in warm muted
-            ctx.fillStyle = `rgba(245, 242, 235, ${codeAlpha})`;
-            ctx.fillText(codeLine, startX, y);
-          }
-        });
-      });
-
-      // 4. Grid Crosshairs & Architectural Coordinates
-      const crosshairSpacing = 160;
-      ctx.fillStyle = `rgba(255, 85, 0, ${codeAlpha * 0.8})`;
-      ctx.font = '8px "JetBrains Mono", monospace';
-
-      for (let cx = 80; cx < width; cx += crosshairSpacing) {
-        for (let cy = 80; cy < height; cy += crosshairSpacing) {
-          const distMouse = Math.hypot(cx - mouseX, cy - mouseY);
-          if (distMouse < 180) {
-            // Light up crosshairs near cursor
-            const glow = (1 - distMouse / 180) * 0.35;
-            ctx.fillStyle = `rgba(255, 85, 0, ${glow})`;
-            ctx.fillText('+', cx - 2, cy + 2);
-          } else if ((cx + cy) % (crosshairSpacing * 2) === 0) {
-            ctx.fillStyle = `rgba(255, 255, 255, 0.035)`;
-            ctx.fillText('+', cx - 2, cy + 2);
-          }
-        }
-      }
-
-      // 5. Update floating micro-particles
-      ctx.fillStyle = 'rgba(255, 85, 0, 0.2)';
+      // 3. Subtle floating micro-particles
+      ctx.fillStyle = 'rgba(174, 196, 212, 0.4)';
       particles.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
@@ -342,12 +294,12 @@ export const LivingAmbientCanvas: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-charcoal-950">
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#f5efe1]">
       {/* 1. Hardware Accelerated High-Performance Cybernetic Canvas */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 
-      {/* 2. Precision Architectural Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff07_1px,transparent_1px),linear-gradient(to_bottom,#ffffff07_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_85%_75%_at_50%_50%,#000_65%,transparent_100%)] opacity-75" />
+      {/* 2. Precision Architectural Grid (User Palette: Burgundy & Sand on Light Cream) */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(121,13,22,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(121,13,22,0.04)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_85%_75%_at_50%_50%,#000_65%,transparent_100%)] opacity-75" />
     </div>
   );
 };

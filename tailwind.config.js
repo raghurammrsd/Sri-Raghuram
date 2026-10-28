@@ -8,24 +8,29 @@ export default {
     extend: {
       colors: {
         charcoal: {
-          950: '#070709',
-          900: '#0a0a0d',
-          850: '#0e0e13',
-          800: '#14141a',
-          700: '#1c1c24',
-          600: '#282834',
+          950: '#f5efe1', // Canvas Background (User Palette Band 3: Light Ivory Cream)
+          900: '#ffffff', // Card Surfaces (Pure Crisp White)
+          850: '#fbf8f2', // Card Inner Surfaces (Soft Tinted Ivory)
+          800: '#e5d3af', // Warm Sand Tan (User Palette Band 2)
+          700: '#aec4d4', // Soft Slate Fog (User Palette Band 4)
+          600: '#790d16', // Deep Burgundy Wine (User Palette Band 1)
         },
         warm: {
-          white: '#f5f2eb',
-          cream: '#e8e4dc',
-          muted: '#8e8a82',
-          dark: '#524e47',
+          white: '#000000', // Pure Solid Black for Headings, Titles, Hero Text (Crisp & High Contrast)
+          cream: '#1a1a1a', // Deep Near-Black for Subtitles & Emphasized Text
+          muted: '#2d2d30', // Solid Dark Charcoal for Paragraphs & Descriptions (NOT Pale!)
+          dark: '#4a4a50',  // Dark Slate Charcoal for Meta, Footnotes & Tickers
         },
         electric: {
-          orange: '#ff5500',
-          glow: 'rgba(255, 85, 0, 0.28)',
-          light: '#ff7728',
-          deep: '#e04800',
+          orange: '#790d16', // Primary Accent (User Palette Band 1: Deep Burgundy Wine)
+          glow: 'rgba(121, 13, 22, 0.25)',
+          light: '#9b1520',  // Rich Crimson Wine
+          deep: '#5c0910',   // Deep Oxblood
+          burgundy: '#790d16',
+          sand: '#e5d3af',   // Warm Sand Tan (User Palette Band 2)
+          cream: '#f5efe1',  // Ivory Cream (User Palette Band 3)
+          slate: '#aec4d4',  // Soft Slate Blue (User Palette Band 4)
+          accent: '#790d16',
         }
       },
       fontFamily: {

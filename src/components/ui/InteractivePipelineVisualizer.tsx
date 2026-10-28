@@ -94,12 +94,12 @@ export const InteractivePipelineVisualizer: React.FC<PipelineVisualizerProps> = 
       ];
 
   return (
-    <div className="p-6 rounded-2xl bg-charcoal-900/90 border border-white/10 backdrop-blur-2xl shadow-2xl relative overflow-hidden flex flex-col justify-between">
+    <div className="p-6 rounded-2xl bg-white/95 border border-[#e5d3af] shadow-[0_12px_40px_rgba(121,13,22,0.06)] relative overflow-hidden flex flex-col justify-between">
       {/* Dynamic Background Grid and Ambient Glow */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-electric-orange/[0.06] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-72 h-72 bg-[#790d16]/[0.04] rounded-full blur-3xl pointer-events-none" />
 
       {/* Top Header Ticker */}
-      <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-white/[0.08]">
+      <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-[#e5d3af]/50">
         <div className="flex items-center gap-2">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-electric-orange opacity-75"></span>
@@ -133,15 +133,15 @@ export const InteractivePipelineVisualizer: React.FC<PipelineVisualizerProps> = 
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                 className={`p-3.5 rounded-xl border transition-all duration-300 cursor-pointer flex items-center justify-between relative overflow-hidden ${
                   isHovered
-                    ? 'bg-charcoal-950 border-electric-orange shadow-[0_0_25px_rgba(255,85,0,0.25)]'
-                    : 'bg-charcoal-950/70 border-white/[0.08] hover:border-white/20'
+                    ? 'bg-[#f5efe1] border-electric-orange shadow-[0_4px_20px_rgba(121,13,22,0.12)]'
+                    : 'bg-[#fbf8f2] border-[#e5d3af] hover:border-[#aec4d4]'
                 }`}
               >
                 {/* Active Emitter Glow Bar */}
                 {isHovered && (
                   <motion.div
                     layoutId="activePipelineBar"
-                    className="absolute left-0 top-0 bottom-0 w-1 bg-electric-orange shadow-[0_0_12px_#ff5500]"
+                    className="absolute left-0 top-0 bottom-0 w-1 bg-electric-orange shadow-[0_0_12px_rgba(121,13,22,0.4)]"
                   />
                 )}
 
@@ -149,8 +149,8 @@ export const InteractivePipelineVisualizer: React.FC<PipelineVisualizerProps> = 
                   <div
                     className={`w-9 h-9 rounded-lg flex items-center justify-center border transition-all ${
                       isHovered
-                        ? 'bg-electric-orange/20 border-electric-orange text-white'
-                        : 'bg-white/[0.04] border-white/10 text-warm-cream'
+                        ? 'bg-[#790d16]/15 border-electric-orange text-electric-orange'
+                        : 'bg-[#e5d3af]/30 border-[#e5d3af] text-warm-dark'
                     }`}
                   >
                     <Icon className="w-4 h-4 text-electric-orange" />
@@ -158,19 +158,19 @@ export const InteractivePipelineVisualizer: React.FC<PipelineVisualizerProps> = 
 
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-[9px] text-warm-muted font-bold">
+                      <span className="font-mono text-[9px] text-warm-dark font-bold">
                         0{index + 1}
                       </span>
                       <h4 className="font-syne text-xs font-bold text-warm-white tracking-wide">
                         {node.label}
                       </h4>
                     </div>
-                    <p className="font-mono text-[10px] text-warm-muted">{node.sub}</p>
+                    <p className="font-mono text-[10px] text-warm-dark">{node.sub}</p>
                   </div>
                 </div>
 
                 <div className="text-right">
-                  <span className="font-mono text-[10px] text-warm-cream font-semibold block">
+                  <span className="font-mono text-[10px] text-warm-white font-bold block">
                     {node.spec}
                   </span>
                   <span className="font-mono text-[9px] text-electric-orange font-bold tracking-wider">
@@ -189,7 +189,7 @@ export const InteractivePipelineVisualizer: React.FC<PipelineVisualizerProps> = 
                       y1="0"
                       x2="50%"
                       y2="16"
-                      stroke="rgba(255, 85, 0, 0.2)"
+                      stroke="rgba(121, 13, 22, 0.2)"
                       strokeWidth="1.5"
                     />
                     {/* Glowing pulsed beam */}
@@ -198,13 +198,13 @@ export const InteractivePipelineVisualizer: React.FC<PipelineVisualizerProps> = 
                       y1="0"
                       x2="50%"
                       y2="16"
-                      stroke="#ff5500"
+                      stroke="#790d16"
                       strokeWidth="2"
                       strokeDasharray="4 6"
                       className="animate-[dash_0.8s_linear_infinite]"
                     />
                     {/* Traveling Photons */}
-                    <circle cx="50%" cy="8" r="2.5" fill="#ffffff">
+                    <circle cx="50%" cy="8" r="2.5" fill="#790d16">
                       <animate
                         attributeName="cy"
                         values="0; 16"
@@ -221,14 +221,14 @@ export const InteractivePipelineVisualizer: React.FC<PipelineVisualizerProps> = 
       </div>
 
       {/* Live Hardware Telemetry Footer */}
-      <div className="pt-4 mt-4 border-t border-white/[0.08] flex items-center justify-between font-mono text-[10px]">
-        <div className="flex items-center gap-2 text-warm-muted">
+      <div className="pt-4 mt-4 border-t border-[#e5d3af]/50 flex items-center justify-between font-mono text-[10px]">
+        <div className="flex items-center gap-2 text-warm-dark font-medium">
           <GitCommit className="w-3.5 h-3.5 text-electric-orange" />
           <span>PAYLOADS PROCESSED:</span>
           <span className="text-warm-white font-bold">{packetCount.toLocaleString()}</span>
         </div>
-        <span className="text-emerald-400 font-bold flex items-center gap-1">
-          <CheckCircle2 className="w-3 h-3" /> 0 RUNTIME DRIFT
+        <span className="text-emerald-700 font-bold flex items-center gap-1">
+          <CheckCircle2 className="w-3 h-3 text-emerald-600" /> 0 RUNTIME DRIFT
         </span>
       </div>
     </div>

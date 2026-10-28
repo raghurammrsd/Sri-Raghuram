@@ -62,7 +62,7 @@ export const Contact: React.FC<ContactProps> = ({ onCopyEmail, copied }) => {
             <Magnetic strength={0.35}>
               <button
                 onClick={handleHeroAction}
-                className="px-8 sm:px-14 py-4 sm:py-5 rounded-full bg-gradient-to-r from-electric-orange via-electric-orange to-electric-light text-charcoal-950 font-mono text-lg sm:text-2xl font-black tracking-tight hover:scale-105 active:scale-95 transition-all shadow-[0_0_35px_rgba(255,85,0,0.45),inset_0_1px_1px_rgba(255,255,255,0.6)] backdrop-blur-2xl border border-white/40 cursor-pointer flex items-center gap-3.5"
+                className="px-8 sm:px-14 py-4 sm:py-5 rounded-full bg-[#790d16] text-[#f5efe1] hover:bg-[#600a11] font-mono text-lg sm:text-2xl font-black tracking-tight hover:scale-105 active:scale-95 transition-all shadow-[0_8px_30px_rgba(121,13,22,0.3),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-[#790d16]/30 cursor-pointer flex items-center gap-3.5"
                 data-cursor-text="FIRE"
               >
                 <span>DISPATCH EMAIL</span>
