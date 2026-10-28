@@ -54,7 +54,7 @@ export const AreasOfExpertise: React.FC = () => {
   return (
     <section
       id="expertise"
-      className="scroll-mt-20 min-h-screen lg:h-screen lg:max-h-[920px] flex flex-col justify-between relative overflow-hidden py-8 sm:py-10 px-4 sm:px-6 lg:px-8 border-b border-white/[0.08]"
+      className="scroll-mt-20 relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 border-b border-white/[0.08]"
     >
       {/* 3D Chromatic Plasma Ring Scene (Center Vortex) */}
       <ChromaticRingScene />
@@ -66,7 +66,7 @@ export const AreasOfExpertise: React.FC = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-electric-orange/[0.045] rounded-full blur-[200px] pointer-events-none" />
 
       {/* Main 12-Column Spatial Grid: 4 Pristine 3D Floating Boxes emerging from the Ring */}
-      <div className="max-w-7xl w-full mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center my-auto">
+      <div className="max-w-7xl w-full mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
         {/* Left Column (3 Cols): Box 1 (Top Left) & Box 2 (Bottom Left) */}
         <div className="lg:col-span-3 flex flex-col gap-6 justify-between order-2 lg:order-1">
           {/* Box 1: Artificial Intelligence */}
@@ -99,8 +99,8 @@ export const AreasOfExpertise: React.FC = () => {
                 </span>
               </div>
 
-              {/* Heading in Electric Orange as requested */}
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-electric-orange tracking-tight mb-2.5">
+              {/* Heading */}
+              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white group-hover:text-electric-orange transition-colors tracking-tight mb-2.5">
                 {cards[0].title}
               </h3>
 
@@ -144,8 +144,8 @@ export const AreasOfExpertise: React.FC = () => {
                 </span>
               </div>
 
-              {/* Heading in Electric Orange */}
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-electric-orange tracking-tight mb-2.5">
+              {/* Heading */}
+              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white group-hover:text-electric-orange transition-colors tracking-tight mb-2.5">
                 {cards[1].title}
               </h3>
 
@@ -176,8 +176,8 @@ export const AreasOfExpertise: React.FC = () => {
             </span>
           </div>
 
-          <h2 className="text-4xl sm:text-6xl font-light text-warm-white tracking-tight mb-3">
-            Areas of <span className="font-serif italic font-normal text-electric-orange">Expertise</span>
+          <h2 className="font-syne text-4xl sm:text-6xl font-black text-warm-white tracking-tight mb-3">
+            Areas of <span className="text-electric-orange">Expertise.</span>
           </h2>
 
           <p className="font-sans text-xs sm:text-sm text-warm-cream/90 max-w-sm leading-relaxed mb-6">
@@ -227,8 +227,8 @@ export const AreasOfExpertise: React.FC = () => {
                 </span>
               </div>
 
-              {/* Heading in Electric Orange */}
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-electric-orange tracking-tight mb-2.5">
+              {/* Heading */}
+              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white group-hover:text-electric-orange transition-colors tracking-tight mb-2.5">
                 {cards[2].title}
               </h3>
 
@@ -272,8 +272,8 @@ export const AreasOfExpertise: React.FC = () => {
                 </span>
               </div>
 
-              {/* Heading in Electric Orange */}
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-electric-orange tracking-tight mb-2.5">
+              {/* Heading */}
+              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white group-hover:text-electric-orange transition-colors tracking-tight mb-2.5">
                 {cards[3].title}
               </h3>
 

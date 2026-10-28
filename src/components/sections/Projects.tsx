@@ -48,24 +48,17 @@ export const Projects: React.FC = () => {
           >
             <div className="flex items-center gap-2 mb-2">
               <span className="font-mono text-[11px] font-bold tracking-widest text-electric-orange bg-electric-orange/10 border border-electric-orange/25 px-2.5 py-0.5 rounded flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-electric-orange animate-ping" />
-                03 · FLAGSHIP WEAPONS
+                <span className="w-1.5 h-1.5 rounded-full bg-electric-orange animate-pulse" />
+                03 · FEATURED PROJECTS
               </span>
               <span className="font-mono text-[11px] tracking-wider text-warm-muted uppercase">
-                RESUME VERIFIED ARSENAL
+                PRODUCTION SYSTEMS & RUNTIMES
               </span>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight leading-tight">
-              <span className="text-warm-white">FLAGSHIP ARSENAL.</span>
-              <motion.span
-                whileHover={{ scale: 1.02 }}
-                style={{ backgroundColor: '#ff5500', color: '#000000' }}
-                className="px-4 py-0.5 rounded-sm inline-block font-black shadow-2xl cursor-default"
-              >
-                BUILT AND DEPLOYED.
-              </motion.span>
-            </div>
+            <h2 className="font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight leading-tight text-warm-white">
+              Selected Works. <span className="text-electric-orange">Built & Deployed.</span>
+            </h2>
           </motion.div>
         </div>
 
@@ -155,7 +148,7 @@ export const Projects: React.FC = () => {
                   </span>
                 </div>
 
-                <h3 className="font-syne text-3xl sm:text-4xl font-black text-electric-orange tracking-tight leading-tight mb-3">
+                <h3 className="font-syne text-3xl sm:text-4xl font-black text-warm-white tracking-tight leading-tight mb-3">
                   {activeProject.title}
                 </h3>
 
@@ -219,7 +212,7 @@ export const Projects: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => sound.click()}
-                      className="px-6 py-3.5 rounded-full font-mono text-xs font-black tracking-wider transition-all flex items-center gap-2 bg-gradient-to-r from-electric-orange to-electric-light text-charcoal-950 backdrop-blur-xl border border-white/30 shadow-[0_0_25px_rgba(255,85,0,0.35),inset_0_1px_0_rgba(255,255,255,0.4)] hover:shadow-[0_0_35px_rgba(255,85,0,0.6)] hover:scale-105 active:scale-95 cursor-pointer"
+                      className="px-6 py-3.5 rounded-full font-mono text-xs font-black tracking-wider transition-all flex items-center gap-2 bg-gradient-to-r from-electric-orange to-electric-light text-charcoal-950 backdrop-blur-2xl border border-white/40 shadow-[0_0_25px_rgba(255,85,0,0.35),inset_0_1px_1px_rgba(255,255,255,0.6)] hover:shadow-[0_0_35px_rgba(255,85,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.8)] hover:scale-105 active:scale-95 cursor-pointer"
                     >
                       <Globe className="w-4 h-4 stroke-[2.5]" />
                       <span className="font-black">
@@ -237,7 +230,7 @@ export const Projects: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => sound.click()}
-                      className="px-6 py-3.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] backdrop-blur-xl border border-white/20 hover:border-white/40 text-warm-white font-mono text-xs font-bold tracking-wider transition-all flex items-center gap-2 hover:scale-105 active:scale-95 shadow-lg shadow-black/40"
+                      className="px-6 py-3.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] backdrop-blur-2xl border border-white/20 hover:border-white/40 text-warm-white font-mono text-xs font-bold tracking-wider transition-all flex items-center gap-2 hover:scale-105 active:scale-95 shadow-[0_8px_24px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.2)]"
                     >
                       <GithubIcon className="w-4 h-4" />
                       <span>GITHUB REPOSITORY</span>
@@ -249,7 +242,7 @@ export const Projects: React.FC = () => {
                 {activeProject.links.github && (
                   <button
                     onClick={() => handleCopyClone(activeProject.links.github!)}
-                    className="px-4 py-3.5 rounded-full bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-xl border border-white/10 hover:border-white/25 text-warm-muted hover:text-warm-white font-mono text-xs tracking-wider transition-all flex items-center gap-2 hover:scale-105 active:scale-95 cursor-pointer shadow-lg shadow-black/30"
+                    className="px-4 py-3.5 rounded-full bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-2xl border border-white/10 hover:border-white/25 text-warm-muted hover:text-warm-white font-mono text-xs tracking-wider transition-all flex items-center gap-2 hover:scale-105 active:scale-95 cursor-pointer shadow-[0_8px_24px_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.12)]"
                     title="Copy git clone command"
                   >
                     {copiedClone ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <GitFork className="w-3.5 h-3.5 text-electric-orange" />}

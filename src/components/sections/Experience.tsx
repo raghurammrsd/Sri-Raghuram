@@ -27,24 +27,17 @@ export const Experience: React.FC = () => {
           >
             <div className="flex items-center gap-2 mb-2">
               <span className="font-mono text-[11px] font-bold tracking-widest text-electric-orange bg-electric-orange/10 border border-electric-orange/25 px-2.5 py-0.5 rounded flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-electric-orange animate-ping" />
-                05 · ACADEMIC PEDIGREE
+                <span className="w-1.5 h-1.5 rounded-full bg-electric-orange animate-pulse" />
+                05 · EDUCATION & RIGOR
               </span>
               <span className="font-mono text-[11px] tracking-wider text-warm-muted uppercase">
-                FOUNDATIONAL RIGOR & CREDENTIALS
+                ACADEMIC CREDENTIALS & STANDING
               </span>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight leading-tight">
-              <span className="text-warm-white">ACADEMIC FOUNDATION.</span>
-              <motion.span
-                whileHover={{ scale: 1.02 }}
-                style={{ backgroundColor: '#ff5500', color: '#000000' }}
-                className="px-4 py-0.5 rounded-sm inline-block font-black shadow-2xl cursor-default"
-              >
-                VERIFIED RIGOR.
-              </motion.span>
-            </div>
+            <h2 className="font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight leading-tight text-warm-white">
+              Academic Foundation. <span className="text-electric-orange">Verified Rigor.</span>
+            </h2>
           </motion.div>
 
           <div className="font-mono text-xs text-warm-muted flex items-center gap-2">
@@ -70,7 +63,7 @@ export const Experience: React.FC = () => {
                     <GraduationCap className="w-6 h-6 text-electric-orange" />
                   </div>
                   <div>
-                    <h3 className="font-syne text-2xl font-black text-electric-orange leading-tight">
+                    <h3 className="font-syne text-2xl font-bold text-warm-white leading-tight">
                       {EDUCATION_DATA.institution}
                     </h3>
                     <p className="font-mono text-xs text-warm-muted">{EDUCATION_DATA.location}</p>

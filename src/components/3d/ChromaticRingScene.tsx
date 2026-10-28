@@ -151,7 +151,7 @@ export const ChromaticRingScene: React.FC = () => {
     <div ref={containerRef} className="absolute inset-0 w-full h-full pointer-events-none flex items-center justify-center">
       {isVisible && (
         <Canvas
-          camera={{ position: [0, 0, 4.6], fov: 46 }}
+          camera={{ position: [0, 0, 5.0], fov: 45 }}
           dpr={1}
           gl={{
             antialias: false,

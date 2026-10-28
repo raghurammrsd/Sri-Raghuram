@@ -60,32 +60,17 @@ export const Story: React.FC = () => {
           </motion.div>
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-            <div className="overflow-hidden">
-              {/* Line 1 Kinetic Reveal */}
+            <div>
               <motion.h2
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
                 className="font-syne text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-warm-white leading-[0.95]"
               >
-                Not just models.
+                Not just models. <br />
+                <span className="text-electric-orange">Systems that work.</span>
               </motion.h2>
-
-              {/* Line 2 Kinetic Reveal with Solid Orange Banner */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.92, y: 30 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <span
-                  style={{ backgroundColor: '#ff5500', color: '#000000' }}
-                  className="px-4 sm:px-6 py-1 rounded-sm inline-block font-black shadow-2xl mt-2 font-syne text-3xl sm:text-5xl lg:text-6xl tracking-tight uppercase"
-                >
-                  SYSTEMS THAT WORK.
-                </span>
-              </motion.div>
             </div>
 
             {/* Paragraph with Smooth Unmasking */}
@@ -142,7 +127,7 @@ export const Story: React.FC = () => {
                     </div>
                   </div>
 
-                  <h3 className="font-syne text-xl font-bold text-electric-orange tracking-tight mb-3">
+                  <h3 className="font-syne text-xl font-bold text-warm-white group-hover:text-electric-orange transition-colors tracking-tight mb-3">
                     {item.title}
                   </h3>
 

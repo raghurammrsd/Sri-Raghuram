@@ -36,28 +36,22 @@ export const Contact: React.FC<ContactProps> = ({ onCopyEmail, copied }) => {
         {/* Top Marker */}
         <div className="pt-2">
           <div className="inline-flex items-center gap-2 font-mono text-[11px] font-bold tracking-widest text-electric-orange bg-electric-orange/10 border border-electric-orange/25 px-3 py-1 rounded">
-            <span>[ TRANSMISSION ]</span>
+            <span>● 06 · GET IN TOUCH</span>
             <span>LET'S CONNECT</span>
           </div>
         </div>
 
         {/* Center Headline with Kinetic Entrance */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="my-auto py-4"
         >
-          <div className="flex flex-col items-center justify-center gap-2 font-syne text-4xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-[0.92] mb-4">
-            <span className="text-warm-white">BUILD SOMETHING</span>
-            <span
-              style={{ backgroundColor: '#ff5500', color: '#000000' }}
-              className="px-6 sm:px-10 py-1 sm:py-2 rounded-sm inline-block font-black shadow-2xl"
-            >
-              INTELLIGENT.
-            </span>
-          </div>
+          <h2 className="font-syne text-4xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-[0.92] text-warm-white mb-4">
+            Build Something <span className="text-electric-orange">Intelligent.</span>
+          </h2>
 
           <p className="max-w-xl mx-auto font-mono text-xs sm:text-sm text-warm-muted uppercase tracking-widest mb-8">
             Available for AI engineering, intelligent developer tools, and scalable system architectures.
@@ -68,7 +62,7 @@ export const Contact: React.FC<ContactProps> = ({ onCopyEmail, copied }) => {
             <Magnetic strength={0.35}>
               <button
                 onClick={handleHeroAction}
-                className="px-8 sm:px-14 py-4 sm:py-5 rounded-full bg-gradient-to-r from-electric-orange via-electric-orange to-electric-light text-charcoal-950 font-mono text-lg sm:text-2xl font-black tracking-tight hover:scale-105 active:scale-95 transition-all shadow-[0_0_35px_rgba(255,85,0,0.45),inset_0_1px_0_rgba(255,255,255,0.4)] backdrop-blur-xl border border-white/30 cursor-pointer flex items-center gap-3.5"
+                className="px-8 sm:px-14 py-4 sm:py-5 rounded-full bg-gradient-to-r from-electric-orange via-electric-orange to-electric-light text-charcoal-950 font-mono text-lg sm:text-2xl font-black tracking-tight hover:scale-105 active:scale-95 transition-all shadow-[0_0_35px_rgba(255,85,0,0.45),inset_0_1px_1px_rgba(255,255,255,0.6)] backdrop-blur-2xl border border-white/40 cursor-pointer flex items-center gap-3.5"
                 data-cursor-text="FIRE"
               >
                 <span>DISPATCH EMAIL</span>

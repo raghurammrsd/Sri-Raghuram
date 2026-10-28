@@ -40,16 +40,9 @@ export const InternshipHighlights: React.FC = () => {
               </span>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight leading-tight">
-              <span className="text-warm-white">PRODUCTION PIPELINES.</span>
-              <motion.span
-                whileHover={{ scale: 1.02 }}
-                style={{ backgroundColor: '#ff5500', color: '#000000' }}
-                className="px-4 py-0.5 rounded-sm inline-block font-black shadow-2xl cursor-default"
-              >
-                SCALED TO 600+ SOURCES.
-              </motion.span>
-            </div>
+            <h2 className="font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight leading-tight text-warm-white">
+              Production Pipelines. <span className="text-electric-orange">Scaled to 600+ Sources.</span>
+            </h2>
           </motion.div>
 
           {/* System Selector Switcher with Animated Highlight */}
@@ -115,7 +108,7 @@ export const InternshipHighlights: React.FC = () => {
                   </span>
                 </div>
 
-                <h3 className="font-syne text-3xl sm:text-4xl font-black text-electric-orange tracking-tight leading-tight mb-3">
+                <h3 className="font-syne text-3xl sm:text-4xl font-black text-warm-white tracking-tight leading-tight mb-3">
                   {activeSystem.title}
                 </h3>
 

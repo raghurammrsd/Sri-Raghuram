@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 
 /**
- * High-Performance Ambient Fluid Canvas
+ * Living Ambient Canvas: High-Performance Cybernetic Code & Topological Lines Engine
  * Engineered for 60/120 FPS with minimal CPU & GPU footprint:
- * - DPR locked to 1.0 (saves 75% memory fill-rate on Retina displays)
- * - Zero expensive ctx.shadowBlur calls
- * - Optimized 3-ribbon fluid harmonics
- * - Pauses automatically when tab is hidden or inactive
+ * - DPR locked to 1.0 (eliminates Retina thermal throttling)
+ * - Zero expensive shadowBlur calls
+ * - Multi-harmonic topological wireframe lines with traveling data pulses
+ * - Interactive architectural code matrix & telemetry stream (dynamic & richer after expertise)
+ * - Pauses automatically when tab is hidden
  */
 export const LivingAmbientCanvas: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -22,7 +23,6 @@ export const LivingAmbientCanvas: React.FC = () => {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // Lock to 1x DPR for ambient background - eliminates GPU thermal throttling
     const handleResize = () => {
       if (!canvas) return;
       width = canvas.width = window.innerWidth;
@@ -44,46 +44,124 @@ export const LivingAmbientCanvas: React.FC = () => {
     };
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
-    // 3 Sleek, High-Performance Wave Ribbons
-    const waves = [
+    // Track scroll position to intensify code design after expertise
+    let scrollY = window.scrollY;
+    const handleScroll = () => {
+      scrollY = window.scrollY;
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // 5 Multi-harmonic Cybernetic Wave Lines
+    const lines = [
       {
-        baseY: 0.35,
-        amplitude: 55,
-        freq: 0.0016,
+        baseY: 0.22,
+        amplitude: 50,
+        freq: 0.0015,
         color: '255, 85, 0',
         alpha: 0.22,
         lineWidth: 1.5,
-        octave: 1.0,
+        speed: 0.8,
+        pulseOffset: 0.1,
       },
       {
-        baseY: 0.55,
+        baseY: 0.42,
         amplitude: 65,
         freq: 0.0012,
-        color: '255, 120, 30',
-        alpha: 0.16,
+        color: '255, 120, 40',
+        alpha: 0.18,
         lineWidth: 1.2,
-        octave: 0.8,
+        speed: 1.1,
+        pulseOffset: 0.4,
       },
       {
-        baseY: 0.75,
-        amplitude: 50,
-        freq: 0.002,
-        color: '245, 245, 247',
+        baseY: 0.62,
+        amplitude: 55,
+        freq: 0.0018,
+        color: '255, 85, 0',
+        alpha: 0.20,
+        lineWidth: 1.4,
+        speed: 0.9,
+        pulseOffset: 0.7,
+      },
+      {
+        baseY: 0.78,
+        amplitude: 60,
+        freq: 0.0014,
+        color: '245, 242, 235',
         alpha: 0.12,
         lineWidth: 1.0,
-        octave: 1.2,
+        speed: 0.7,
+        pulseOffset: 0.25,
+      },
+      {
+        baseY: 0.92,
+        amplitude: 45,
+        freq: 0.002,
+        color: '255, 85, 0',
+        alpha: 0.15,
+        lineWidth: 1.0,
+        speed: 1.2,
+        pulseOffset: 0.85,
+      },
+    ];
+
+    // Real Engineering Code Matrix Streams (Subtle architectural background design)
+    const CODE_BLOCKS = [
+      {
+        xRatio: 0.08,
+        yRatio: 0.25,
+        driftSpeed: 0.15,
+        lines: [
+          'def build_symbol_graph(tree: ast.AST):',
+          '    analyzer = SymbolResolutionVisitor()',
+          '    analyzer.visit(tree)',
+          '    return analyzer.graph.resolve()',
+        ],
+      },
+      {
+        xRatio: 0.72,
+        yRatio: 0.35,
+        driftSpeed: 0.2,
+        lines: [
+          'class CodeGraphMCPServer(Server):',
+          '    @mcp.tool(deterministic=True)',
+          '    async def lookup_symbol(uri: str):',
+          '        return await registry.get(uri)',
+        ],
+      },
+      {
+        xRatio: 0.14,
+        yRatio: 0.65,
+        driftSpeed: 0.18,
+        lines: [
+          'async def crawl_source_matrix():',
+          '    async with AsyncWorkerPool(64) as pool:',
+          '        tasks = [pool.submit(s) for s in feeds]',
+          '        return await asyncio.gather(*tasks)',
+        ],
+      },
+      {
+        xRatio: 0.68,
+        yRatio: 0.72,
+        driftSpeed: 0.22,
+        lines: [
+          'schema_contract = PydanticV2.StrictModel(',
+          '    validate_assignment=True,',
+          '    extra="forbid"',
+          ')  # ZERO RUNTIME DRIFT',
+        ],
       },
     ];
 
     // Minimal floating quantum particles
-    const particleCount = 20;
+    const particleCount = 28;
     const particles = Array.from({ length: particleCount }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      size: Math.random() * 1.5 + 0.5,
+      size: Math.random() * 1.5 + 0.6,
       vx: (Math.random() - 0.5) * 0.25,
       vy: (Math.random() - 0.5) * 0.25,
-      alpha: Math.random() * 0.3 + 0.1,
+      alpha: Math.random() * 0.35 + 0.1,
     }));
 
     let time = 0;
@@ -119,33 +197,44 @@ export const LivingAmbientCanvas: React.FC = () => {
         height * 0.45,
         width * 0.55
       );
-      gradCenter.addColorStop(0, 'rgba(255, 85, 0, 0.03)');
-      gradCenter.addColorStop(0.5, 'rgba(255, 120, 40, 0.01)');
+      gradCenter.addColorStop(0, 'rgba(255, 85, 0, 0.035)');
+      gradCenter.addColorStop(0.5, 'rgba(255, 120, 40, 0.012)');
       gradCenter.addColorStop(1, 'rgba(0, 0, 0, 0)');
       ctx.fillStyle = gradCenter;
       ctx.fillRect(0, 0, width, height);
 
-      // 2. Render Fast-Path Smooth Wave Ribbons (32px step - fast & crisp)
-      const step = 32;
+      // 2. Render Animated Cybernetic Wave Lines
+      const step = 28; // Crisp resolution
 
-      waves.forEach((wave, wIdx) => {
+      lines.forEach((line, lIdx) => {
         ctx.beginPath();
-        const currentBaseY = height * wave.baseY + Math.sin(time * 0.4 + wIdx) * 15;
+        const currentBaseY = height * line.baseY + Math.sin(time * 0.5 + lIdx) * 18;
         let started = false;
+        let pulseX = -1;
+        let pulseY = -1;
+
+        // Calculate traveling data packet along line
+        const cycleProgress = ((time * line.speed * 0.15 + line.pulseOffset) % 1.0);
+        const targetPulseX = cycleProgress * width;
 
         for (let x = 0; x <= width + step; x += step) {
-          const w = Math.sin(x * wave.freq + time * wave.octave);
-          const w2 = Math.cos(x * wave.freq * 1.5 - time * 0.5);
-          let y = currentBaseY + (w * 0.7 + w2 * 0.3) * wave.amplitude;
+          const w = Math.sin(x * line.freq + time * line.speed);
+          const w2 = Math.cos(x * line.freq * 1.6 - time * 0.4);
+          let y = currentBaseY + (w * 0.72 + w2 * 0.28) * line.amplitude;
 
-          // Lightweight mouse warp
+          // Mouse warp reaction
           const dx = x - mouseX;
           const dy = y - mouseY;
           const distSq = dx * dx + dy * dy;
 
-          if (distSq < 40000) { // 200px radius
-            const factor = Math.exp(-distSq / 16000);
-            y += Math.sin(time * 3) * 16 * factor;
+          if (distSq < 45000) {
+            const factor = Math.exp(-distSq / 18000);
+            y += Math.sin(time * 3) * 18 * factor;
+          }
+
+          if (Math.abs(x - targetPulseX) < step) {
+            pulseX = x;
+            pulseY = y;
           }
 
           if (!started) {
@@ -156,14 +245,74 @@ export const LivingAmbientCanvas: React.FC = () => {
           }
         }
 
-        // Draw crisp stroke without expensive shadowBlur
-        ctx.strokeStyle = `rgba(${wave.color}, ${wave.alpha})`;
-        ctx.lineWidth = wave.lineWidth;
+        ctx.strokeStyle = `rgba(${line.color}, ${line.alpha})`;
+        ctx.lineWidth = line.lineWidth;
         ctx.stroke();
+
+        // Draw traveling glowing packet
+        if (pulseX > 0 && pulseY > 0) {
+          ctx.beginPath();
+          ctx.arc(pulseX, pulseY, 2.5, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, 0.85)`;
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.arc(pulseX, pulseY, 5.5, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 85, 0, 0.4)`;
+          ctx.fill();
+        }
       });
 
-      // 3. Update minimal particles
-      ctx.fillStyle = 'rgba(255, 85, 0, 0.15)';
+      // 3. Architectural Code Matrix Streams (Subtle high-tech code design)
+      // Intensifies organically when scrolled past expertise or throughout the site
+      const scrollFactor = Math.min(1.0, Math.max(0.4, scrollY / 700));
+      const codeAlpha = 0.05 + scrollFactor * 0.04; // 0.05 to 0.09 max - stays readable
+
+      ctx.font = '10px "JetBrains Mono", monospace';
+      CODE_BLOCKS.forEach((block, bIdx) => {
+        const startX = block.xRatio * width;
+        const startY = (block.yRatio * height + Math.sin(time * 0.3 + bIdx) * 12) % height;
+
+        block.lines.forEach((codeLine, lineIdx) => {
+          const y = startY + lineIdx * 16;
+          if (y > 40 && y < height - 40) {
+            // Line numbering in electric orange
+            ctx.fillStyle = `rgba(255, 85, 0, ${codeAlpha * 1.5})`;
+            ctx.fillText(
+              `0${bIdx + 1}:${lineIdx + 1}`,
+              startX - 36,
+              y
+            );
+
+            // Code syntax in warm muted
+            ctx.fillStyle = `rgba(245, 242, 235, ${codeAlpha})`;
+            ctx.fillText(codeLine, startX, y);
+          }
+        });
+      });
+
+      // 4. Grid Crosshairs & Architectural Coordinates
+      const crosshairSpacing = 160;
+      ctx.fillStyle = `rgba(255, 85, 0, ${codeAlpha * 0.8})`;
+      ctx.font = '8px "JetBrains Mono", monospace';
+
+      for (let cx = 80; cx < width; cx += crosshairSpacing) {
+        for (let cy = 80; cy < height; cy += crosshairSpacing) {
+          const distMouse = Math.hypot(cx - mouseX, cy - mouseY);
+          if (distMouse < 180) {
+            // Light up crosshairs near cursor
+            const glow = (1 - distMouse / 180) * 0.35;
+            ctx.fillStyle = `rgba(255, 85, 0, ${glow})`;
+            ctx.fillText('+', cx - 2, cy + 2);
+          } else if ((cx + cy) % (crosshairSpacing * 2) === 0) {
+            ctx.fillStyle = `rgba(255, 255, 255, 0.035)`;
+            ctx.fillText('+', cx - 2, cy + 2);
+          }
+        }
+      }
+
+      // 5. Update floating micro-particles
+      ctx.fillStyle = 'rgba(255, 85, 0, 0.2)';
       particles.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
@@ -186,6 +335,7 @@ export const LivingAmbientCanvas: React.FC = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       cancelAnimationFrame(animId);
     };
@@ -193,11 +343,11 @@ export const LivingAmbientCanvas: React.FC = () => {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-charcoal-950">
-      {/* 1. Hardware Accelerated Lightweight Ambient Canvas */}
+      {/* 1. Hardware Accelerated High-Performance Cybernetic Canvas */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 
       {/* 2. Precision Architectural Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_80%_65%_at_50%_50%,#000_60%,transparent_100%)] opacity-70" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff07_1px,transparent_1px),linear-gradient(to_bottom,#ffffff07_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_85%_75%_at_50%_50%,#000_65%,transparent_100%)] opacity-75" />
     </div>
   );
 };

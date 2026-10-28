@@ -62,9 +62,9 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { num: '01', label: 'EXPERTISE', href: '#expertise', id: 'expertise' },
     { num: '02', label: 'SYSTEMS', href: '#internship', id: 'internship' },
-    { num: '03', label: 'ARSENAL', href: '#projects', id: 'projects' },
+    { num: '03', label: 'PROJECTS', href: '#projects', id: 'projects' },
     { num: '04', label: 'STACK', href: '#skills', id: 'skills' },
-    { num: '05', label: 'PEDIGREE', href: '#experience', id: 'experience' },
+    { num: '05', label: 'EDUCATION', href: '#experience', id: 'experience' },
     { num: '06', label: 'CONTACT', href: '#contact', id: 'contact' },
   ];
 
@@ -76,7 +76,7 @@ export const Navbar: React.FC = () => {
           initial={{ opacity: 0, y: -25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-7xl mx-auto rounded-full bg-charcoal-950/60 backdrop-blur-3xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.12),0_0_30px_rgba(255,85,0,0.08)] px-4 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between pointer-events-auto"
+          className="max-w-7xl mx-auto rounded-full bg-charcoal-950/40 backdrop-blur-3xl backdrop-saturate-150 border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.25),0_0_30px_rgba(255,85,0,0.08)] px-4 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between pointer-events-auto"
         >
           {/* Left: Bespoke Motion Graphic Monogram Logo */}
           <div className="flex items-center">
@@ -166,13 +166,13 @@ export const Navbar: React.FC = () => {
               </span>
             </button>
 
-            {/* High-Impact Solid Electric Orange Resume Action (Glassomorphic) */}
+            {/* High-Impact Glassomorphic Electric Orange Resume Action */}
             <Magnetic strength={0.25}>
               <a
                 href={PERSONAL_INFO.resumePdf}
                 download="Mohan_Sri_Raghuram_resume.pdf"
                 onClick={() => sound.click()}
-                className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-electric-orange via-electric-orange to-electric-light text-charcoal-950 font-mono text-xs font-black tracking-wider transition-all flex items-center gap-1.5 shadow-[0_0_25px_rgba(255,85,0,0.45),inset_0_1px_0_rgba(255,255,255,0.4)] hover:shadow-[0_0_35px_rgba(255,85,0,0.7)] backdrop-blur-xl border border-white/30 hover:scale-105 active:scale-95 cursor-pointer"
+                className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-electric-orange via-electric-orange to-electric-light text-charcoal-950 font-mono text-xs font-black tracking-wider transition-all flex items-center gap-1.5 shadow-[0_0_25px_rgba(255,85,0,0.45),inset_0_1px_1px_rgba(255,255,255,0.6)] hover:shadow-[0_0_35px_rgba(255,85,0,0.7),inset_0_1px_1px_rgba(255,255,255,0.8)] backdrop-blur-2xl border border-white/40 hover:scale-105 active:scale-95 cursor-pointer"
                 data-cursor-text="RESUME"
               >
                 <FileDown className="w-3.5 h-3.5 text-charcoal-950 stroke-[2.5]" />
