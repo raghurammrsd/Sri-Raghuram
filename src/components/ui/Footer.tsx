@@ -29,43 +29,46 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="py-12 bg-charcoal-950 border-t border-white/[0.06] text-warm-muted">
+    <footer className="py-8 bg-transparent border-t-2 border-[#e5d3af]/70 text-[#333333] relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-white/[0.06]">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-6 border-b border-[#e5d3af]/60">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-xl font-black text-warm-white">{PERSONAL_INFO.name}</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-electric-orange" />
+              <span className="text-xl font-black text-black">{PERSONAL_INFO.name}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#790d16]" />
             </div>
-            <p className="font-mono text-xs text-warm-dark">
+            <p className="font-mono text-xs text-[#555555] font-semibold">
               {PERSONAL_INFO.role} · {PERSONAL_INFO.location}
             </p>
           </div>
 
-          <div className="flex items-center gap-6 font-mono text-xs">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              <span className="text-warm-white font-medium">IST {time || '20:10'}</span>
-              <span className="text-warm-dark">· INDIA</span>
+          <div className="flex items-center gap-4 font-mono text-xs">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 border border-[#e5d3af] shadow-xs">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-600 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+              </span>
+              <span className="text-black font-extrabold">IST {time || '22:30'}</span>
+              <span className="text-[#666666]">· INDIA</span>
             </div>
 
             <button
               onClick={scrollToTop}
-              className="p-2.5 rounded-full border border-white/10 hover:border-white/30 text-warm-white transition-all flex items-center gap-1.5 hover:bg-white/5"
+              className="p-2.5 rounded-full bg-[#790d16] text-white hover:bg-[#5c0910] shadow-sm transition-all flex items-center gap-1.5 hover:scale-105 active:scale-95 cursor-pointer"
               title="Return to top"
             >
-              <ArrowUp className="w-3.5 h-3.5" />
-              <span className="font-mono text-[11px]">TOP</span>
+              <ArrowUp className="w-3.5 h-3.5 stroke-[2.5]" />
+              <span className="font-mono text-[11px] font-black">TOP</span>
             </button>
           </div>
         </div>
 
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px] text-warm-dark">
+        <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-[10.5px] text-[#555555]">
           <div>
-            <span>©{PERSONAL_INFO.copyrightYear} MOHAN SRI RAGHURAM. ALL RIGHTS RESERVED.</span>
+            <span className="font-semibold text-black">©{PERSONAL_INFO.copyrightYear} MOHAN SRI RAGHURAM. ALL RIGHTS RESERVED.</span>
           </div>
           <div>
-            <span>PARUL UNIVERSITY CSE (AI) · PRACTICAL AI SYSTEMS</span>
+            <span className="font-semibold text-black">PARUL UNIVERSITY CSE (AI) · PRACTICAL AI SYSTEMS ARCHITECT</span>
           </div>
         </div>
       </div>

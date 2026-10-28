@@ -44,7 +44,7 @@ export const PERSONAL_INFO = {
   phone: "+91 9392380182",
   github: "https://github.com/raghurammrsd",
   linkedin: "https://www.linkedin.com/in/msriraghuram/",
-  pypi: "https://pypi.org/project/codegraph-mcp/",
+  pypi: "https://pypi.org/project/codegraph-engine/3.0.1/",
   resumePdf: "/Mohan_Sri_Raghuram_resume.pdf",
   copyrightYear: "2026",
 };
@@ -231,8 +231,8 @@ export const PROJECTS: ProjectCaseStudy[] = [
     techStack: ["Python", "MCP Protocol", "AST Static Analysis", "SQLite", "Git Analysis", "PyPI"],
     links: {
       github: "https://github.com/raghurammrsd/CODE_GRAPH_MCP",
-      pypi: "https://pypi.org/project/codegraph-mcp/",
-      liveDemo: "https://pypi.org/project/codegraph-mcp/",
+      pypi: "https://pypi.org/project/codegraph-engine/3.0.1/",
+      liveDemo: "https://pypi.org/project/codegraph-engine/3.0.1/",
       docs: "https://github.com/raghurammrsd/CODE_GRAPH_MCP#readme"
     },
     metrics: [
@@ -275,7 +275,7 @@ export const PROJECTS: ProjectCaseStudy[] = [
     techStack: ["Python", "FastAPI", "Pydantic v2", "State Machines", "AsyncIO", "Docker"],
     links: {
       github: "https://github.com/raghurammrsd/AI_APP_Buildiing_platform",
-      liveDemo: "https://github.com/raghurammrsd/AI_APP_Buildiing_platform#workbench-demo",
+      liveDemo: "https://ai-app-buildiing-platform.onrender.com",
       docs: "https://github.com/raghurammrsd/AI_APP_Buildiing_platform#readme"
     },
     metrics: [
@@ -317,7 +317,7 @@ export const PROJECTS: ProjectCaseStudy[] = [
     techStack: ["Flask", "PostgreSQL", "REST APIs", "Python", "Geospatial Navigation", "Voice AI"],
     links: {
       github: "https://github.com/raghurammrsd/DUNDOO",
-      liveDemo: "https://github.com/raghurammrsd/DUNDOO#demo",
+      liveDemo: "https://main.dundoo-app.pages.dev",
       docs: "https://github.com/raghurammrsd/DUNDOO#architecture"
     },
     metrics: [

@@ -1,152 +1,253 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { SKILL_CATEGORIES } from '../../data/portfolioData';
-import { Cpu, Server, Database, Wrench } from 'lucide-react';
+import { Cpu, Server, Database, Wrench, Sparkles } from 'lucide-react';
 import { sound } from '../../utils/sound';
 
 export const Skills: React.FC = () => {
-  const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [filterMode, setFilterMode] = useState<'all' | 'core'>('all');
 
   const categoryIcons = [Cpu, Server, Database, Wrench];
-  const activeCategory = SKILL_CATEGORIES[activeCategoryIndex];
+
+  // 120fps Hardware-Accelerated Section Parallax
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+
+  const headerY = useTransform(scrollYProgress, [0, 1], [25, -25]);
+  const gridY = useTransform(scrollYProgress, [0, 1], [30, -30]);
+
+  // Specific custom telemetry badges for each domain
+  const domainBadges: Record<string, string> = {
+    'AI & Intelligent Systems': '0.8ms AST COMPILER RESOLUTION',
+    'Backend & Systems': 'ASYNCIO 64-COROUTINES POOL',
+    'Databases & Storage': 'ACID RELATIONAL & VECTOR CACHE',
+    'Tools & Infrastructure': 'DISTROLESS CONTAINERIZATION',
+  };
+
+  const domainSubtitles: Record<string, string> = {
+    'AI & Intelligent Systems': 'Eliminating model hallucination via compiler ASTs, MCP protocols & knowledge graphs.',
+    'Backend & Systems': 'High-concurrency AsyncIO event loops, strict Pydantic v2 schemas & zero runtime drift.',
+    'Databases & Storage': 'ACID guarantees, local SQLite caching, PostgreSQL connection pools & embeddings.',
+    'Tools & Infrastructure': 'Containerized cloud deployment, edge workers, git workflows & POSIX environments.',
+  };
+
+  // Bento span widths for 60/40 and 40/60 asymmetric creative composition
+  const bentoColSpans = [
+    'lg:col-span-7 border-[#790d16]/30', // Top Left (60%)
+    'lg:col-span-5 border-[#aec4d4]',    // Top Right (40%)
+    'lg:col-span-5 border-[#e5d3af]',    // Bottom Left (40%)
+    'lg:col-span-7 border-[#790d16]/30', // Bottom Right (60%)
+  ];
 
   return (
     <section
+      ref={sectionRef}
       id="skills"
-      className="scroll-mt-20 min-h-screen flex flex-col justify-between py-10 sm:py-14 border-b border-white/[0.08] relative bg-transparent"
+      className="scroll-mt-16 min-h-screen flex flex-col justify-between pt-20 sm:pt-24 pb-4 sm:pb-6 border-b-2 border-[#e5d3af]/60 relative bg-transparent overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 flex flex-col justify-between space-y-6">
-        {/* Section Header with Kinetic Typography */}
+      {/* Background Volumetric Depth */}
+      <div className="absolute top-1/2 left-1/3 w-[500px] h-[500px] bg-[#966b44]/10 rounded-full blur-[180px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 flex flex-col justify-between my-auto space-y-2.5 sm:space-y-3">
+        {/* Creative Editorial Header with Smooth Parallax Float */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          className="pb-4 border-b border-white/[0.08]"
+          style={{ y: headerY }}
+          className="flex flex-col lg:flex-row lg:items-end justify-between gap-2.5 pb-2.5 border-b-2 border-[#e5d3af]/70"
         >
-          <div className="flex items-center gap-2 mb-2">
-            <span className="font-mono text-[11px] font-bold tracking-widest text-electric-orange bg-electric-orange/10 border border-electric-orange/25 px-2.5 py-0.5 rounded flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-electric-orange animate-pulse" />
-              04 · TECHNICAL STACK
-            </span>
-            <span className="font-mono text-[11px] tracking-wider text-warm-muted uppercase">
-              PRODUCTION RUNTIMES & ARCHITECTURES
-            </span>
-          </div>
-
-          <h2 className="font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight leading-tight text-warm-white">
-            Technical Arsenal. <span className="text-electric-orange">Zero Fluff.</span>
-          </h2>
-
-          <p className="font-sans text-xs sm:text-sm text-warm-muted mt-2 max-w-xl">
-            Grounded in systems engineering, deterministic data structures, and production delivery.
-          </p>
-        </motion.div>
-
-        {/* 4 Clean Monochrome Domain Tabs with Kinetic Hover */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 my-auto py-4">
-          {SKILL_CATEGORIES.map((cat, idx) => {
-            const Icon = categoryIcons[idx % categoryIcons.length];
-            const isSelected = activeCategoryIndex === idx;
-
-            return (
-              <motion.button
-                key={cat.title}
-                whileHover={{ y: -4 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => {
-                  sound.click();
-                  setActiveCategoryIndex(idx);
-                }}
-                className={`relative p-5 rounded-2xl text-left transition-all duration-300 border flex flex-col justify-between overflow-hidden ${
-                  isSelected
-                    ? 'bg-charcoal-900 border-electric-orange shadow-xl'
-                    : 'bg-charcoal-900/40 border-white/[0.08] hover:border-white/20'
-                }`}
-              >
-                {isSelected && (
-                  <motion.div
-                    layoutId="skillsActiveBorder"
-                    className="absolute inset-0 border-2 border-electric-orange rounded-2xl pointer-events-none"
-                    transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                  />
-                )}
-
-                <div className="flex items-center justify-between mb-3 relative z-10">
-                  <span className="font-mono text-xs font-bold text-warm-dark">
-                    0{idx + 1}
-                  </span>
-                  <Icon className={`w-4 h-4 ${isSelected ? 'text-electric-orange' : 'text-warm-muted'}`} />
-                </div>
-                <div className="relative z-10">
-                  <h4 className="font-syne font-bold text-base text-warm-white mb-1">{cat.title}</h4>
-                  <p className="font-sans text-xs text-warm-muted line-clamp-2 leading-relaxed">{cat.description}</p>
-                </div>
-              </motion.button>
-            );
-          })}
-        </div>
-
-        {/* Active Domain Skills Grid with Animated Entrance */}
-        <div className="p-6 sm:p-8 rounded-2xl bg-charcoal-900/60 border border-white/[0.08] backdrop-blur-xl relative overflow-hidden shadow-2xl">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-white/[0.06]">
-            <div>
-              <span className="font-mono text-[10px] text-electric-orange font-bold uppercase tracking-wider block mb-1">
-                ACTIVE DOMAIN
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="font-mono text-[10.5px] font-bold tracking-widest text-[#790d16] bg-[#790d16]/10 border border-[#790d16]/30 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 shadow-xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#790d16] animate-ping" />
+                04 · TECHNICAL ARSENAL
               </span>
-              <h3 className="font-syne text-xl sm:text-2xl font-black text-warm-white">
-                {activeCategory.title}
-              </h3>
+              <span className="font-mono text-[10.5px] tracking-wider text-[#555555] uppercase font-bold">
+                PRODUCTION RUNTIMES & ARCHITECTURES
+              </span>
             </div>
-            <p className="font-sans text-xs text-warm-muted max-w-md">
-              {activeCategory.description}
+
+            <h2 className="font-syne text-xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight leading-tight">
+              <span className="text-black">Engineered Arsenal. </span>
+              <span className="text-[#790d16]">Zero Fluff.</span>
+            </h2>
+
+            <p className="font-sans text-xs text-[#222222] font-medium mt-0.5 max-w-xl">
+              Every tool in this matrix has survived high-concurrency production deployments and strict latency thresholds.
             </p>
           </div>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory.title}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.3 }}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"
+          {/* Luxury Sliding Pill Filter Dock */}
+          <div className="relative inline-flex items-center gap-1 p-1 rounded-full bg-white border-2 border-[#e5d3af] shadow-xs self-start lg:self-end">
+            <button
+              onClick={() => {
+                sound.click();
+                setFilterMode('all');
+              }}
+              className={`relative z-10 px-3.5 py-1 rounded-full font-mono text-[10.5px] font-black tracking-wider transition-colors duration-200 cursor-pointer ${
+                filterMode === 'all' ? 'text-white' : 'text-black hover:text-[#790d16]'
+              }`}
             >
-              {activeCategory.skills.map((skill, sIdx) => (
+              {filterMode === 'all' && (
                 <motion.div
-                  key={skill.name}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.25, delay: sIdx * 0.025 }}
-                  whileHover={{ y: -3, scale: 1.02 }}
-                  className={`p-3.5 rounded-xl border transition-all flex items-center justify-between ${
-                    skill.highlight
-                      ? 'bg-white/[0.06] border-electric-orange/40 text-warm-white shadow-md'
-                      : 'bg-charcoal-950/70 border-white/[0.06] text-warm-cream hover:border-white/15'
-                  }`}
-                >
-                  <span className="font-mono text-xs font-semibold truncate mr-2">
-                    {skill.name}
-                  </span>
-                  {skill.highlight && (
-                    <span className="font-mono text-[9px] px-2 py-0.5 rounded font-black tracking-wide bg-electric-orange/15 text-electric-orange border border-electric-orange/30 shrink-0">
-                      CORE
-                    </span>
-                  )}
-                </motion.div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
-        </div>
+                  layoutId="skillsActiveFilterPill"
+                  className="absolute inset-0 bg-[#790d16] rounded-full -z-10 shadow-sm"
+                  transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                />
+              )}
+              <span className="relative z-10">ALL TECHNOLOGIES (25)</span>
+            </button>
 
-        {/* Bottom Status Ticker */}
-        <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between font-mono text-[11px] text-warm-dark">
-          <div className="flex items-center gap-2">
-            <span className="text-electric-orange">●</span>
-            <span className="text-warm-muted">NO HALLUCINATIONS · STRICT SCHEMA CONTRACTS · HIGH-THROUGHPUT RUNTIMES</span>
+            <button
+              onClick={() => {
+                sound.click();
+                setFilterMode('core');
+              }}
+              className={`relative z-10 px-3.5 py-1 rounded-full font-mono text-[10.5px] font-black tracking-wider transition-colors duration-200 cursor-pointer flex items-center gap-1.5 ${
+                filterMode === 'core' ? 'text-white' : 'text-black hover:text-[#790d16]'
+              }`}
+            >
+              {filterMode === 'core' && (
+                <motion.div
+                  layoutId="skillsActiveFilterPill"
+                  className="absolute inset-0 bg-[#790d16] rounded-full -z-10 shadow-sm"
+                  transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                />
+              )}
+              <Sparkles className={`w-3 h-3 relative z-10 ${filterMode === 'core' ? 'text-[#e5d3af]' : 'text-[#c4a47c]'}`} />
+              <span className="relative z-10">CORE ARCHITECTURES (13)</span>
+            </button>
           </div>
-          <span className="hidden sm:inline text-warm-dark">STACK MATRIX · VERIFIED 2026</span>
-        </div>
+        </motion.div>
+
+        {/* 3D Double-Door Closing Perspective Matrix */}
+        <motion.div
+          style={{ y: gridY, perspective: 1200 }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-3.5 py-0.5"
+        >
+          {SKILL_CATEGORIES.map((cat, idx) => {
+            const Icon = categoryIcons[idx % categoryIcons.length];
+            const spanClass = bentoColSpans[idx];
+            const badgeText = domainBadges[cat.title] || 'PRODUCTION VERIFIED';
+            const subtitleText = domainSubtitles[cat.title] || cat.description;
+
+            // Determine if this is a Left Door or a Right Door in the 2-column layout
+            const isLeftDoor = idx % 2 === 0;
+
+            return (
+              <motion.div
+                key={cat.title}
+                initial={{
+                  opacity: 0,
+                  rotateY: isLeftDoor ? -40 : 40,
+                  x: isLeftDoor ? -35 : 35,
+                  scale: 0.96,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  rotateY: 0,
+                  x: 0,
+                  scale: 1,
+                }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{
+                  duration: 0.75,
+                  delay: Math.floor(idx / 2) * 0.16 + (isLeftDoor ? 0 : 0.08),
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                whileHover={{
+                  rotateY: isLeftDoor ? 2.5 : -2.5,
+                  scale: 1.01,
+                  transition: { duration: 0.25 },
+                }}
+                style={{
+                  transformOrigin: isLeftDoor ? 'left center' : 'right center',
+                  transformStyle: 'preserve-3d',
+                }}
+                className={`p-3.5 sm:p-4 rounded-2xl bg-white/70 backdrop-blur-xl border-2 hover:border-[#790d16] transition-colors duration-300 shadow-[0_10px_25px_rgba(121,13,22,0.04)] flex flex-col justify-between group overflow-hidden relative ${spanClass}`}
+              >
+                {/* 3D Door Hinge Aesthetic Indicator */}
+                <div
+                  className={`absolute top-4 bottom-4 w-1 bg-[#790d16]/30 rounded-full transition-opacity group-hover:bg-[#790d16] ${
+                    isLeftDoor ? 'left-1' : 'right-1'
+                  }`}
+                />
+
+                {/* Top Subtle Gradient Accent Rail */}
+                <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-[#790d16] via-[#aec4d4] to-[#e5d3af]" />
+
+                <div>
+                  {/* Module Header Bar */}
+                  <div className="flex items-center justify-between mb-1.5 pb-1.5 border-b border-[#e5d3af]/70">
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-lg bg-[#fcf9f2] border border-[#e5d3af] flex items-center justify-center text-[#790d16] group-hover:bg-[#790d16] group-hover:text-white transition-all shadow-xs">
+                        <Icon className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-mono text-[9px] text-[#790d16] font-black">
+                            0{idx + 1}
+                          </span>
+                          <h3 className="font-syne text-sm sm:text-base font-black text-black tracking-tight">
+                            {cat.title}
+                          </h3>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Architectural Telemetry Badge */}
+                    <span className="font-mono text-[8.5px] sm:text-[9px] text-[#790d16] font-extrabold tracking-wider bg-[#790d16]/10 px-2 py-0.5 rounded-full border border-[#790d16]/20">
+                      {badgeText}
+                    </span>
+                  </div>
+
+                  {/* One-Line Engineering Philosophy */}
+                  <p className="font-sans text-[11px] text-[#333333] font-medium leading-relaxed mb-2.5">
+                    {subtitleText}
+                  </p>
+
+                  {/* Tactile Keycap Skill Chips with Smooth Micro-Physics */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {cat.skills.map((skill) => {
+                      const isDimmed = filterMode === 'core' && !skill.highlight;
+
+                      return (
+                        <motion.div
+                          key={skill.name}
+                          onMouseEnter={() => sound.hover()}
+                          whileHover={{ y: -2, scale: 1.04 }}
+                          whileTap={{ scale: 0.96 }}
+                          animate={{
+                            opacity: isDimmed ? 0.28 : 1,
+                            scale: isDimmed ? 0.95 : 1,
+                          }}
+                          transition={{ duration: 0.25, ease: 'easeOut' }}
+                          className={`px-2.5 py-1 rounded-lg font-mono text-[10px] sm:text-[10.5px] transition-all flex items-center gap-1.5 cursor-pointer shadow-xs ${
+                            skill.highlight
+                              ? 'bg-white border-2 border-[#790d16]/30 text-black font-extrabold hover:border-[#790d16] hover:bg-[#fcf9f2] shadow-xs'
+                              : 'bg-white/80 border border-[#e5d3af] text-[#222222] font-semibold hover:border-[#aec4d4] hover:bg-white'
+                          }`}
+                        >
+                          <span
+                            className="w-1.5 h-1.5 rounded-full shrink-0"
+                            style={{ backgroundColor: skill.highlight ? '#790d16' : '#aec4d4' }}
+                          />
+                          <span>{skill.name}</span>
+                          {skill.highlight && (
+                            <span className="font-mono text-[8px] px-1.5 py-0.2 rounded font-black tracking-wider bg-[#790d16]/10 text-[#790d16] border border-[#790d16]/20 shrink-0">
+                              CORE
+                            </span>
+                          )}
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );

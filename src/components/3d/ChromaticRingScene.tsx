@@ -1,153 +1,188 @@
-import React, { useRef, useMemo, useState, useEffect } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import * as THREE from 'three';
+import React, { useMemo } from 'react';
 
-const FullChromaticRing: React.FC = () => {
-  const pointsRef = useRef<THREE.Points>(null);
-  const ringPrimaryRef = useRef<THREE.Mesh>(null);
-  const ringGlowRef = useRef<THREE.Mesh>(null);
-  const groupRef = useRef<THREE.Group>(null);
-
-  const RING_RADIUS = 1.38;
-
-  // Reduced particle count: clean, delicate, luxury floating embers (zero muddy speckle)
-  const { positions, colors } = useMemo(() => {
-    const count = 320;
-    const pos = new Float32Array(count * 3);
-    const col = new Float32Array(count * 3);
-
-    // Only 2 elegant, harmonious colors: Soft Champagne Sand & Soft Slate Fog
-    const cSand = new THREE.Color('#c9af84');
-    const cSlate = new THREE.Color('#8da8be');
-
-    for (let i = 0; i < count; i++) {
-      const angle = (i / count) * Math.PI * 2;
-      const r = RING_RADIUS + (Math.random() - 0.5) * 0.16;
-      const z = (Math.random() - 0.5) * 0.12;
-
-      pos[i * 3] = Math.cos(angle) * r;
-      pos[i * 3 + 1] = Math.sin(angle) * r;
-      pos[i * 3 + 2] = z;
-
-      const normAngle = (Math.atan2(Math.sin(angle), Math.cos(angle)) + Math.PI) / (Math.PI * 2);
-      const color = new THREE.Color().lerpColors(cSand, cSlate, Math.sin(normAngle * Math.PI));
-
-      col[i * 3] = color.r;
-      col[i * 3 + 1] = color.g;
-      col[i * 3 + 2] = color.b;
-    }
-
-    return { positions: pos, colors: col };
-  }, []);
-
-  useFrame((state, delta) => {
-    const t = state.clock.getElapsedTime();
-    const { x, y } = state.pointer;
-
-    if (groupRef.current) {
-      groupRef.current.rotation.x = THREE.MathUtils.damp(
-        groupRef.current.rotation.x,
-        -y * 0.08,
-        3.0,
-        delta
-      );
-      groupRef.current.rotation.y = THREE.MathUtils.damp(
-        groupRef.current.rotation.y,
-        x * 0.08,
-        3.0,
-        delta
-      );
-    }
-
-    if (pointsRef.current) {
-      pointsRef.current.rotation.z = t * 0.18;
-    }
-
-    if (ringGlowRef.current) {
-      ringGlowRef.current.rotation.z = -t * 0.12;
-    }
-
-    if (ringPrimaryRef.current) {
-      ringPrimaryRef.current.rotation.z = t * 0.08;
-    }
-  });
-
-  return (
-    <group ref={groupRef}>
-      {/* Delicate, Minimalist Floating Halo Points */}
-      <points ref={pointsRef}>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            args={[positions, 3]}
-          />
-          <bufferAttribute
-            attach="attributes-color"
-            args={[colors, 3]}
-          />
-        </bufferGeometry>
-        <pointsMaterial
-          size={0.032}
-          vertexColors
-          transparent
-          opacity={0.65}
-          sizeAttenuation
-          depthWrite={false}
-        />
-      </points>
-
-      {/* Razor-Thin Elegant Burgundy Torus Ring */}
-      <mesh ref={ringPrimaryRef}>
-        <torusGeometry args={[RING_RADIUS, 0.008, 16, 96]} />
-        <meshBasicMaterial color="#790d16" transparent opacity={0.85} />
-      </mesh>
-
-      {/* Subtle Slate Outer Orbit Wire */}
-      <mesh ref={ringGlowRef} rotation={[0.2, 0.1, 0]}>
-        <torusGeometry args={[RING_RADIUS + 0.035, 0.005, 16, 96]} />
-        <meshBasicMaterial color="#8da8be" transparent opacity={0.65} />
-      </mesh>
-    </group>
-  );
-};
-
+/**
+ * Ultra-Lightweight, Zero-Lag Pure SVG Ring with Smooth Orbiting Particles.
+ * ZERO SVG Gaussian filters, ZERO CPU render loops, locked 120 FPS performance!
+ * The stardust dots continuously glide around the central circle in smooth celestial orbits.
+ */
 export const ChromaticRingScene: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  // Ultra-lightweight deterministic generation of 130 crisp, perfectly distributed stardust dots
+  const { innerDots, outerDots } = useMemo(() => {
+    const tones = ['#bfa074', '#c4a47c', '#d4be9c', '#a88960', '#966b44', '#b59265', '#8f6e47'];
+    const inner = [];
+    const outer = [];
 
-  // Pause Three.js render loop when out of viewport
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
+    let seed = 1337;
+    const random = () => {
+      seed = (seed * 16807) % 2147483647;
+      return (seed - 1) / 2147483646;
+    };
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { rootMargin: '100px' }
-    );
+    const count = 130;
+    for (let i = 0; i < count; i++) {
+      const angle = (i / count) * Math.PI * 2 + (random() - 0.5) * 0.2;
+      const isInner = i % 2 === 0;
 
-    observer.observe(el);
-    return () => observer.disconnect();
+      // Tight, graceful radial halo around the primary ring (r=198)
+      const offset = isInner ? (random() - 0.5) * 26 : (random() - 0.5) * 54;
+      const radius = 198 + offset;
+
+      const cx = 260 + radius * Math.cos(angle);
+      const cy = 260 + radius * Math.sin(angle);
+
+      const r = Math.abs(offset) > 20 ? 0.9 + random() * 0.9 : 1.2 + random() * 1.3;
+      const isBurgundy = random() < 0.08;
+      const color = isBurgundy ? '#790d16' : tones[Math.floor(random() * tones.length)];
+      const opacity = isBurgundy ? 0.85 : 0.35 + random() * 0.45;
+
+      const dot = { cx, cy, r, color, opacity };
+      if (isInner) {
+        inner.push(dot);
+      } else {
+        outer.push(dot);
+      }
+    }
+
+    return { innerDots: inner, outerDots: outer };
   }, []);
 
   return (
-    <div ref={containerRef} className="absolute inset-0 w-full h-full pointer-events-none flex items-center justify-center">
-      {isVisible && (
-        <Canvas
-          camera={{ position: [0, 0, 5.0], fov: 44 }}
-          dpr={1}
-          gl={{
-            antialias: false,
-            alpha: true,
-            powerPreference: 'low-power',
-            depth: false,
-            stencil: false,
-          }}
-        >
-          <FullChromaticRing />
-        </Canvas>
-      )}
+    <div className="absolute inset-0 w-full h-full pointer-events-none flex items-center justify-center overflow-hidden">
+      <style>{`
+        @keyframes smoothOrbitCW {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        @keyframes smoothOrbitCCW {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(-360deg);
+          }
+        }
+
+        /* 100% GPU compositor rotation - zero paint invalidation, zero lag */
+        .ring-dots-orbit-inner {
+          transform-origin: 260px 260px;
+          animation: smoothOrbitCW 48s linear infinite;
+        }
+
+        .ring-dots-orbit-outer {
+          transform-origin: 260px 260px;
+          animation: smoothOrbitCCW 64s linear infinite;
+        }
+
+        .ring-orbit-beacons {
+          transform-origin: 260px 260px;
+          animation: smoothOrbitCW 24s linear infinite;
+        }
+      `}</style>
+
+      <svg
+        className="w-[380px] h-[380px] sm:w-[500px] sm:h-[500px] md:w-[560px] md:h-[560px] max-w-[95vw] max-h-[85vh]"
+        viewBox="0 0 520 520"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <linearGradient id="ringBurgundyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#790d16" stopOpacity="0.9" />
+            <stop offset="50%" stopColor="#5c0910" stopOpacity="0.98" />
+            <stop offset="100%" stopColor="#790d16" stopOpacity="0.9" />
+          </linearGradient>
+
+          <linearGradient id="ringOrbitGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#c4a47c" stopOpacity="0.45" />
+            <stop offset="50%" stopColor="#d4be9c" stopOpacity="0.55" />
+            <stop offset="100%" stopColor="#bfa074" stopOpacity="0.45" />
+          </linearGradient>
+        </defs>
+
+        {/* Outer Orbit Guide Ring */}
+        <circle
+          cx="260"
+          cy="260"
+          r="215"
+          stroke="url(#ringOrbitGrad)"
+          strokeWidth="1.2"
+          strokeDasharray="4 8"
+          opacity="0.4"
+        />
+
+        {/* Primary Crisp Deep Burgundy Ring (Stationary Anchor) */}
+        <circle
+          cx="260"
+          cy="260"
+          r="198"
+          stroke="url(#ringBurgundyGrad)"
+          strokeWidth="2.5"
+          fill="none"
+        />
+
+        {/* Inner Subtle Secondary Guide Ring in Warm Sand */}
+        <circle
+          cx="260"
+          cy="260"
+          r="185"
+          stroke="#e5d3af"
+          strokeWidth="1"
+          strokeDasharray="3 6"
+          opacity="0.45"
+        />
+
+        {/* Inner Stardust Orbital Belt (Clockwise 48s) */}
+        <g className="ring-dots-orbit-inner">
+          {innerDots.map((dot, index) => (
+            <circle
+              key={`in-${index}`}
+              cx={dot.cx}
+              cy={dot.cy}
+              r={dot.r}
+              fill={dot.color}
+              opacity={dot.opacity}
+            />
+          ))}
+        </g>
+
+        {/* Outer Stardust Orbital Belt (Counter-Clockwise 64s) */}
+        <g className="ring-dots-orbit-outer">
+          {outerDots.map((dot, index) => (
+            <circle
+              key={`out-${index}`}
+              cx={dot.cx}
+              cy={dot.cy}
+              r={dot.r}
+              fill={dot.color}
+              opacity={dot.opacity}
+            />
+          ))}
+        </g>
+
+        {/* 4 Crisp Moving Radiant Orbit Beacons (Zero Gaussian Filter, Zero Lag) */}
+        <g className="ring-orbit-beacons">
+          {/* Top Beacon (Deep Burgundy Pearl) */}
+          <circle cx="260" cy="62" r="4.5" fill="#790d16" stroke="#ffffff" strokeWidth="1.5" />
+          <circle cx="260" cy="62" r="2" fill="#ffffff" />
+
+          {/* Right Beacon (Warm Sand Tan) */}
+          <circle cx="458" cy="260" r="4" fill="#c4a47c" stroke="#ffffff" strokeWidth="1.5" />
+          <circle cx="458" cy="260" r="1.5" fill="#ffffff" />
+
+          {/* Bottom Beacon (Deep Burgundy Pearl) */}
+          <circle cx="260" cy="458" r="4.5" fill="#790d16" stroke="#ffffff" strokeWidth="1.5" />
+          <circle cx="260" cy="458" r="2" fill="#ffffff" />
+
+          {/* Left Beacon (Soft Slate Blue) */}
+          <circle cx="62" cy="260" r="4" fill="#8da8be" stroke="#ffffff" strokeWidth="1.5" />
+          <circle cx="62" cy="260" r="1.5" fill="#ffffff" />
+        </g>
+      </svg>
     </div>
   );
 };

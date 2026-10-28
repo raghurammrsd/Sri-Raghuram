@@ -42,11 +42,11 @@ export function App() {
   };
 
   const handleCopyPip = () => {
-    navigator.clipboard.writeText("pip install codegraph-mcp");
+    navigator.clipboard.writeText("pip install codegraph-engine");
     setPipCopied(true);
     showToast(
       "TERMINAL COMMAND COPIED",
-      "Run 'pip install codegraph-mcp' in your environment."
+      "Run 'pip install codegraph-engine' in your environment."
     );
     setTimeout(() => setPipCopied(false), 3000);
   };

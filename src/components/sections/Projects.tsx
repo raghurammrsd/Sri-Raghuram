@@ -1,19 +1,29 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { PROJECTS } from '../../data/portfolioData';
 import { ProjectCore3D } from '../3d/ProjectCore3D';
-import { Globe, ArrowUpRight, GitFork, Check, Copy, AlertCircle, CheckCircle, Cpu, Terminal, ExternalLink, Sparkles } from 'lucide-react';
+import { Globe, ArrowUpRight, GitFork, Check, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { GithubIcon } from '../Icons';
 import { Magnetic } from '../Magnetic';
-import { TiltCard3D } from '../ui/TiltCard3D';
 import { sound } from '../../utils/sound';
 
 export const Projects: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
   const [activeProjectId, setActiveProjectId] = useState(PROJECTS[0].id);
   const [copiedClone, setCopiedClone] = useState(false);
 
   const activeProject = PROJECTS.find((p) => p.id === activeProjectId) || PROJECTS[0];
-  const activeColorHex = '#ff5500';
+
+  // 120fps Hardware-Accelerated Scroll Motion Parallax
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+
+  const headerY = useTransform(scrollYProgress, [0, 1], [30, -30]);
+  const leftColY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const rightColY = useTransform(scrollYProgress, [0, 1], [-25, 25]);
+  const deckY = useTransform(scrollYProgress, [0, 1], [15, -15]);
 
   const handleCopyClone = (repoUrl: string) => {
     sound.click();
@@ -31,40 +41,37 @@ export const Projects: React.FC = () => {
 
   return (
     <section
+      ref={sectionRef}
       id="projects"
-      className="scroll-mt-20 min-h-screen flex flex-col justify-between py-10 sm:py-14 border-b border-white/[0.08] relative bg-transparent"
+      className="scroll-mt-16 min-h-screen flex flex-col justify-between pt-20 sm:pt-24 pb-4 sm:pb-6 border-b-2 border-[#e5d3af]/60 relative bg-transparent overflow-hidden"
     >
       {/* Background Ambient Glow */}
-      <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] bg-electric-orange/[0.04] rounded-full blur-[200px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-[#966b44]/10 rounded-full blur-[180px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 flex flex-col justify-between space-y-6">
-        {/* Section Header */}
-        <div className="pb-4 border-b border-white/[0.08]">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="flex items-center gap-2 mb-2">
-              <span className="font-mono text-[11px] font-bold tracking-widest text-electric-orange bg-electric-orange/10 border border-electric-orange/25 px-2.5 py-0.5 rounded flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-electric-orange animate-pulse" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 flex flex-col justify-between my-auto space-y-2.5 sm:space-y-3">
+        {/* Section Header with Scroll Parallax */}
+        <motion.div style={{ y: headerY }} className="pb-2.5 border-b-2 border-[#e5d3af]/70">
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="font-mono text-[10.5px] font-bold tracking-widest text-[#790d16] bg-[#790d16]/10 border border-[#790d16]/30 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 shadow-xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#790d16] animate-ping" />
                 03 · FEATURED PROJECTS
               </span>
-              <span className="font-mono text-[11px] tracking-wider text-warm-muted uppercase">
+              <span className="font-mono text-[10.5px] tracking-wider text-[#555555] uppercase font-bold">
                 PRODUCTION SYSTEMS & RUNTIMES
               </span>
             </div>
 
-            <h2 className="font-syne text-3xl sm:text-5xl font-black uppercase tracking-tight leading-tight text-warm-white">
-              Selected Works. <span className="text-electric-orange">Built & Deployed.</span>
+            <h2 className="font-syne text-xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight leading-tight">
+              <span className="text-black">Selected Works. </span>
+              <span className="text-[#790d16]">Built & Deployed.</span>
             </h2>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
 
-        {/* High-Visibility Recruiter Project Selector Deck (Bold 4-Card Responsive Grid) */}
-        <div className="pt-4 pb-2">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        {/* Compact High-Contrast 4-Project Architectural Selector Deck */}
+        <motion.div style={{ y: deckY }}>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-2.5">
             {PROJECTS.map((proj) => {
               const isSelected = activeProjectId === proj.id;
               return (
@@ -74,230 +81,233 @@ export const Projects: React.FC = () => {
                     sound.click();
                     setActiveProjectId(proj.id);
                   }}
-                  className={`text-left p-3.5 sm:p-4 rounded-xl border transition-all duration-300 relative overflow-hidden group cursor-pointer ${
+                  className={`text-left p-2.5 sm:p-3 rounded-xl border-2 transition-all duration-200 relative overflow-hidden group cursor-pointer ${
                     isSelected
-                      ? 'bg-charcoal-900 border-electric-orange shadow-[0_0_25px_rgba(255,85,0,0.25)] ring-1 ring-electric-orange/60'
-                      : 'bg-charcoal-900/60 border-white/15 hover:border-electric-orange/50 hover:bg-white/[0.05]'
+                      ? 'bg-[#fcf9f2] border-[#790d16] shadow-xs ring-1 ring-[#790d16]/40'
+                      : 'bg-white/70 backdrop-blur-xl border-[#e5d3af] hover:border-[#aec4d4] hover:bg-white'
                   }`}
                 >
-                  {/* Top Highlight Indicator Bar for Active Project */}
+                  {/* Top Highlight Accent for Active Tab */}
                   {isSelected && (
                     <motion.div
                       layoutId="activeProjectTopBar"
-                      className="absolute top-0 left-0 right-0 h-1 bg-electric-orange shadow-[0_0_12px_#ff5500]"
+                      className="absolute top-0 left-0 right-0 h-1 bg-[#790d16]"
+                      transition={{ type: 'spring', stiffness: 500, damping: 35 }}
                     />
                   )}
 
-                  <div className="flex items-center justify-between mb-1.5">
+                  <div className="flex items-center justify-between mb-1">
                     <span
                       className={`font-mono text-xs font-black tracking-wider ${
-                        isSelected ? 'text-electric-orange' : 'text-warm-muted group-hover:text-electric-orange'
+                        isSelected ? 'text-[#790d16]' : 'text-[#666666] group-hover:text-[#790d16]'
                       }`}
                     >
                       {proj.number}
                     </span>
 
                     <span
-                      className={`font-mono text-[9px] px-2 py-0.5 rounded font-bold uppercase tracking-wider ${
+                      className={`font-mono text-[8.5px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${
                         isSelected
-                          ? 'bg-electric-orange text-black font-black'
-                          : 'bg-white/[0.05] border border-white/10 text-warm-muted'
+                          ? 'bg-[#790d16] text-white font-black'
+                          : 'bg-[#e5d3af]/30 text-[#555555]'
                       }`}
                     >
                       {isSelected ? 'ACTIVE VIEW' : 'CLICK TO VIEW'}
                     </span>
                   </div>
 
-                  <h4
-                    className={`font-syne text-sm sm:text-base font-black tracking-tight mb-1 truncate ${
-                      isSelected ? 'text-warm-white' : 'text-warm-cream group-hover:text-white'
-                    }`}
-                  >
+                  <h4 className="font-syne text-xs sm:text-sm font-black text-black tracking-tight mb-0.5 truncate">
                     {proj.title}
                   </h4>
 
-                  <p className="font-mono text-[10px] text-warm-muted truncate">
+                  <p className="font-mono text-[9px] text-[#555555] font-medium truncate">
                     {projectTabMeta[proj.id] || proj.category}
                   </p>
                 </button>
               );
             })}
           </div>
-        </div>
+        </motion.div>
 
-        {/* 12-Column Case Study: Left Narrative | Right 3D Reactor & Architecture Specs */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start pt-2 pb-4">
-          {/* Left Column (7 Cols): The Architectural Reality */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeProject.id}
-              initial={{ opacity: 0, x: -30, scale: 0.98 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: 20, scale: 0.98 }}
-              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-7 flex flex-col justify-between space-y-4 sm:space-y-5"
-            >
-              <div>
-                <div className="flex items-center gap-2.5 mb-2.5">
-                  <span className="font-mono text-xs font-bold uppercase tracking-wider text-electric-orange">
-                    {activeProject.category}
-                  </span>
-                  <span className="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 font-bold flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    {activeProject.deploymentStatus}
-                  </span>
-                </div>
-
-                <h3 className="font-syne text-3xl sm:text-4xl font-black text-warm-white tracking-tight leading-tight mb-3">
-                  {activeProject.title}
-                </h3>
-
-                <p className="font-sans text-sm text-warm-cream/90 leading-relaxed mb-5">
-                  {activeProject.tagline}
-                </p>
-
-                {/* 3D Hardware Accelerated Bottleneck & Solution Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-                  <TiltCard3D
-                    glowColor="#ffffff"
-                    className="p-5 rounded-2xl bg-charcoal-900/80 border border-white/10 hover:border-white/30 backdrop-blur-xl shadow-xl transition-all"
-                  >
-                    <div className="flex items-center gap-1.5 mb-2">
-                      <AlertCircle className="w-3.5 h-3.5 text-warm-muted" />
-                      <span className="font-mono text-[10px] text-warm-muted uppercase tracking-widest font-bold">
-                        THE ARCHITECTURAL BOTTLENECK:
-                      </span>
-                    </div>
-                    <p className="font-sans text-xs text-warm-cream/80 leading-relaxed">
-                      {activeProject.challenge}
-                    </p>
-                  </TiltCard3D>
-
-                  <TiltCard3D
-                    glowColor="#ff5500"
-                    className="p-5 rounded-2xl bg-charcoal-900/80 border border-white/10 hover:border-electric-orange/50 backdrop-blur-xl shadow-xl transition-all"
-                  >
-                    <div className="flex items-center gap-1.5 mb-2">
-                      <CheckCircle className="w-3.5 h-3.5 text-electric-orange" />
-                      <span className="font-mono text-[10px] text-electric-orange uppercase tracking-widest font-bold">
-                        THE ENGINEERED SOLUTION:
-                      </span>
-                    </div>
-                    <p className="font-sans text-xs text-warm-cream leading-relaxed">
-                      {activeProject.solution}
-                    </p>
-                  </TiltCard3D>
-                </div>
-
-                {/* Tech Stack Chips with Dynamic Hover Lift */}
-                <div className="flex flex-wrap gap-2 mb-5">
-                  {activeProject.techStack.map((tech) => (
-                    <motion.span
-                      key={tech}
-                      whileHover={{ y: -2, scale: 1.05 }}
-                      className="font-mono text-[11px] px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-warm-cream hover:border-electric-orange/50 hover:text-white transition-all cursor-default"
-                    >
-                      {tech}
-                    </motion.span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Prominent High-Visibility Recruiter Action Buttons (User Palette) */}
-              <div className="flex flex-wrap items-center gap-3 pt-2 border-t border-[#e5d3af]">
-                {activeProject.links.liveDemo && (
-                  <Magnetic strength={0.25}>
-                    <a
-                      href={activeProject.links.liveDemo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => sound.click()}
-                      className="px-6 py-3.5 rounded-full font-mono text-xs font-black tracking-wider transition-all flex items-center gap-2 bg-[#790d16] text-[#f5efe1] hover:bg-[#600a11] border border-[#790d16]/30 shadow-[0_4px_20px_rgba(121,13,22,0.3),inset_0_1px_1px_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 cursor-pointer"
-                    >
-                      <Globe className="w-4 h-4 stroke-[2.5]" />
-                      <span className="font-black text-[#f5efe1]">
-                        {activeProject.id === 'codegraph-mcp' ? 'VIEW ON PYPI REGISTRY' : 'LAUNCH LIVE DEMO'}
-                      </span>
-                      <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
-                    </a>
-                  </Magnetic>
-                )}
-
-                {activeProject.links.github && (
-                  <Magnetic strength={0.25}>
-                    <a
-                      href={activeProject.links.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => sound.click()}
-                      className="px-6 py-3.5 rounded-full bg-white/90 hover:bg-white backdrop-blur-2xl border border-[#aec4d4] hover:border-[#790d16] text-warm-white font-mono text-xs font-bold tracking-wider transition-all flex items-center gap-2 hover:scale-105 active:scale-95 shadow-sm"
-                    >
-                      <GithubIcon className="w-4 h-4 text-warm-white" />
-                      <span>GITHUB REPOSITORY</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 text-warm-muted" />
-                    </a>
-                  </Magnetic>
-                )}
-
-                {activeProject.links.github && (
-                  <button
-                    onClick={() => handleCopyClone(activeProject.links.github!)}
-                    className="px-4 py-3.5 rounded-full bg-white/80 hover:bg-white backdrop-blur-2xl border border-[#e5d3af] hover:border-[#790d16] text-warm-muted hover:text-warm-white font-mono text-xs tracking-wider transition-all flex items-center gap-2 hover:scale-105 active:scale-95 cursor-pointer shadow-sm"
-                    title="Copy git clone command"
-                  >
-                    {copiedClone ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <GitFork className="w-3.5 h-3.5 text-electric-orange" />}
-                    <span>{copiedClone ? 'COPIED TO CLIPBOARD' : 'GIT CLONE'}</span>
-                  </button>
-                )}
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Right Column (5 Cols): Bespoke 3D Holographic Core & Verified Specifications */}
+        {/* 12-Column Case Study Grid with Dual-Axis Scroll Parallax */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-3.5 lg:gap-5 items-stretch py-0.5">
+          {/* Left Column (7 Cols): Stable Wrapper Prevents Grid Layout Jumps */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.75, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 flex flex-col justify-between space-y-4"
+            style={{ y: leftColY }}
+            className="lg:col-span-7 flex flex-col justify-between"
           >
-            {/* 3D Geometry Reactor Frame (Clean without distracting text) */}
-            <div className="relative w-full aspect-video max-h-[220px] rounded-2xl bg-charcoal-900/60 border border-white/10 flex items-center justify-center overflow-hidden shadow-2xl">
-              <ProjectCore3D colorHex={activeColorHex} />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeProject.id}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                className="p-4 sm:p-5 rounded-2xl bg-white/70 backdrop-blur-xl border-2 border-[#e5d3af] hover:border-[#790d16] shadow-[0_10px_30px_rgba(121,13,22,0.05)] flex flex-col justify-between h-full transition-colors duration-300"
+              >
+                <div>
+                  {/* Meta Badges */}
+                  <div className="flex flex-wrap items-center gap-1.5 mb-1.5">
+                    <span className="font-mono text-[9.5px] font-black uppercase tracking-wider text-[#790d16] bg-[#790d16]/10 border border-[#790d16]/25 px-2 py-0.5 rounded-full">
+                      {activeProject.category}
+                    </span>
+                    <span className="font-mono text-[9.5px] px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-300 text-emerald-800 font-bold flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
+                      {activeProject.deploymentStatus}
+                    </span>
+                  </div>
+
+                  <h3 className="font-syne text-lg sm:text-xl font-black text-black tracking-tight leading-tight mb-1.5">
+                    {activeProject.title}
+                  </h3>
+
+                  <p className="font-sans text-xs text-[#222222] font-medium leading-relaxed mb-2.5">
+                    {activeProject.tagline}
+                  </p>
+
+                  {/* Architectural Bottleneck & Solution Cards */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 mb-2.5">
+                    {/* Bottleneck Card */}
+                    <div className="p-2.5 sm:p-3 rounded-xl bg-[#fcf9f2] border-2 border-[#e5d3af] shadow-xs">
+                      <div className="flex items-center gap-1.5 mb-1 text-[#790d16]">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span className="font-mono text-[9.5px] uppercase tracking-wider font-extrabold">
+                          ARCHITECTURAL BOTTLENECK:
+                        </span>
+                      </div>
+                      <p className="font-sans text-[11px] text-[#222222] leading-relaxed">
+                        {activeProject.challenge}
+                      </p>
+                    </div>
+
+                    {/* Solution Card */}
+                    <div className="p-2.5 sm:p-3 rounded-xl bg-white border-2 border-[#790d16]/35 shadow-xs">
+                      <div className="flex items-center gap-1.5 mb-1 text-[#790d16]">
+                        <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
+                        <span className="font-mono text-[9.5px] uppercase tracking-wider font-extrabold">
+                          ENGINEERED BREAKTHROUGH:
+                        </span>
+                      </div>
+                      <p className="font-sans text-[11px] text-[#222222] leading-relaxed">
+                        {activeProject.solution}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Tech Stack Chips */}
+                  <div className="flex flex-wrap gap-1 mb-2.5">
+                    {activeProject.techStack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="font-mono text-[9.5px] px-2 py-0.5 rounded-full bg-[#fcf9f2] border border-[#e5d3af] text-black font-bold"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-[#e5d3af]/60">
+                  {activeProject.links.liveDemo && (
+                    <Magnetic strength={0.25}>
+                      <a
+                        href={activeProject.links.liveDemo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => sound.click()}
+                        className="px-4 py-2 rounded-full font-mono text-xs font-black tracking-wider transition-all flex items-center gap-1.5 bg-[#790d16] text-[#ffffff] hover:bg-[#5c0910] hover:scale-105 active:scale-95 shadow-md cursor-pointer"
+                      >
+                        <Globe className="w-3.5 h-3.5 text-white" />
+                        <span>{activeProject.id === 'codegraph-mcp' ? 'VIEW ON PYPI REGISTRY' : 'LAUNCH LIVE DEMO'}</span>
+                        <ArrowUpRight className="w-3.5 h-3.5 text-white" />
+                      </a>
+                    </Magnetic>
+                  )}
+
+                  {activeProject.links.github && (
+                    <Magnetic strength={0.25}>
+                      <a
+                        href={activeProject.links.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => sound.click()}
+                        className="px-4 py-2 rounded-full bg-white hover:bg-[#fcf9f2] border-2 border-[#aec4d4] hover:border-[#790d16] text-black font-mono text-xs font-bold tracking-wider transition-all flex items-center gap-1.5 hover:scale-105 active:scale-95 shadow-xs cursor-pointer"
+                      >
+                        <GithubIcon className="w-3.5 h-3.5 text-black" />
+                        <span>GITHUB REPOSITORY</span>
+                      </a>
+                    </Magnetic>
+                  )}
+
+                  {activeProject.links.github && (
+                    <button
+                      onClick={() => handleCopyClone(activeProject.links.github!)}
+                      className="px-3.5 py-2 rounded-full bg-[#fcf9f2] hover:bg-white border border-[#e5d3af] hover:border-[#790d16] text-black font-mono text-xs font-semibold tracking-wider transition-all flex items-center gap-1.5 hover:scale-105 active:scale-95 cursor-pointer shadow-xs"
+                      title="Copy git clone command"
+                    >
+                      {copiedClone ? <Check className="w-3 h-3 text-emerald-600" /> : <GitFork className="w-3 h-3 text-[#790d16]" />}
+                      <span>{copiedClone ? 'COPIED' : 'GIT CLONE'}</span>
+                    </button>
+                  )}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
+
+          {/* Right Column (5 Cols): Authentic 3D Rotating Core Console with Live 3D Scroll Physics */}
+          <motion.div
+            style={{ y: rightColY }}
+            className="lg:col-span-5 p-3.5 sm:p-4 rounded-2xl bg-white/70 backdrop-blur-xl border-2 border-[#e5d3af] hover:border-[#790d16] shadow-[0_10px_30px_rgba(121,13,22,0.05)] flex flex-col justify-between h-full transition-colors duration-300"
+          >
+            {/* Console Header */}
+            <div className="flex items-center justify-between pb-2 mb-1 border-b border-[#e5d3af]/70">
+              <div className="flex items-center gap-1.5">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#790d16] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#790d16]"></span>
+                </span>
+                <span className="font-mono text-[9.5px] sm:text-[10px] text-black font-black tracking-widest uppercase">
+                  3D TENSOR ARCHITECTURE CORE
+                </span>
+              </div>
+              <span className="font-mono text-[9px] text-[#790d16] font-bold">
+                SCROLL PARALLAX 3D
+              </span>
             </div>
 
-            {/* Architecture Metrics Grid with Staggered Entrance */}
-            <div className="grid grid-cols-1 gap-2.5">
+            {/* Authentic 3D Rotating Gyroscopic Core with Live Scroll-Driven 3D Rotation */}
+            <div className="my-auto py-1">
+              <ProjectCore3D projectId={activeProject.id} scrollProgress={scrollYProgress} />
+            </div>
+
+            {/* Integrated 3 Architecture Metrics */}
+            <div className="space-y-1.5 pt-2 border-t border-[#e5d3af]/70">
               {activeProject.metrics.map((m, i) => (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-                  whileHover={{ x: 6, scale: 1.01 }}
-                  className="px-5 py-3 rounded-xl bg-charcoal-900/70 border border-white/[0.08] hover:border-electric-orange/40 transition-all flex items-center justify-between font-mono shadow-lg group"
+                  className="px-3 py-1.5 rounded-lg bg-[#fcf9f2] border border-[#e5d3af] flex items-center justify-between font-mono text-[9.5px]"
                 >
-                  <div className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-electric-orange group-hover:animate-ping" />
-                    <span className="text-[11px] text-warm-muted uppercase tracking-wider">{m.label}</span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#790d16]" />
+                    <span className="text-[#555555] uppercase font-bold tracking-wider">{m.label}</span>
                   </div>
-                  <span className="text-xs font-black text-warm-white group-hover:text-electric-orange transition-colors">
+                  <span className="text-black font-black">
                     {m.value}
                   </span>
-                </motion.div>
+                </div>
               ))}
             </div>
           </motion.div>
         </div>
 
         {/* Bottom Status Ticker */}
-        <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between font-mono text-[11px] text-warm-dark">
+        <div className="pt-2 border-t-2 border-[#e5d3af] flex items-center justify-between font-mono text-[10.5px] sm:text-[11px] text-black font-bold">
           <div className="flex items-center gap-2">
-            <span className="text-electric-orange">●</span>
-            <span className="text-warm-muted">100% REPOSITORY VERIFIED · RUNS LOCALLY OR IN CONTAINER</span>
+            <span className="text-[#790d16]">●</span>
+            <span className="font-semibold">100% REPOSITORY VERIFIED · RUNS LOCALLY OR IN CONTAINER</span>
           </div>
-          <span className="hidden sm:inline text-warm-dark">ARCHITECTURE ID: #RG-2026-CORE</span>
+          <span className="hidden sm:inline font-bold">ARCHITECTURE ID: #RG-2026-CORE</span>
         </div>
       </div>
     </section>

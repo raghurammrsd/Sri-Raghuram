@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ChromaticRingScene } from '../3d/ChromaticRingScene';
 import { TiltCard3D } from '../ui/TiltCard3D';
-import { RingEnergyConduits } from '../ui/RingEnergyConduits';
 import { ArrowUpRight, Cpu, Database, Network, Layout, Sparkles } from 'lucide-react';
 import { Magnetic } from '../Magnetic';
 import { sound } from '../../utils/sound';
@@ -56,11 +55,8 @@ export const AreasOfExpertise: React.FC = () => {
       id="expertise"
       className="scroll-mt-20 min-h-screen flex flex-col justify-between pt-24 sm:pt-28 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8 border-b-2 border-[#e5d3af]/60 relative bg-transparent overflow-hidden"
     >
-      {/* 3D Chromatic Plasma Ring Scene (Center Vortex - Scaled to start below header & end above bottom) */}
+      {/* Crisp Pure-SVG Ring (Zero-Lag, Zero-Heating) */}
       <ChromaticRingScene />
-
-      {/* Animated Laser Energy Conduits: Connecting the 3D Ring to the 4 Floating Boxes */}
-      <RingEnergyConduits />
 
       {/* Atmospheric Ambient Depth */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-[#966b44]/15 rounded-full blur-[200px] pointer-events-none" />
@@ -84,7 +80,7 @@ export const AreasOfExpertise: React.FC = () => {
           >
             <TiltCard3D
               glowColor="#790d16"
-              className="p-4 sm:p-5 rounded-2xl bg-white border-2 border-[#e5d3af] hover:border-[#790d16] shadow-[0_8px_30px_rgba(121,13,22,0.06)] group relative overflow-hidden transition-all duration-300"
+              className="p-4 sm:p-5 rounded-2xl bg-white/70 backdrop-blur-xl border-2 border-[#e5d3af] hover:border-[#790d16] shadow-[0_8px_30px_rgba(121,13,22,0.06)] group relative overflow-hidden transition-all duration-300"
             >
               {/* Ring Docking Energy Port */}
               <div className="absolute top-3.5 right-3.5 flex items-center gap-1">
@@ -130,7 +126,7 @@ export const AreasOfExpertise: React.FC = () => {
           >
             <TiltCard3D
               glowColor="#790d16"
-              className="p-4 sm:p-5 rounded-2xl bg-white border-2 border-[#e5d3af] hover:border-[#790d16] shadow-[0_8px_30px_rgba(121,13,22,0.06)] group relative overflow-hidden transition-all duration-300"
+              className="p-4 sm:p-5 rounded-2xl bg-white/70 backdrop-blur-xl border-2 border-[#e5d3af] hover:border-[#790d16] shadow-[0_8px_30px_rgba(121,13,22,0.06)] group relative overflow-hidden transition-all duration-300"
             >
               {/* Ring Docking Energy Port */}
               <div className="absolute top-3.5 right-3.5 flex items-center gap-1">
@@ -214,7 +210,7 @@ export const AreasOfExpertise: React.FC = () => {
           >
             <TiltCard3D
               glowColor="#790d16"
-              className="p-4 sm:p-5 rounded-2xl bg-white border-2 border-[#e5d3af] hover:border-[#790d16] shadow-[0_8px_30px_rgba(121,13,22,0.06)] group relative overflow-hidden transition-all duration-300"
+              className="p-4 sm:p-5 rounded-2xl bg-white/70 backdrop-blur-xl border-2 border-[#e5d3af] hover:border-[#790d16] shadow-[0_8px_30px_rgba(121,13,22,0.06)] group relative overflow-hidden transition-all duration-300"
             >
               {/* Ring Docking Energy Port */}
               <div className="absolute top-3.5 left-3.5 flex items-center gap-1">
@@ -259,7 +255,7 @@ export const AreasOfExpertise: React.FC = () => {
           >
             <TiltCard3D
               glowColor="#790d16"
-              className="p-4 sm:p-5 rounded-2xl bg-white border-2 border-[#e5d3af] hover:border-[#790d16] shadow-[0_8px_30px_rgba(121,13,22,0.06)] group relative overflow-hidden transition-all duration-300"
+              className="p-4 sm:p-5 rounded-2xl bg-white/70 backdrop-blur-xl border-2 border-[#e5d3af] hover:border-[#790d16] shadow-[0_8px_30px_rgba(121,13,22,0.06)] group relative overflow-hidden transition-all duration-300"
             >
               {/* Ring Docking Energy Port */}
               <div className="absolute top-3.5 left-3.5 flex items-center gap-1">
